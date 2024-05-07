@@ -6,12 +6,11 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/06 11:44:01 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/06 20:36:47 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
-#include "mlx.h"
+#include "includes/cub3d.h"
 
 int main(void)
 {
