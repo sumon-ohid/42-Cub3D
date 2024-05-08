@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 17:57:24 by sumon             #+#    #+#             */
-/*   Updated: 2024/05/06 20:24:58 by msumon           ###   ########.fr       */
+/*   Created: 2023/10/17 17:57:24 by msumon            #+#    #+#             */
+/*   Updated: 2024/05/08 21:19:09 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 
-	str = (char *)malloc(sizeof(char)
-			* (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2)
+				+ 1));
 	if (!(str))
 		return (NULL);
 	i = 0;
