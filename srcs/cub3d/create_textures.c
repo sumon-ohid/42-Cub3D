@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 10:02:07 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/09 13:12:37 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/09 16:11:54 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int put_textures_on_map(t_data *data)
                 mlx_put_image(data, &data->ceiling_img, x, y);
             else if (data->map[y][x] == 'N')
                 mlx_put_image(data, &data->no_img, x, y);
-            else
-                x++;
             x++;
         }
         y++;
@@ -59,9 +57,9 @@ int put_textures_on_map(t_data *data)
 
 int create_textures(t_data *data)
 {
-    data->floor_img = image_loader(data->mlx, "././textures/floor.xpm");
+    data->floor_img = image_loader(data->mlx, data->floor_color);
     data->ceiling_img = image_loader(data->mlx, "././textures/ceiling.xpm");
-    data->no_img = image_loader(data->mlx, "././textures/steelwallswitch.xpm");
+    data->no_img = image_loader(data->mlx, "././textures/greystonewall.xpm");
     data->so_img = image_loader(data->mlx, data->so_texture);
     data->we_img = image_loader(data->mlx, data->we_texture);
     data->ea_img = image_loader(data->mlx, data->ea_texture);

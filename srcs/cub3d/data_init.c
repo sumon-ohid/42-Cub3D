@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/09 13:13:50 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/09 15:58:06 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,63 +26,68 @@ int	mlx_data_init(t_data *data)
 	return (0);
 }
 
-int	img_data_init(t_img *img)
+void set_default_values(t_data *data)
 {
-	img->width = IMG_W;
-	img->height = IMG_H;
-	return (0);
+    data->no_texture = "././textures/SteelwallD.xpm";
+    data->so_texture = "././textures/SteelwallD.xpm";
+    data->we_texture = "././textures/SteelwallD.xpm";
+    data->ea_texture = "././textures/SteelwallD.xpm";
+    data->floor_color = "././textures/SteelwallD.xpm";
+    data->ceiling_color = "././textures/SteelwallD.xpm";
+}
+
+void load_textures_and_colors(t_data *data, char *line)
+{
+    if (line[0] == 'N' && line[1] == 'O')
+        data->no_texture = ft_strdup(line + 2);
+    else if (line[0] == 'S' && line[1] == 'O')
+        data->so_texture = ft_strdup(line + 2);
+    else if (line[0] == 'W' && line[1] == 'E')
+        data->we_texture = ft_strdup(line + 2);
+    else if (line[0] == 'E' && line[1] == 'A')
+        data->ea_texture = ft_strdup(line + 2);
+    else if (line[0] == 'F')
+        data->floor_color = ft_strdup(line + 1);
+    else if (line[0] == 'C')
+        data->ceiling_color = ft_strdup(line + 1);
+    else
+        set_default_values(data);
+}
+
+int load_map(t_data *data, int fd, int len)
+{
+    char *line;
+    int i = 0;
+
+    while (i < len && (line = get_next_line(fd)) != NULL)
+    {
+        data->map[i] = ft_strdup(line);
+        load_textures_and_colors(data, line);
+        i++;
+        free(line);
+    }
+    data->map[i] = NULL;
+    data->map_height = i;
+    data->map_width = ft_strlen(line);
+    return 0;
 }
 
 int	data_init(t_data *data, t_img *img, char *map_path)
 {
-	int		fd;
-	char	*line;
-	int		len;
-	int		i;
+    int		fd;
+    int		len;
 
-	i = 0;
-	len = map_line_count(map_path);
-	data->map = malloc(sizeof(char *) * map_line_count(map_path) + 1);
-	if (!data->map)
-		return (1);
-	if (mlx_data_init(data))
-		return (1);
-	if (img_data_init(img))
-		return (1);
-	fd = open(map_path, O_RDONLY);
-	if (fd < 0)
-		return (1);
-	line = get_next_line(fd);
-	while (i < len && line != NULL)
-	{
-		data->map[i] = ft_strdup(line);
-		if (line[0] == 'N' && line[1] == 'O')
-			data->no_texture = ft_strdup(line + 2);
-		else
-			data->no_texture = "././textures/floor.xpm";
-		if (line[0] == 'S' && line[1] == 'O')
-			data->so_texture = ft_strdup(line + 2);
-		else
-			data->so_texture = "././textures/greystonewall.xpm";
-		if (line[0] == 'W' && line[1] == 'E')
-			data->we_texture = ft_strdup(line + 2);
-		else
-			data->we_texture = "././textures/floor.xpm";
-		if (line[0] == 'E' && line[1] == 'A')
-			data->ea_texture = ft_strdup(line + 2);
-		else
-			data->ea_texture = "././textures/floor.xpm";
-		if (line[0] == 'F')
-			data->floor_color = ft_atoi(line + 1);
-		else if (line[0] == 'C')
-			data->ceiling_color = ft_atoi(line + 1);
-		else
-			i++;
-		free(line);
-		line = get_next_line(fd);
-	}
-	data->map_height = i;
-	data->map_width = ft_strlen(line);
-	close(fd);
-	return (0);
+    len = map_line_count(map_path);
+    img->width = IMG_W;
+	img->height = IMG_H;
+    data->map = malloc(sizeof(char *) * len + 1);
+    if (!data->map || mlx_data_init(data))
+        return (1);
+    fd = open(map_path, O_RDONLY);
+    if (fd < 0)
+        return (1);
+    if (load_map(data, fd, len))
+        return (1);
+    close(fd);
+    return (0);
 }

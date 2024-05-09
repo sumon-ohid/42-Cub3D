@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/09 13:13:09 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/09 15:56:09 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@
 # include <unistd.h>
 
 // macros
-# define TILE_SIZE 64
+# define TILE_SIZE 32
 # define WIN_H 1080
 # define WIN_W 1920
-# define IMG_W 64
-# define IMG_H 64
+# define IMG_W 32
+# define IMG_H 32
 
 // data structures for img
 typedef struct s_img
@@ -62,8 +62,8 @@ typedef struct s_data
 	char	*we_texture;
 	char	*ea_texture;
 	char	*sprite_texture;
-	int		floor_color;
-	int		ceiling_color;
+	char	*floor_color;
+	char	*ceiling_color;
 	char	**map;
 	int		map_width;
 	int		map_height;
