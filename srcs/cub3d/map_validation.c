@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:28:31 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/08 21:26:42 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/09 16:41:43 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,7 @@ int	check_map(char **map, int i, int j, int player_count)
 			else
 				return (1);
 		}
-		if (map[i][0] != '1' || map[i][j - 2] != '1')
-			return (1);
+		// need to implement if the map is surrounded by walls
 		i++;
 	}
 	if (player_count != 1)

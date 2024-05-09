@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 10:02:07 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/09 16:11:54 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/09 16:45:56 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int create_textures(t_data *data)
 {
     data->floor_img = image_loader(data->mlx, data->floor_color);
     data->ceiling_img = image_loader(data->mlx, "././textures/ceiling.xpm");
-    data->no_img = image_loader(data->mlx, "././textures/greystonewall.xpm");
+    data->no_img = image_loader(data->mlx, "././textures/player.xpm");
     data->so_img = image_loader(data->mlx, data->so_texture);
     data->we_img = image_loader(data->mlx, data->we_texture);
     data->ea_img = image_loader(data->mlx, data->ea_texture);

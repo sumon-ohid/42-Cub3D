@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/09 15:58:06 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/09 16:58:42 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	mlx_data_init(t_data *data)
 {
-	data->win_width = 1440;
-	data->win_height = 1080;
+	data->win_width = 19 * TILE_SIZE;
+    data->win_height = 13 * TILE_SIZE;
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (1);
@@ -81,12 +81,14 @@ int	data_init(t_data *data, t_img *img, char *map_path)
     img->width = IMG_W;
 	img->height = IMG_H;
     data->map = malloc(sizeof(char *) * len + 1);
-    if (!data->map || mlx_data_init(data))
+    if (!data->map)
         return (1);
     fd = open(map_path, O_RDONLY);
     if (fd < 0)
         return (1);
     if (load_map(data, fd, len))
+        return (1);
+    if (mlx_data_init(data))
         return (1);
     close(fd);
     return (0);
