@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/10 23:33:35 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/10 23:55:42 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,28 @@ int load_textures_and_colors(t_data *data)
     return 0;
 }
 
+int map_line_count(char *map)
+{
+    int fd;
+    int i;
+    char *line;
+
+    i = 0;
+    fd = open(map, O_RDONLY);
+    if (fd < 0)
+        return 0;
+    line = get_next_line(fd);
+    while (line > 0)
+    {
+        i++;
+        free(line);
+        line = get_next_line(fd);
+    }
+    free(line);
+    close(fd);
+    return i;
+}
+
 int load_map(t_data *data, char *map_path, t_img *img)
 {
     (void)img;
@@ -78,7 +100,7 @@ int load_map(t_data *data, char *map_path, t_img *img)
     //load_textures_and_colors(data);
     set_default_values(data);
     data->map_width = ft_strlen(data->map[0]);
-    data->map_height = 13;
+    data->map_height = i;
     return 0;
 }
 

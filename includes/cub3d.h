@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/10 23:36:02 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/10 23:46:53 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,11 @@ int				error(char *str);
 int				main(int ac, char **av);
 
 // map_validation
-int				map_validation(char *map, int i);
-int				free_array(char **array);
-int				map_line_count(char *map);
+// int				map_validation(char *map, int i);
+// int				free_array(char **array);
+// int				map_line_count(char *map);
+
+int				is_valid_map(t_data *data);
 
 // data_init
 int				data_init(t_data *data, char *map_path);
@@ -138,6 +140,7 @@ void			turn_left(t_data *data);
 // ft_mlx
 void			create_new_image(t_data *data, int width, int height);
 void			create_background(t_data *data);
+void			set_camera(t_data *data, int x, int y);
 
 // raycast
 void			raycast(t_data *data, t_point dir, double length);

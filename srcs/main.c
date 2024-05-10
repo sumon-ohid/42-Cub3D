@@ -6,11 +6,25 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/10 23:34:46 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/10 23:57:09 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void free_array(char **array)
+{
+	int i;
+
+	i = 0;
+	while (array[i])
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
 void	clean_input_structure(t_data *data)
 {
 	if (data->no_texture)
@@ -165,6 +179,8 @@ int	main(int ac, char **av)
 	// 	return (error("Invalid map.\n"));
     if (data_init(&data, av[1]))
         return (error("Data initialization failed.\n"));
+	if (is_valid_map(&data))
+		return (error("Invalid map.\n"));
 	if (start_game(&data))
 		return (error("Game start failed.\n"));
     clean_data(&data);
