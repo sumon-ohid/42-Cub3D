@@ -6,11 +6,11 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 20:28:31 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/09 16:41:43 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/10 21:46:26 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "../includes/cub3d.h"
 
 int	map_line_count(char *map)
 {

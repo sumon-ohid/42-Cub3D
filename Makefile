@@ -6,18 +6,22 @@
 #    By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/05/09 12:56:55 by msumon           ###   ########.fr        #
+#    Updated: 2024/05/10 22:44:05 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS 		=	main.c \
-				srcs/cub3d/map_validation.c \
-				srcs/cub3d/data_init.c \
-				srcs/cub3d/create_textures.c \
+SRCS 		=	srcs/main.c \
+				srcs/map_validation.c \
+				srcs/data_init.c \
+				srcs/create_textures.c \
+				srcs/moves.c \
+				srcs/rotations.c \
+				srcs/ft_mlx.c \
+				srcs/raycasting.c \
 
 OBJS		= $(SRCS:.c=.o)
-CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -g # -fsanitize=address
+CC			= clang
+CFLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
 MCFLAGS 	= -lmlx -framework OpenGL -framework AppKit
 #LXFLAGS     = -I -L -lmlx -lXext -lX11 #don't forget to add these flags if you are using linux
 NAME		= cub3D
