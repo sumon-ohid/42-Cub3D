@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/10 23:57:09 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/11 21:11:20 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,8 +175,6 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (error("Invalid number of arguments.\n"));
-	// if (map_validation(av[1], 0)) // need to implement texturing and color validation
-	// 	return (error("Invalid map.\n"));
     if (data_init(&data, av[1]))
         return (error("Data initialization failed.\n"));
 	if (is_valid_map(&data))

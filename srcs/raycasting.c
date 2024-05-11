@@ -6,13 +6,13 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/10 23:29:59 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/11 21:12:12 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	put_pixel(t_data *data, t_point p, int x, double y)
+void	add_img_pixel(t_data *data, t_point p, int x, double y)
 {
     double	tx;
     double	ty;
@@ -21,8 +21,6 @@ void	put_pixel(t_data *data, t_point p, int x, double y)
     tx = (int)(p.x) % IMAGE_SIZE;
     ty = (int)(p.y) % IMAGE_SIZE;
     i = WIN_H / 2 - x - 1;
-	if (i < 0)
-		i = 0;
     while (++i < WIN_H / 2 + x && i < WIN_H)
     {
         if ((int)tx == 0)
@@ -43,7 +41,7 @@ void	put_pixel(t_data *data, t_point p, int x, double y)
     }
 }
 
-void	draw_view(t_data *data, double dist, t_point p)
+void	draw_texture(t_data *data, double dist, t_point p)
 {
 	int		x;
 	double	ty_off;
@@ -58,42 +56,42 @@ void	draw_view(t_data *data, double dist, t_point p)
 		x = WIN_H / 2;
 	}
 	y = ty_off * data->ty_step;
-	put_pixel(data, p, x, y);
+	add_img_pixel(data, p, x, y);
 }
 
-void	try_draw(t_data *data, t_point p1, double ex)
+void	draw_if_empty(t_data *data, t_point p1, double dx)
 {
 	if (data->map[(int)p1.y / IMAGE_SIZE]
 		[(int)p1.x / IMAGE_SIZE] == EMPTY)
-		p1.x -= ex;
-	draw_view(data, sqrt(pow(data->player.y - p1.y, 2) + pow(data->player.x
+		p1.x -= dx;
+	draw_texture(data, sqrt(pow(data->player.y - p1.y, 2) + pow(data->player.x
 				- p1.x, 2)) * cos(abs(data->ray_angle)), p1);
 }
 
-void	bresenham(t_data *data, t_point p1, t_point p2, double length)
+void	draw_line(t_data *data, t_point p1, t_point p2, double length)
 {
-	double	ex;
-	double	ey;
+	double	dx;
+	double	dy;
 	double	max;
 
-	ex = p2.x - p1.x;
-	ey = p2.y - p1.y;
-	max = fmax(fabs(ex), fabs(ey));
-	ey /= max;
-	ex /= max;
-	p2.x += ex * length;
-	p2.y += ey * length;
+	dx = p2.x - p1.x;
+	dy = p2.y - p1.y;
+	max = fmax(fabs(dx), fabs(dy));
+	dy /= max;
+	dx /= max;
+	p2.x += dx * length;
+	p2.y += dy * length;
 	while (1)
 	{
 		if (IMAGE_SIZE * data->map_width > p1.x && IMAGE_SIZE
 			* data->map_height > p1.y && data->map[(int)p1.y
 				/ IMAGE_SIZE][(int)p1.x / IMAGE_SIZE] != EMPTY)
 		{
-			try_draw(data, p1, ex);
+			draw_if_empty(data, p1, dx);
 			break ;
 		}
-		p1.x += ex;
-		p1.y += ey;
+		p1.x += dx;
+		p1.y += dy;
 	}
 }
 
@@ -114,7 +112,7 @@ void	raycast(t_data *data, t_point dir, double length)
 	data->ray_angle = -FOV / 2;
 	while (++data->ray_num < WIN_W)
 	{
-		bresenham(data, p, dir, length);
+		draw_line(data, p, dir, length);
 		del_x = (dir.x - data->player.x);
 		del_y = (dir.y - data->player.y);
 		dir.x = (del_x * cos(FOV / WIN_W) - del_y * sin(FOV / WIN_W))
