@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 21:11:35 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/11 22:14:43 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,41 @@
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
-# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
 
-// macros
-# define TILE_SIZE 64
-# define IMAGE_SIZE 1024
-# define WIN_H 800
-# define WIN_W 1400
-# define IMG_W 64
-# define IMG_H 64
-
+//keycodes mac
 # define A_KEY 0
 # define S_KEY 1
 # define D_KEY 2
 # define W_KEY 13
-
 # define LEFT_ARROW 123
 # define RIGHT_ARROW 124
 # define ESC 53
 # define CROSS_KEY 17
 
-# define PI 3.14159265359
+//keycodes linux
+// # define A_KEY 97
+// # define S_KEY 115
+// # define D_KEY 100
+// # define W_KEY 119
+// # define LEFT_ARROW 65361
+// # define RIGHT_ARROW 65363
+// # define ESC 65307
+// # define CROSS_KEY 33
+
+// constants
 # define ROTATE_SPEED 0.17
-# define MOVE_SPEED 0.1
 # define FOV 1.0472
 # define DIR_L 100
 # define SPEED 200
 # define EMPTY '0'
 # define WALL '1'
+# define IMAGE_SIZE 1024
+# define WIN_H 800
+# define WIN_W 1400
 
 // data structures for img
 typedef struct s_img
@@ -86,13 +89,10 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
-	int			win_width;
-	int			win_height;
 	char		*no_texture;
 	char		*so_texture;
 	char		*we_texture;
 	char		*ea_texture;
-	char		*sprite_texture;
 	int			floor_color;
 	int			ceiling_color;
 	char		**map;
@@ -100,7 +100,7 @@ typedef struct s_data
 	int			map_height;
 	int			ray_num;
 	int 		ray_angle;
-	double		ty_step;
+	double		coordinate_y;
 	t_player	player;
 	t_point		dir;
 	t_point		plane;
@@ -116,15 +116,13 @@ typedef struct s_data
 int				error(char *str);
 int				main(int ac, char **av);
 
-// map_validation
-// int				map_validation(char *map, int i);
-// int				free_array(char **array);
-// int				map_line_count(char *map);
-
+// map
 int				is_valid_map(t_data *data);
+int 			map_parser(t_data *data);
 
 // data_init
 int				data_init(t_data *data, char *map_path);
+int				allocate_textures(t_data *data);
 
 // create_textures
 int				create_textures(t_data *data);
@@ -144,5 +142,11 @@ void			set_camera(t_data *data, int x, int y);
 
 // raycast
 void			raycast(t_data *data, t_point dir, double length);
+
+// cleanup
+int				close_game(t_data *data);
+void			free_array(char **array);
+void			clean_input_structure(t_data *data);
+void			clean_data(t_data *data);
 
 #endif

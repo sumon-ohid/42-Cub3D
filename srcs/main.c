@@ -6,94 +6,11 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 21:11:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/11 22:20:49 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-void free_array(char **array)
-{
-	int i;
-
-	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
-		i++;
-	}
-	free(array);
-}
-
-void	clean_input_structure(t_data *data)
-{
-	if (data->no_texture)
-	{
-		free(data->no_texture);
-		data->no_texture = NULL;
-	}
-	if (data->so_texture)
-	{
-		free(data->so_texture);
-		data->no_texture = NULL;
-	}
-	if (data->we_texture)
-	{
-		free(data->we_texture);
-		data->no_texture = NULL;
-	}
-	if (data->ea_texture)
-	{
-		free(data->ea_texture);
-		data->no_texture = NULL;
-	}
-	if (data->map)
-	{
-		free_array(data->map);
-		data->map = NULL;
-	}
-}
-
-void	clean_data(t_data *data)
-{
-	if (data->ea_img && data->ea_img->img_ptr)
-		mlx_destroy_image(data->mlx, data->ea_img->img_ptr);
-	if (data->we_img && data->we_img->img_ptr)
-		mlx_destroy_image(data->mlx, data->we_img->img_ptr);
-	if (data->so_img && data->so_img->img_ptr)
-		mlx_destroy_image(data->mlx, data->so_img->img_ptr);
-	if (data->no_img && data->no_img->img_ptr)
-		mlx_destroy_image(data->mlx, data->no_img->img_ptr);
-	if (data->win)
-		mlx_destroy_window(data->mlx, data->win);
-	if (data->img)
-		free(data->img);
-	if (data->ea_img)
-		free(data->ea_img);
-	if (data->no_img)
-		free(data->no_img);
-	if (data->so_img)
-		free(data->so_img);
-	if (data->we_img)
-		free(data->we_img);
-	clean_input_structure(data);
-}
-
-int	error(char *str)
-{
-	int	fd;
-
-	fd = 2;
-	ft_putstr_fd("Error:\n", fd);
-	ft_putstr_fd(str, fd);
-	return (0);
-}
-
-int	close_game(t_data *data)
-{
-	clean_data(data);
-	exit(0);
-}
 
 int key_hook(int key, t_data *data)
 {
@@ -125,40 +42,15 @@ int	handle_images(t_data *data)
 	return (0);
 }
 
-int	alloc_textures(t_data *data)
-{
-	data->img = (t_img *)malloc(sizeof(t_img));
-	if (!data->img)
-		return (1);
-	data->img->img_ptr = NULL;
-	data->ea_img = (t_img *)malloc(sizeof(t_img));
-	if (!data->ea_img)
-		return (1);
-	data->ea_img->img_ptr = NULL;
-	data->no_img = (t_img *)malloc(sizeof(t_img));
-	if (!data->no_img)
-		return (1);
-	data->no_img->img_ptr = NULL;
-	data->so_img = (t_img *)malloc(sizeof(t_img));
-	if (!data->so_img)
-		return (1);
-	data->so_img->img_ptr = NULL;
-	data->we_img = (t_img *)malloc(sizeof(t_img));
-	if (!data->we_img)
-		return (1);
-	data->we_img->img_ptr = NULL;
-	return (0);
-}
-
 int	start_game(t_data *data)
 {
-	if (alloc_textures(data))
-		return (1);
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (1);
 	data->win = mlx_new_window(data->mlx, WIN_W, 	WIN_H, "Cub3D");
 	if (!data->mlx)
+		return (1);
+	if (allocate_textures(data))
 		return (1);
 	if (create_textures(data))
 		return (1);
@@ -167,6 +59,18 @@ int	start_game(t_data *data)
 	mlx_loop_hook(data->mlx, &handle_images, data);
 	mlx_loop(data->mlx);
 	return (0);
+}
+
+void print_map(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while (data->map[i])
+	{
+		printf("%s\n", data->map[i]);
+		i++;
+	}
 }
 
 int	main(int ac, char **av)
@@ -178,7 +82,9 @@ int	main(int ac, char **av)
     if (data_init(&data, av[1]))
         return (error("Data initialization failed.\n"));
 	if (is_valid_map(&data))
-		return (error("Invalid map.\n"));
+		return (error("Invalid map.\n")); // free map here
+	if (map_parser(&data))
+		return (error("Map parsing failed.\n")); // free map here
 	if (start_game(&data))
 		return (error("Game start failed.\n"));
     clean_data(&data);

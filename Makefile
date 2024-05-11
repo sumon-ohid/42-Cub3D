@@ -6,18 +6,20 @@
 #    By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/05/11 10:35:24 by msumon           ###   ########.fr        #
+#    Updated: 2024/05/11 21:37:25 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS 		=	srcs/main.c \
 				srcs/map_validation.c \
+				srcs/map_parser.c \
 				srcs/data_init.c \
 				srcs/create_textures.c \
 				srcs/moves.c \
 				srcs/rotations.c \
 				srcs/ft_mlx.c \
 				srcs/raycasting.c \
+				srcs/cleanup.c \
 
 OBJS		= $(SRCS:.c=.o)
 CC			= cc

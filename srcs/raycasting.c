@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 21:12:12 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/11 21:45:38 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	add_img_pixel(t_data *data, t_point p, int x, double y)
         else if ((int)ty == IMAGE_SIZE - 1)
             data->img->pixels[WIN_W * i + data->ray_num]
                 = data->no_img->pixels[(int)y * IMAGE_SIZE + (int)tx];
-        y += data->ty_step;
+        y += data->coordinate_y;
     }
 }
 
@@ -49,13 +49,13 @@ void	draw_texture(t_data *data, double dist, t_point p)
 
 	x = (int)(IMAGE_SIZE * WIN_H / 2 / dist);
 	ty_off = 0;
-	data->ty_step = 1024.0 / (double)(2 * x);
+	data->coordinate_y = 1024.0 / (double)(2 * x);
 	if (x > WIN_H / 2)
 	{
 		ty_off = (x - WIN_H / 2);
 		x = WIN_H / 2;
 	}
-	y = ty_off * data->ty_step;
+	y = ty_off * data->coordinate_y;
 	add_img_pixel(data, p, x, y);
 }
 

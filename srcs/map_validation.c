@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 10:36:12 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/11 22:26:53 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_contains(const char *set, char c)
 	return (0);
 }
 
-static int	find_player(t_data *data)
+static int	has_player(t_data *data)
 {
 	int	x;
 	int	y;
@@ -51,7 +51,7 @@ static int	find_player(t_data *data)
 	return (!data->player.player);
 }
 
-static int	check_borders(t_data *data)
+static int	valid_borders(t_data *data)
 {
 	int	i;
 
@@ -72,7 +72,7 @@ static int	check_borders(t_data *data)
 	return (0);
 }
 
-static int	validate_chars(t_data *data)
+static int	valid_chars(t_data *data)
 {
 	int	x;
 	int	y;
@@ -92,7 +92,7 @@ static int	validate_chars(t_data *data)
 	return (0);
 }
 
-static int	check_walls(t_data *data)
+static int	valid_walls(t_data *data)
 {
 	int	x;
 	int	y;
@@ -118,13 +118,13 @@ static int	check_walls(t_data *data)
 
 int	is_valid_map(t_data *data)
 {
-	if (find_player(data))
+	if (has_player(data))
 		return (0);
-	if (validate_chars(data))
+	if (valid_chars(data))
 		return (0);
-	if (check_borders(data))
+	if (valid_borders(data))
 		return (0);
-	if (check_walls(data))
+	if (valid_walls(data))
 		return (0);
 	return (1);
 }
