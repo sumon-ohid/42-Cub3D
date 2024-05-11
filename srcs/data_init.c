@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/10 23:55:42 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/11 10:16:24 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void set_default_values(t_data *data)
 {
-    data->no_texture = ft_strdup("./textures/masteryi.xpm");
-    data->so_texture = ft_strdup("./textures/masteryi.xpm");
-    data->we_texture = ft_strdup("./textures/masteryi.xpm");
-    data->ea_texture = ft_strdup("./textures/masteryi.xpm");
+    data->no_texture = ft_strdup("./textures/wantedwall.xpm");
+    data->so_texture = ft_strdup("./textures/wall.xpm");
+    data->we_texture = ft_strdup("./textures/wall.xpm");
+    data->ea_texture = ft_strdup("./textures/wall.xpm");
     data->floor_color = 0x0000FF;
     data->ceiling_color = 0x800080;
 }
