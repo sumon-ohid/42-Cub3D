@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 21:09:53 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/12 21:21:48 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,19 @@ char	*remove_space(char *line)
 
 int	parse_color(char *line, t_data *data)
 {
+    char **rgb;
 	int	r;
 	int	g;
 	int	b;
 	int	ret;
 
 	ret = 0;
-	r = ft_atoi(line);
-	g = ft_atoi(ft_strchr(line, ',') + 1);
-	b = ft_atoi(ft_strchr(line, ',') + 1);
+    rgb = ft_split(line, ',');
+    if (!rgb)
+        return (0);
+	r = ft_atoi(rgb[0]);
+	g = ft_atoi(rgb[1]);
+	b = ft_atoi(rgb[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
 		error("Invalid color\n");
@@ -64,6 +68,7 @@ int	parse_color(char *line, t_data *data)
 		exit(1);
 	}
 	ret = (r << 16) + (g << 8) + b;
+    free_array(rgb);
 	return (ret);
 }
 
