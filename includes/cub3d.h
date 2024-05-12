@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 22:14:43 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/12 20:08:38 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_data
 	int			floor_color;
 	int			ceiling_color;
 	char		**map;
+	char		*map_path;
 	int			map_width;
 	int			map_height;
 	int			ray_num;
@@ -119,10 +120,12 @@ int				main(int ac, char **av);
 // map
 int				is_valid_map(t_data *data);
 int 			map_parser(t_data *data);
+int				map_without_textures(char **map, t_data *data);
 
 // data_init
 int				data_init(t_data *data, char *map_path);
 int				allocate_textures(t_data *data);
+int				map_init(t_data *data, char *map_path, int len);
 
 // create_textures
 int				create_textures(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 22:22:44 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/12 19:51:04 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,25 @@ int map_init(t_data *data, char *map_path, int len)
     return (0);
 }
 
+int	map_extention(char *map_path)
+{
+	int	len;
+
+	len = ft_strlen(map_path);
+	if (len < 4 || ft_strncmp(map_path + len - 4, ".cub", 4))
+		return (1);
+	return (0);
+}
+
 int	data_init(t_data *data, char *map_path)
 {
     int map_len;
 
+    if (map_extention(map_path))
+    {
+        error("Invalid map file.\n");
+        return (1);
+    }
     map_len = map_line_count(map_path);
     data->img = NULL;
     data->player = (t_player){0};
@@ -109,6 +124,7 @@ int	data_init(t_data *data, char *map_path)
     data->floor_color = 0;
     data->ceiling_color = 0;
     data->map = NULL;
+    data->map_path = map_path;
     data->map_width = 0;
     data->map_height = 0;
     data->ray_num = 0;

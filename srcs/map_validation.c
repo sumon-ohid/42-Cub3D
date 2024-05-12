@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 22:26:53 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/12 20:13:11 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,11 @@ int	is_valid_map(t_data *data)
 		return (0);
 	if (valid_walls(data))
 		return (0);
+	if (map_without_textures(data->map, data))
+		return (1);
+	data->map_width = ft_strlen(data->map[0]) - 1;
+    data->map_height = 0;
+    while(data->map[data->map_height])
+        data->map_height++;
 	return (1);
 }
