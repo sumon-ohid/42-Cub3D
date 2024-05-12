@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/11 21:23:04 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/12 10:57:27 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,6 @@ void	clean_data(t_data *data)
 		free(data->so_img);
 	if (data->we_img)
 		free(data->we_img);
-	free(data->mlx);
-	free(data->win);
 	clean_input_structure(data);
 }
 
