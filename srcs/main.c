@@ -6,11 +6,12 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 15:12:18 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 18:29:24 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "mlx.h"
 
 int key_hook(int key, t_data *data)
 {
@@ -36,6 +37,7 @@ int	handle_images(t_data *data)
 	create_new_image(data, WIN_W, WIN_H);
 	create_background(data);
 	raycast(data, data->dir);
+	cub_minimap(data); // minimap
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->img->img_ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->img->img_ptr);
@@ -83,7 +85,7 @@ int	main(int ac, char **av)
         return (error("Data initialization failed.\n"));
 	if (map_parser(&data))
 		return (error("Map parsing failed.\n")); // free map here
-	if (!is_valid_map(&data)) // need to fix few things
+	if (!is_valid_map(&data)) // need to fix few things //space doesn't work
 		return (error("Invalid map.\n")); // free map here
 	if (start_game(&data))
 		return (error("Game start failed.\n"));

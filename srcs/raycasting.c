@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 14:07:23 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 22:10:19 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	raycast(t_data *data, t_point direction)
     //Set the starting point of the ray
     point.x = data->player.x;
     point.y = data->player.y;
-    point.color = 0x5500FF00; // RGBAlpha
+    //change in coordinates for each step
     delta_x = (direction.x - data->player.x);
     delta_y = (direction.y - data->player.y);
     //Rotation matrix

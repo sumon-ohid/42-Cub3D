@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 14:59:18 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 22:12:37 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define EMPTY '0'
 # define WALL '1'
 # define IMAGE_SIZE 1024
-# define WIN_H 800
-# define WIN_W 1400
+# define WIN_H 850
+# define WIN_W 1450
 
 // data structures for img
 typedef struct s_img
@@ -81,7 +81,6 @@ typedef struct s_point
 {
 	double		x;
 	double		y;
-	int			color;
 }				t_point;
 
 // data structures for main data
@@ -154,5 +153,6 @@ void			clean_data(t_data *data);
 
 //extra 
 void 			print_map(t_data *data);
+void			cub_minimap(t_data *data);
 
 #endif

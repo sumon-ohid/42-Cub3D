@@ -1,3 +1,4 @@
 {
-    "github.copilot.chat.terminalChatLocation": "chatView"
+    "github.copilot.chat.terminalChatLocation": "chatView",
+    "files.autoSave": "afterDelay"
 }
