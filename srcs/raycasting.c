@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 17:54:27 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 14:07:23 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ void	draw_if_empty(t_data *data, t_point point1, double dx)
                 - point1.x, 2)) * cos(abs(data->ray_angle)), point1);
 }
 
-void	draw_line(t_data *data, t_point point1, t_point point2, double length)
+//fmax returns the greater of two values
+//fabs returns the absolute value of a floating point number
+void	draw_line(t_data *data, t_point point1, t_point point2)
 {
     double	delta_x;
     double	delta_y;
@@ -79,8 +81,8 @@ void	draw_line(t_data *data, t_point point1, t_point point2, double length)
     max_value = fmax(fabs(delta_x), fabs(delta_y));
     delta_y /= max_value;
     delta_x /= max_value;
-    point2.x += delta_x * length;
-    point2.y += delta_y * length;
+    point2.x += delta_x;
+    point2.y += delta_y;
     while (1)
     {
         if (IMAGE_SIZE * data->map_width > point1.x && IMAGE_SIZE
@@ -95,24 +97,28 @@ void	draw_line(t_data *data, t_point point1, t_point point2, double length)
     }
 }
 
-void	raycast(t_data *data, t_point direction, double length)
+void	raycast(t_data *data, t_point direction)
 {
     t_point	point;
     double	delta_x;
     double	delta_y;
 
-    data->ray_num = -1;
+    data->ray_num = 0;
+    //Set the starting point of the ray
     point.x = data->player.x;
     point.y = data->player.y;
-    point.color = 0x5500FF00;
+    point.color = 0x5500FF00; // RGBAlpha
     delta_x = (direction.x - data->player.x);
     delta_y = (direction.y - data->player.y);
+    //Rotation matrix
+    //_x = x * cos(angle) - y * sin(angle)
+    //_y = x * sin(angle) + y * cos(angle)
     direction.x = (delta_x * cos(-FOV / 2) - delta_y * sin(-FOV / 2)) + data->player.x;
     direction.y = (delta_x * sin(-FOV / 2) + delta_y * cos(-FOV / 2)) + data->player.y;
     data->ray_angle = -FOV / 2;
-    while (++data->ray_num < WIN_W)
+    while (data->ray_num < WIN_W)
     {
-        draw_line(data, point, direction, length);
+        draw_line(data, point, direction);
         delta_x = (direction.x - data->player.x);
         delta_y = (direction.y - data->player.y);
         direction.x = (delta_x * cos(FOV / WIN_W) - delta_y * sin(FOV / WIN_W))
@@ -120,5 +126,6 @@ void	raycast(t_data *data, t_point direction, double length)
         direction.y = (delta_x * sin(FOV / WIN_W) + delta_y * cos(FOV / WIN_W))
             + data->player.y;
         data->ray_angle += FOV / WIN_W;
+        data->ray_num++;
     }
 }

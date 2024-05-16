@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 20:08:38 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 14:59:18 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@
 // # define CROSS_KEY 33
 
 // constants
-# define ROTATE_SPEED 0.17
-# define FOV 1.0472
+# define ROTATE_ANGLE 0.2
+# define FOV M_PI / 3
 # define DIR_L 100
 # define SPEED 200
 # define EMPTY '0'
@@ -144,12 +144,15 @@ void			create_background(t_data *data);
 void			set_camera(t_data *data, int x, int y);
 
 // raycast
-void			raycast(t_data *data, t_point dir, double length);
+void			raycast(t_data *data, t_point direction);
 
 // cleanup
 int				close_game(t_data *data);
 void			free_array(char **array);
 void			clean_input_structure(t_data *data);
 void			clean_data(t_data *data);
+
+//extra 
+void 			print_map(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 20:13:11 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 12:59:06 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,8 @@ static int	valid_walls(t_data *data)
 
 int	is_valid_map(t_data *data)
 {
+
+	// spaces in the map neeed to be fixed
 	if (has_player(data))
 		return (0);
 	if (valid_chars(data))

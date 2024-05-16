@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 20:59:39 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 15:12:18 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	handle_images(t_data *data)
 {
 	create_new_image(data, WIN_W, WIN_H);
 	create_background(data);
-	raycast(data, data->dir, 1);
+	raycast(data, data->dir);
 	mlx_put_image_to_window(data->mlx, data->win,
 		data->img->img_ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->img->img_ptr);
@@ -83,7 +83,7 @@ int	main(int ac, char **av)
         return (error("Data initialization failed.\n"));
 	if (map_parser(&data))
 		return (error("Map parsing failed.\n")); // free map here
-	if (!is_valid_map(&data))
+	if (!is_valid_map(&data)) // need to fix few things
 		return (error("Invalid map.\n")); // free map here
 	if (start_game(&data))
 		return (error("Game start failed.\n"));

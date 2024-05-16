@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:19:03 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 17:57:34 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/16 14:43:50 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	rotate_vector(double *start_x, double *start_y, double *end_x, double *end_
     const double	delta_x = (*start_x - *end_x);
     const double	delta_y = (*start_y - *end_y);
 
-    *start_x = (delta_x * cos(ROTATE_SPEED) - delta_y * sin(ROTATE_SPEED)) + *end_x;
-    *start_y = (delta_x * sin(ROTATE_SPEED) + delta_y * cos(ROTATE_SPEED)) + *end_y;
+    *start_x = (delta_x * cos(ROTATE_ANGLE) - delta_y * sin(ROTATE_ANGLE)) + *end_x;
+    *start_y = (delta_x * sin(ROTATE_ANGLE) + delta_y * cos(ROTATE_ANGLE)) + *end_y;
 }
 
 void	rotate_vector_back(double *start_x, double *start_y, double *end_x,
@@ -27,8 +27,8 @@ void	rotate_vector_back(double *start_x, double *start_y, double *end_x,
     const double	delta_x = (*start_x - *end_x);
     const double	delta_y = (*start_y - *end_y);
 
-    *start_x = (delta_x * cos(-ROTATE_SPEED) - delta_y * sin(-ROTATE_SPEED)) + *end_x;
-    *start_y = (delta_x * sin(-ROTATE_SPEED) + delta_y * cos(-ROTATE_SPEED)) + *end_y;
+    *start_x = (delta_x * cos(-ROTATE_ANGLE) - delta_y * sin(-ROTATE_ANGLE)) + *end_x;
+    *start_y = (delta_x * sin(-ROTATE_ANGLE) + delta_y * cos(-ROTATE_ANGLE)) + *end_y;
 }
 
 void	turn_left(t_data *data)
