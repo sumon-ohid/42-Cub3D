@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 16:38:30 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/17 09:30:49 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ static int	valid_walls(t_data *data)
 	return (0);
 }
 
-int	is_valid_map(t_data *data)
+int	valid_map(t_data *data)
 {
 
 	// spaces in the map neeed to be fixed

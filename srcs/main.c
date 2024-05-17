@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 18:29:24 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/17 08:53:42 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(int ac, char **av)
         return (error("Data initialization failed.\n"));
 	if (map_parser(&data))
 		return (error("Map parsing failed.\n")); // free map here
-	if (!is_valid_map(&data)) // need to fix few things //space doesn't work
+	if (!valid_map(&data)) // need to fix few things //space doesn't work
 		return (error("Invalid map.\n")); // free map here
 	if (start_game(&data))
 		return (error("Game start failed.\n"));

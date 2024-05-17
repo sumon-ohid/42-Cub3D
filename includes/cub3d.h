@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 22:12:37 by msumon           ###   ########.fr       */
+/*   Updated: 2024/05/17 08:53:52 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int				error(char *str);
 int				main(int ac, char **av);
 
 // map
-int				is_valid_map(t_data *data);
+int				valid_map(t_data *data);
 int 			map_parser(t_data *data);
 int				map_without_textures(char **map, t_data *data);
 
