@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 11:16:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/11 11:07:11 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,6 +139,7 @@ int	map_without_textures(char **map, t_data *data)
 	int		i;
 	int		j;
 	char	**new_map;
+	char	*line;
 
 	i = 0;
 	j = 0;
@@ -147,7 +148,8 @@ int	map_without_textures(char **map, t_data *data)
 		return (1);
 	while (map[i])
 	{
-		if (map[i][0] == '1')
+		line = remove_space(map[i]);
+		if (line[0] == '1')
 			break ;
 		i++;
 	}
@@ -163,6 +165,24 @@ int	map_without_textures(char **map, t_data *data)
 	return (0);
 }
 
+int get_max_width(char **map)
+{
+	int i;
+	int max;
+	int len;
+
+	i = 0;
+	max = 0;
+	while (map[i])
+	{
+		len = ft_strlen(map[i]);
+		if (len > max)
+			max = len;
+		i++;
+	}
+	return (max);
+}
+
 int	map_parser(t_data *data)
 {
     if (map_init(data, data->map_path, data->map_height))
@@ -171,7 +191,7 @@ int	map_parser(t_data *data)
         return (1);
 	if (map_without_textures(data->map, data))
 		return (1);
-    data->map_width = ft_strlen(data->map[0]) - 1;
+    data->map_width = get_max_width(data->map);
     data->map_height = 0;
     while(data->map[data->map_height])
         data->map_height++;

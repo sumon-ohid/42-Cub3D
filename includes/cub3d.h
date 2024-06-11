@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/17 08:53:52 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/11 12:36:21 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,24 @@
 # include <unistd.h>
 
 //keycodes mac
-# define A_KEY 0
-# define S_KEY 1
-# define D_KEY 2
-# define W_KEY 13
-# define LEFT_ARROW 123
-# define RIGHT_ARROW 124
-# define ESC 53
-# define CROSS_KEY 17
+// # define A_KEY 0
+// # define S_KEY 1
+// # define D_KEY 2
+// # define W_KEY 13
+// # define LEFT_ARROW 123
+// # define RIGHT_ARROW 124
+// # define ESC 53
+// # define CROSS_KEY 17
 
 //keycodes linux
-// # define A_KEY 97
-// # define S_KEY 115
-// # define D_KEY 100
-// # define W_KEY 119
-// # define LEFT_ARROW 65361
-// # define RIGHT_ARROW 65363
-// # define ESC 65307
-// # define CROSS_KEY 33
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
+# define W_KEY 119
+# define LEFT_ARROW 65361
+# define RIGHT_ARROW 65363
+# define ESC 65307
+# define CROSS_KEY 33
 
 // constants
 # define ROTATE_ANGLE 0.2
@@ -120,6 +120,7 @@ int				main(int ac, char **av);
 int				valid_map(t_data *data);
 int 			map_parser(t_data *data);
 int				map_without_textures(char **map, t_data *data);
+char			*remove_space(char *line);
 
 // data_init
 int				data_init(t_data *data, char *map_path);

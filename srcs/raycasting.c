@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 22:10:19 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/10 20:33:59 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	draw_line(t_data *data, t_point point1, t_point point2)
     double	delta_x;
     double	delta_y;
     double	max_value;
+    int     line_width;
 
     delta_x = point2.x - point1.x;
     delta_y = point2.y - point1.y;
@@ -85,7 +86,8 @@ void	draw_line(t_data *data, t_point point1, t_point point2)
     point2.y += delta_y;
     while (1)
     {
-        if (IMAGE_SIZE * data->map_width > point1.x && IMAGE_SIZE
+        line_width = strlen(data->map[(int)point1.y / IMAGE_SIZE]);
+        if (IMAGE_SIZE * line_width > point1.x && IMAGE_SIZE
             * data->map_height > point1.y && data->map[(int)point1.y
                 / IMAGE_SIZE][(int)point1.x / IMAGE_SIZE] != EMPTY)
         {

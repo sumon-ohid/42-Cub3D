@@ -6,7 +6,7 @@
 /*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:12:02 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 20:34:04 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/10 20:42:16 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	cub_minimap(t_data *data)
     while (++y < data->map_height)
     {
         x = -1;
+        data->map_width = ft_strlen(data->map[y]);
         while (++x < data->map_width)
         {
             if (data->map[y][x] == '1')
