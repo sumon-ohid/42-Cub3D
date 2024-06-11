@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 12:35:04 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/11 13:02:26 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ static int	valid_chars(t_data *data)
 	int		y;
 	char	*line;
 
-	printf("map_height: %d\n", data->map_height);
+	//printf("map_height: %d\n", data->map_height);
 	if (data->map == NULL || data->map_height <= 0)
 		return (1);
 	y = 0;
@@ -191,16 +191,16 @@ int	valid_map(t_data *data)
 {
 	if (has_player(data))
 		return (0);
-	printf("valid_player\n");
+	//printf("valid_player\n");
 	if (valid_chars(data))
 		return (0);
-	printf("valid_chars\n");
+	//printf("valid_chars\n");
 	if (valid_borders(data))
 		return (0);
-	printf("valid_borders\n");
+	//printf("valid_borders\n");
 	if (valid_walls(data))
 		return (0);
-	printf("valid_walls\n");
+	//printf("valid_walls\n");
 	if (map_without_textures(data->map, data))
 		return (0);
 	data->map_width = ft_strlen(data->map[0]) - 1;

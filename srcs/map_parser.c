@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 11:07:11 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/11 12:57:30 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,40 @@ void	set_default_values(t_data *data)
 
 char	*remove_space(char *line)
 {
-    int		i;
-    int		j;
-    char	*new_line;
+	int		i;
+	int		j;
+	char	*new_line;
 
-    i = 0;
-    j = 0;
-    new_line = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
-    if (!new_line)
-        return (NULL);
-    while (line[i])
-    {
-        if (line[i] != ' ')
-        {
-            new_line[j] = line[i];
-            j++;
-        }
-        i++;
-    }
-    new_line[j] = '\0';
-    return (new_line);
+	i = 0;
+	j = 0;
+	new_line = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
+	if (!new_line)
+		return (NULL);
+	while (line[i])
+	{
+		if (line[i] != ' ')
+		{
+			new_line[j] = line[i];
+			j++;
+		}
+		i++;
+	}
+	new_line[j] = '\0';
+	return (new_line);
 }
 
 int	parse_color(char *line, t_data *data)
 {
-    char **rgb;
-	int	r;
-	int	g;
-	int	b;
-	int	ret;
+	char	**rgb;
+	int		r;
+	int		g;
+	int		b;
+	int		ret;
 
 	ret = 0;
-    rgb = ft_split(line, ',');
-    if (!rgb)
-        return (0);
+	rgb = ft_split(line, ',');
+	if (!rgb)
+		return (0);
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
@@ -68,7 +68,7 @@ int	parse_color(char *line, t_data *data)
 		exit(1);
 	}
 	ret = (r << 16) + (g << 8) + b;
-    free_array(rgb);
+	free_array(rgb);
 	return (ret);
 }
 
@@ -84,25 +84,25 @@ int	texture_end_xpm(char *line)
 	return (0);
 }
 
-char *copy_until_newline(char *line)
+char	*copy_until_newline(char *line)
 {
-    int		i;
-    int		j;
-    char	*new_line;
+	int		i;
+	int		j;
+	char	*new_line;
 
-    i = 0;
-    j = 0;
-    new_line = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
-    if (!new_line)
-        return (NULL);
-    while (line[i] && line[i] != '\n')
-    {
-        new_line[j] = line[i];
-        i++;
-        j++;
-    }
-    new_line[j] = '\0';
-    return (new_line);
+	i = 0;
+	j = 0;
+	new_line = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
+	if (!new_line)
+		return (NULL);
+	while (line[i] && line[i] != '\n')
+	{
+		new_line[j] = line[i];
+		i++;
+		j++;
+	}
+	new_line[j] = '\0';
+	return (new_line);
 }
 
 int	load_textures_and_colors(t_data *data)
@@ -114,21 +114,21 @@ int	load_textures_and_colors(t_data *data)
 	while (data->map[i] && data->map[i][0] != '1')
 	{
 		line = remove_space(data->map[i]);
-        if (!line)
-            return (1);
-        if (line[0] == 'N' && line[1] == 'O')
-			data->no_texture = copy_until_newline(line + 2);        
-        if (line[0] == 'S' && line[1] == 'O')
+		if (!line)
+			return (1);
+		if (line[0] == 'N' && line[1] == 'O')
+			data->no_texture = copy_until_newline(line + 2);
+		if (line[0] == 'S' && line[1] == 'O')
 			data->so_texture = copy_until_newline(line + 2);
-        if (line[0] == 'W' && line[1] == 'E')
+		if (line[0] == 'W' && line[1] == 'E')
 			data->we_texture = copy_until_newline(line + 2);
-        if (line[0] == 'E' && line[1] == 'A')
+		if (line[0] == 'E' && line[1] == 'A')
 			data->ea_texture = copy_until_newline(line + 2);
-        if (line[0] == 'F')
+		if (line[0] == 'F')
 			data->floor_color = parse_color(line + 1, data);
-        if (line[0] == 'C')
-            data->ceiling_color = parse_color(line + 1, data);
-        free(line);
+		if (line[0] == 'C')
+			data->ceiling_color = parse_color(line + 1, data);
+		free(line);
 		i++;
 	}
 	return (0);
@@ -165,11 +165,11 @@ int	map_without_textures(char **map, t_data *data)
 	return (0);
 }
 
-int get_max_width(char **map)
+int	get_max_width(char **map)
 {
-	int i;
-	int max;
-	int len;
+	int	i;
+	int	max;
+	int	len;
 
 	i = 0;
 	max = 0;
@@ -185,15 +185,15 @@ int get_max_width(char **map)
 
 int	map_parser(t_data *data)
 {
-    if (map_init(data, data->map_path, data->map_height))
-        return (1);
+	if (map_init(data, data->map_path, data->map_height))
+		return (1);
 	if (load_textures_and_colors(data))
-        return (1);
+		return (1);
 	if (map_without_textures(data->map, data))
 		return (1);
-    data->map_width = get_max_width(data->map);
-    data->map_height = 0;
-    while(data->map[data->map_height])
-        data->map_height++;
+	data->map_width = get_max_width(data->map);
+	data->map_height = 0;
+	while (data->map[data->map_height])
+		data->map_height++;
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+         #
+#    By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/05/16 22:26:19 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/11 12:59:32 by vsharma          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRCS 		=	srcs/main.c \
 OBJS		= $(SRCS:.c=.o)
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
-MCFLAGS 	= -lmlx -framework OpenGL -framework AppKit
-#LXFLAGS     = -I -L -lmlx -lXext -lX11 #don't forget to add these flags if you are using linux
+#MCFLAGS 	= -lmlx -framework OpenGL -framework AppKit
+LXFLAGS     = -I -L -lmlx -lXext -lX11 -lm #don't forget to add these flags if you are using linux
 NAME		= cub3D
 HEADER		= cub3d.h
 
@@ -54,7 +54,7 @@ libft_gnl:
 
 $(NAME): $(OBJS)
 	@$(PRINT_LOADING)
-	@$(CC) $(CFLAGS) $(OBJS) $(MCFLAGS) -Lsrcs/libft -lft_gnl -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LXFLAGS) -Lsrcs/libft -lft_gnl -o $(NAME)
 	@echo "$(GREEN)> Compilation Complete! ✅✅✅$(RESET)"
 
 clean:	

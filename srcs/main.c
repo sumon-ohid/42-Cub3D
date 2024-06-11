@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/17 08:53:42 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/11 12:57:05 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 #include "mlx.h"
 
-int key_hook(int key, t_data *data)
+int	key_hook(int key, t_data *data)
 {
 	if (key == ESC)
 		close_game(data);
@@ -38,8 +38,7 @@ int	handle_images(t_data *data)
 	create_background(data);
 	raycast(data, data->dir);
 	cub_minimap(data); // minimap
-	mlx_put_image_to_window(data->mlx, data->win,
-		data->img->img_ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->img->img_ptr);
 	return (0);
 }
@@ -49,7 +48,7 @@ int	start_game(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (1);
-	data->win = mlx_new_window(data->mlx, WIN_W, 	WIN_H, "Cub3D");
+	data->win = mlx_new_window(data->mlx, WIN_W, WIN_H, "Cub3D");
 	if (!data->mlx)
 		return (1);
 	if (allocate_textures(data))
@@ -63,9 +62,9 @@ int	start_game(t_data *data)
 	return (0);
 }
 
-void print_map(t_data *data)
+void	print_map(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data->map[i])
@@ -77,18 +76,19 @@ void print_map(t_data *data)
 
 int	main(int ac, char **av)
 {
-    t_data  data;
+	t_data	data;
 
 	if (ac != 2)
 		return (error("Invalid number of arguments.\n"));
-    if (data_init(&data, av[1]))
-        return (error("Data initialization failed.\n"));
+	if (data_init(&data, av[1]))
+		return (error("Data initialization failed.\n"));
 	if (map_parser(&data))
 		return (error("Map parsing failed.\n")); // free map here
-	if (!valid_map(&data)) // need to fix few things //space doesn't work
-		return (error("Invalid map.\n")); // free map here
+	if (!valid_map(&data))                       // need to fix few things
+		//space doesn't work
+		return (error("Invalid map.\n"));        // free map here
 	if (start_game(&data))
 		return (error("Game start failed.\n"));
-    clean_data(&data);
+	clean_data(&data);
 	return (0);
 }
