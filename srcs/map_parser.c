@@ -6,7 +6,7 @@
 /*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 12:57:30 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 11:28:59 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,9 @@ int	load_textures_and_colors(t_data *data)
 		if (!line)
 			return (1);
 		if (line[0] == 'N' && line[1] == 'O')
-			data->no_texture = copy_until_newline(line + 2);
+			data->no_texture = copy_until_newline(line + 2);  
 		if (line[0] == 'S' && line[1] == 'O')
-			data->so_texture = copy_until_newline(line + 2);
+			data->so_texture = copy_until_newline(line + 2); // vs: changed here
 		if (line[0] == 'W' && line[1] == 'E')
 			data->we_texture = copy_until_newline(line + 2);
 		if (line[0] == 'E' && line[1] == 'A')
@@ -150,7 +150,11 @@ int	map_without_textures(char **map, t_data *data)
 	{
 		line = remove_space(map[i]);
 		if (line[0] == '1')
+		{
+			free(line);  // vs: free line
 			break ;
+		}
+		free (line); // vs:  free line
 		i++;
 	}
 	while (map[i])

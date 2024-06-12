@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 10:57:27 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/12 12:52:55 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void free_array(char **array)
+void	free_array(char **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (array[i])
@@ -35,17 +35,17 @@ void	clean_input_structure(t_data *data)
 	if (data->so_texture)
 	{
 		free(data->so_texture);
-		data->no_texture = NULL;
+		data->so_texture = NULL; // no_texture
 	}
 	if (data->we_texture)
 	{
 		free(data->we_texture);
-		data->no_texture = NULL;
+		data->we_texture = NULL;
 	}
 	if (data->ea_texture)
 	{
 		free(data->ea_texture);
-		data->no_texture = NULL;
+		data->ea_texture = NULL;
 	}
 	if (data->map)
 	{

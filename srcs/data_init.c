@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/16 07:52:14 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/12 12:53:26 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,57 +37,72 @@ int	allocate_textures(t_data *data)
 	return (0);
 }
 
-int map_line_count(char *map)
+int	map_line_count(char *map)
 {
-    int fd;
-    int i;
-    char *line;
+	int		fd;
+	int		i;
+	char	*line;
 
-    i = 0;
-    fd = open(map, O_RDONLY);
-    if (fd < 0)
-        return 0;
-    line = get_next_line(fd);
-    if (!line)
-        return (0);
-    while (line > 0)
-    {
-        i++;
-        free(line);
-        line = get_next_line(fd);
-    }
-    free(line);
-    close(fd);
-    return i;
+	i = 0;
+	fd = open(map, O_RDONLY);
+	if (fd < 0)
+		return (0);
+	line = get_next_line(fd);
+	if (!line)
+		return (0);
+	while (line > 0)
+	{
+		i++;
+		free(line);
+		line = get_next_line(fd); // protect
+	}
+	free(line);
+	close(fd);
+	return (i);
 }
 
-int map_init(t_data *data, char *map_path, int len)
+int	map_init(t_data *data, char *map_path, int len)
 {
-    int fd;
-    int i;
-    char *line;
+	int		fd;
+	int		i;
+	char	*line;
 
-    i = 0;
-    data->map = (char **)malloc(sizeof(char *) * (len + 1));
-    if (!data->map)
-        return (1);
-    fd = open(map_path, O_RDONLY);
-    if (fd < 0)
-        return (1);
-    line = get_next_line(fd); //protect 
-    while (i < len && line)
-    {
-        data->map[i] = ft_strdup(line);
-        i++;
-        free(line);
-        line = get_next_line(fd);
-    }
-    data->map[i] = NULL;
-    free(line);
-    close(fd);
-    data->map_height = i;
-    data->map_width = ft_strlen(data->map[0]);
-    return (0);
+	i = 0;
+	data->map = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!data->map)
+		return (1);
+	fd = open(map_path, O_RDONLY);
+	if (fd < 0)
+	{
+		return (1);	
+	}
+	line = get_next_line(fd); // protect
+	if (!line)
+	{
+		close(fd);
+		return (1);
+	}
+	while (i < len && line)
+	{
+		data->map[i] = ft_strdup(line);
+		if (!data->map[i])
+		{
+			free(line);
+			close(fd);
+			return (1);
+		}
+		i++;
+		free(line);
+		line = get_next_line(fd); // protect
+		if (!line)
+			break ;
+	}
+	data->map[i] = NULL;
+	free(line);
+	close(fd);
+	data->map_height = i;
+	data->map_width = ft_strlen(data->map[0]);
+	return (0);
 }
 
 int	map_extention(char *map_path)
@@ -102,35 +117,39 @@ int	map_extention(char *map_path)
 
 int	data_init(t_data *data, char *map_path)
 {
-    int map_len;
+	int	map_len;
 
-    if (map_extention(map_path))
-    {
-        error("Invalid map file.\n");
-        return (1);
-    }
-    map_len = map_line_count(map_path);
-    data->img = NULL;
-    data->player = (t_player){0};
-    data->dir = (t_point){0};
-    data->plane = (t_point){0};
-    data->plane2 = (t_point){0};
-    data->mlx = NULL;
-    data->win = NULL;
-    data->no_texture = NULL;
-    data->so_texture = NULL;
-    data->we_texture = NULL;
-    data->ea_texture = NULL;
-    data->floor_color = 0;
-    data->ceiling_color = 0;
-    data->map = NULL;
-    data->map_path = map_path;
-    data->map_width = 0;
-    data->map_height = 0;
-    data->ray_num = 0;
-    data->ray_angle = 0;
-    data->coordinate_y = 0.0;
-    if (map_init(data, map_path, map_len))
-        return (1);
-    return (0);
+	if (map_extention(map_path))
+	{
+		error("Invalid map file.\n");   // VS: changed here
+		exit (EXIT_FAILURE);
+		//return (1);
+	}
+	map_len = map_line_count(map_path);
+	data->img = NULL;
+	data->player = (t_player){0};
+	data->dir = (t_point){0};
+	data->plane = (t_point){0};
+	data->plane2 = (t_point){0};
+	data->mlx = NULL;
+	data->win = NULL;
+	data->no_texture = NULL;
+	data->so_texture = NULL;
+	data->we_texture = NULL;
+	data->ea_texture = NULL;
+	data->floor_color = 0;
+	data->ceiling_color = 0;
+	data->map = NULL;
+	data->map_path = map_path;
+	data->map_width = 0;
+	data->map_height = 0;
+	data->ray_num = 0;
+	data->ray_angle = 0;
+	data->coordinate_y = 0.0;
+	if (map_init(data, map_path, map_len))
+	{
+		//clean_data(data);
+		return (1);
+	}
+	return (0);
 }

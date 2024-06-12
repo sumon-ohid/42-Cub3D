@@ -6,7 +6,7 @@
 /*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 13:02:26 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 12:56:54 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static int	valid_borders(t_data *data)
 				}
 			}
 			else if (line[x] == ' ' && (line[x - 1] != '1' || line[x
-						+ 1] != '1'))
+					+ 1] != '1'))
 			{
 				free(line);
 				return (1);
@@ -95,7 +95,7 @@ static int	valid_chars(t_data *data)
 	int		y;
 	char	*line;
 
-	//printf("map_height: %d\n", data->map_height);
+	// printf("map_height: %d\n", data->map_height);
 	if (data->map == NULL || data->map_height <= 0)
 		return (1);
 	y = 0;
@@ -120,56 +120,58 @@ static int	valid_chars(t_data *data)
 	return (0);
 }
 
-int wall_checker(t_data *data, int x, int y)
+int	wall_checker(t_data *data, int x, int y)
 {
-    if (y == 0 && data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
-    {
-        return (1);
-    }
-    else if (y == data->map_height - 1 && data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
-    {
-        return (1);
-    }
-    else if (y != 0 && y != data->map_height - 1) // need to fix this
-    {
-        if ((data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ') && (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' '))
-            return (1);
-    }
-    return (0);
+	if (y == 0 && data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
+	{
+		return (1);
+	}
+	else if (y == data->map_height - 1 && data->map[y - 1][x] != '1'
+		&& data->map[y - 1][x] != ' ')
+	{
+		return (1);
+	}
+	else if (y != 0 && y != data->map_height - 1) // need to fix this
+	{
+		if ((data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
+			&& (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' '))
+			return (1);
+	}
+	return (0);
 }
 
-int empty_checker(t_data *data, int x, int y)
+int	empty_checker(t_data *data, int x, int y)
 {
-    if (y == 0 && data->map[y + 1][x] == '\0')
-    {
-        return (1);
-    }
-    else if (y == data->map_height - 1 && data->map[y - 1][x] == '\0')
-    {
-        return (1);
-    }
-    else if (y != 0 && y != data->map_height - 1)
-    {
-        if (data->map[y - 1][x] == '\0' && data->map[y + 1][x] == '\0')
-            return (1);
-    }
-    return (0);
+	if (y == 0 && data->map[y + 1][x] == '\0')
+	{
+		return (1);
+	}
+	else if (y == data->map_height - 1 && data->map[y - 1][x] == '\0')
+	{
+		return (1);
+	}
+	else if (y != 0 && y != data->map_height - 1)
+	{
+		if (data->map[y - 1][x] == '\0' && data->map[y + 1][x] == '\0')
+			return (1);
+	}
+	return (0);
 }
 
 static int	valid_walls(t_data *data)
 {
-    int	x;
-    int	y;
+	int	x;
+	int	y;
 
-    if (!data || !data->map)
-        return (1);
-    y = 0;
-    while (data->map[y])
-    {
-        x = 0;
-        while (data->map[y][x] != '\0' && data->map[y][x] != '\n')
-        {
-            if (data->map[y][x] == ' ')
+	if (!data || !data->map)
+		return (1);
+	y = 0;
+	while (data->map[y])
+	{
+		x = 0;
+		while (data->map[y][x] != '\0' && data->map[y][x] != '\n')
+		{
+			if (data->map[y][x] == ' ')
 			{
 				if (wall_checker(data, x, y))
 					return (1);
@@ -179,11 +181,11 @@ static int	valid_walls(t_data *data)
 				if (empty_checker(data, x, y))
 					return (1);
 			}
-            x++;
-        }
-        y++;
-    }
-    return (0);
+			x++;
+		}
+		y++;
+	}
+	return (0);
 }
 
 
@@ -191,16 +193,16 @@ int	valid_map(t_data *data)
 {
 	if (has_player(data))
 		return (0);
-	//printf("valid_player\n");
+	// printf("valid_player\n");
 	if (valid_chars(data))
 		return (0);
-	//printf("valid_chars\n");
+	// printf("valid_chars\n");
 	if (valid_borders(data))
 		return (0);
-	//printf("valid_borders\n");
+	// printf("valid_borders\n");
 	if (valid_walls(data))
 		return (0);
-	//printf("valid_walls\n");
+	// printf("valid_walls\n");
 	if (map_without_textures(data->map, data))
 		return (0);
 	data->map_width = ft_strlen(data->map[0]) - 1;

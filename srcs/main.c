@@ -6,12 +6,11 @@
 /*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 12:57:05 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 12:44:52 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "mlx.h"
 
 int	key_hook(int key, t_data *data)
 {
@@ -81,14 +80,25 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (error("Invalid number of arguments.\n"));
 	if (data_init(&data, av[1]))
+	{
+		free_array(data.map);
 		return (error("Data initialization failed.\n"));
+	}
 	if (map_parser(&data))
+	{
+		//clean_data(&data);
 		return (error("Map parsing failed.\n")); // free map here
-	if (!valid_map(&data))                       // need to fix few things
-		//space doesn't work
-		return (error("Invalid map.\n"));        // free map here
+	}
+	if (!valid_map(&data))
+	{
+		// needtofixfewthings_spacedoesn'twork
+		return (error("Invalid map.\n")); // free map here
+	}                   
 	if (start_game(&data))
+	{
+		clean_data(&data);
 		return (error("Game start failed.\n"));
+	}
 	clean_data(&data);
 	return (0);
 }

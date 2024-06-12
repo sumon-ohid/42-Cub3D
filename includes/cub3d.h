@@ -6,7 +6,7 @@
 /*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 12:57:59 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/11 14:33:06 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <string.h>
 # include <unistd.h>
 
-//keycodes mac
+// keycodes mac
 // # define A_KEY 0
 // # define S_KEY 1
 // # define D_KEY 2
@@ -33,7 +33,7 @@
 // # define ESC 53
 // # define CROSS_KEY 17
 
-//keycodes linux
+// keycodes linux
 # define A_KEY 97
 # define S_KEY 115
 # define D_KEY 100
@@ -58,7 +58,7 @@
 typedef struct s_img
 {
 	void		*img_ptr;
-	int 		*pixels;
+	int			*pixels;
 	int			width;
 	int			height;
 	char		*img_path;
@@ -99,12 +99,12 @@ typedef struct s_data
 	int			map_width;
 	int			map_height;
 	int			ray_num;
-	int 		ray_angle;
+	int			ray_angle;
 	double		coordinate_y;
 	t_player	player;
 	t_point		dir;
 	t_point		plane;
-	t_point 	plane2;
+	t_point		plane2;
 	t_img		*img;
 	t_img		*no_img;
 	t_img		*so_img;
@@ -118,7 +118,7 @@ int				main(int ac, char **av);
 
 // map
 int				valid_map(t_data *data);
-int 			map_parser(t_data *data);
+int				map_parser(t_data *data);
 int				map_without_textures(char **map, t_data *data);
 char			*remove_space(char *line);
 
@@ -152,8 +152,8 @@ void			free_array(char **array);
 void			clean_input_structure(t_data *data);
 void			clean_data(t_data *data);
 
-//extra 
-void 			print_map(t_data *data);
+// extra
+void			print_map(t_data *data);
 void			cub_minimap(t_data *data);
 
 #endif
