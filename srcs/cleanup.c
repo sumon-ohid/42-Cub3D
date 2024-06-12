@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 12:52:55 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:22:27 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void	free_array(char **array)
 
 void	clean_input_structure(t_data *data)
 {
+	if (data->map)
+	{
+		free_array(data->map);
+		data->map = NULL;
+	}
 	if (data->no_texture)
 	{
 		free(data->no_texture);
@@ -35,7 +40,7 @@ void	clean_input_structure(t_data *data)
 	if (data->so_texture)
 	{
 		free(data->so_texture);
-		data->so_texture = NULL; // no_texture
+		data->so_texture = NULL;
 	}
 	if (data->we_texture)
 	{
@@ -46,11 +51,6 @@ void	clean_input_structure(t_data *data)
 	{
 		free(data->ea_texture);
 		data->ea_texture = NULL;
-	}
-	if (data->map)
-	{
-		free_array(data->map);
-		data->map = NULL;
 	}
 }
 

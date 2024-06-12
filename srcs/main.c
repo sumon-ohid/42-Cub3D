@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 12:44:52 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:12:30 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,12 +86,12 @@ int	main(int ac, char **av)
 	}
 	if (map_parser(&data))
 	{
-		//clean_data(&data);
+		clean_input_structure(&data);
 		return (error("Map parsing failed.\n")); // free map here
 	}
 	if (!valid_map(&data))
 	{
-		// needtofixfewthings_spacedoesn'twork
+		clean_input_structure(&data);
 		return (error("Invalid map.\n")); // free map here
 	}                   
 	if (start_game(&data))

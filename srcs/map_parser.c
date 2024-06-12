@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 11:28:59 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:38:58 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,11 @@ int	map_without_textures(char **map, t_data *data)
 		j++;
 	}
 	new_map[j] = NULL;
+	print_map(data);
 	free_array(data->map);
 	data->map = new_map;
+	printf("-----\n");
+	print_map(data);
 	return (0);
 }
 
@@ -189,8 +192,6 @@ int	get_max_width(char **map)
 
 int	map_parser(t_data *data)
 {
-	if (map_init(data, data->map_path, data->map_height))
-		return (1);
 	if (load_textures_and_colors(data))
 		return (1);
 	if (map_without_textures(data->map, data))

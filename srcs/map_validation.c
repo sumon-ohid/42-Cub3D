@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 12:56:54 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:13:53 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	has_player(t_data *data)
 	while (++y < data->map_height)
 	{
 		x = -1;
-		while (++x < data->map_width)
+		while (++x < data->map_width - 1)
 		{
 			if (has_char("NSWE", data->map[y][x]))
 			{

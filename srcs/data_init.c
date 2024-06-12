@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 12:53:26 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/12 13:39:53 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	map_init(t_data *data, char *map_path, int len)
 		close(fd);
 		return (1);
 	}
-	while (i < len && line)
+	while (line)
 	{
 		data->map[i] = ft_strdup(line);
 		if (!data->map[i])
