@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 14:44:10 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/13 13:15:59 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	handle_images(t_data *data)
 	create_new_image(data, WIN_W, WIN_H);
 	create_background(data);
 	raycast(data, data->dir);
-	cub_minimap(data); // minimap
+	//cub_minimap(data); // minimap
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->img->img_ptr);
 	return (0);
@@ -93,7 +93,8 @@ int	main(int ac, char **av)
 	{
 		clean_input_structure(&data);
 		return (error("Invalid map.\n"));
-	}                   
+	}
+	dprintf(2, "size of data: %ld\n", sizeof(t_data));                   
 	if (start_game(&data))
 	{
 		clean_data(&data);

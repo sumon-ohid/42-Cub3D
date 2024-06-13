@@ -6,21 +6,21 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 14:38:15 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/13 12:29:46 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	set_default_values(t_data *data)
-{
-	data->no_texture = ft_strdup("./textures/wantedwall.xpm");
-	data->so_texture = ft_strdup("./textures/wall.xpm");
-	data->we_texture = ft_strdup("./textures/wall.xpm");
-	data->ea_texture = ft_strdup("./textures/wall.xpm");
-	data->floor_color = 0x93917C;
-	data->ceiling_color = 0x413839;
-}
+// void	set_default_values(t_data *data)
+// {
+// 	data->no_texture = ft_strdup("./textures/wantedwall.xpm");
+// 	data->so_texture = ft_strdup("./textures/wall.xpm");
+// 	data->we_texture = ft_strdup("./textures/wall.xpm");
+// 	data->ea_texture = ft_strdup("./textures/wall.xpm");
+// 	data->floor_color = 0x93917C;
+// 	data->ceiling_color = 0x413839;
+// }
 
 char	*remove_space(char *line)
 {

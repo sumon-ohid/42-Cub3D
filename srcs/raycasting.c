@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 14:32:38 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/13 13:09:43 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	draw_line(t_data *data, t_point point1, t_point point2)
 	point2.y += delta_y;
 	while (1)
 	{
-		line_width = strlen(data->map[(int)point1.y / IMAGE_SIZE]);
+		line_width = ft_strlen(data->map[(int)point1.y / IMAGE_SIZE]);
 		if (IMAGE_SIZE * line_width > point1.x && IMAGE_SIZE
 			* data->map_height > point1.y && data->map[(int)point1.y
 			/ IMAGE_SIZE][(int)point1.x / IMAGE_SIZE] != EMPTY)
