@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 13:39:43 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/12 14:37:33 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define EMPTY '0'
 # define WALL '1'
 # define IMAGE_SIZE 1024
-# define WIN_H 850
-# define WIN_W 1450
+# define WIN_H 900
+# define WIN_W 1600
 
 // data structures for img
 typedef struct s_img

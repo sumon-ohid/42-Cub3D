@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 13:12:30 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/12 14:44:10 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ int	main(int ac, char **av)
 	if (map_parser(&data))
 	{
 		clean_input_structure(&data);
-		return (error("Map parsing failed.\n")); // free map here
+		return (error("Map parsing failed.\n"));
 	}
 	if (!valid_map(&data))
 	{
 		clean_input_structure(&data);
-		return (error("Invalid map.\n")); // free map here
+		return (error("Invalid map.\n"));
 	}                   
 	if (start_game(&data))
 	{
