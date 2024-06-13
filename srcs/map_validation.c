@@ -6,11 +6,12 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 15:12:53 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/13 11:49:43 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "libft/libft.h"
 
 int	has_char(const char *set, char c)
 {
@@ -30,12 +31,14 @@ static int	has_player(t_data *data)
 {
 	int	x;
 	int	y;
+	int	width;
 
 	y = -1;
 	while (++y < data->map_height)
 	{
 		x = -1;
-		while (++x < data->map_width - 1)
+		width = ft_strlen(data->map[y]);
+		while (++x < width)
 		{
 			if (has_char("NSWE", data->map[y][x]))
 			{
@@ -131,11 +134,14 @@ int	wall_checker(t_data *data, int x, int y)
 	{
 		return (1);
 	}
-	else if (y != 0 && y != data->map_height - 1) // need to fix this
+	else if (y > 0 && y < data->map_height - 1)
 	{
-		if ((data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
-			&& (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' '))
-			return (1);
+		if (ft_strlen(data->map[y]) < ft_strlen(data->map[y + 1]) && (ft_strlen(data->map[y]) < ft_strlen(data->map[y - 1])))
+		{
+			if ((data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
+				&& (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' '))
+				return (1);
+		}
 	}
 	return (0);
 }
@@ -152,7 +158,8 @@ int	empty_checker(t_data *data, int x, int y)
 	}
 	else if (y != 0 && y != data->map_height - 1)
 	{
-		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0') && (data->map[y + 1][x] == '\0' || data->map[y - 1][x] == ' '))
+		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0')
+			&& (data->map[y + 1][x] == '\0' || data->map[y - 1][x] == ' '))
 			return (1);
 	}
 	return (0);
@@ -166,7 +173,7 @@ static int	valid_walls(t_data *data)
 	if (!data || !data->map)
 		return (1);
 	y = 0;
-	while (data->map[y])
+	while (y < data->map_height - 1)
 	{
 		x = 0;
 		while (data->map[y][x] != '\0' && data->map[y][x] != '\n')
@@ -187,7 +194,6 @@ static int	valid_walls(t_data *data)
 	}
 	return (0);
 }
-
 
 int	valid_map(t_data *data)
 {
