@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:45:20 by msumon            #+#    #+#             */
-/*   Updated: 2024/05/12 21:27:28 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 14:43:45 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int	ft_atoi(const char *nptr)
 			sign = -1;
 		++i;
 	}
-	while ('0' <= nptr[i] && nptr[i] <= '9')
+	while (nptr[i] != '\n' && nptr[i] != '\0')
 	{
+		if (nptr[i] < 48 || nptr[i] > 57)
+			return (-1);
 		res = res * 10 + (nptr[i] - '0');
 		++i;
 	}

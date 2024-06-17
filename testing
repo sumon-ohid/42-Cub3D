@@ -10,13 +10,13 @@ map validation:
 passing same texture multipal time
 
 - sys use memset
-- color and texture parsing
-- parsing color without value or with less that 3 value leads to segfault
-- 0 before map
-- some random text before map
-- double color on texture
-- color more than the argument
-- if img not found
+- color and texture parsing -- done
+- parsing color without value or with less that 3 value leads to segfault -- done
+- 0 before map -- done
+- some random text before map -- done
+- double color on texture --done
+- color more than the argument --done
+- if img not found -- done
 - texture load fail leaks -- done
 - conditional jump for invalid map -- done
 - color minus value leak -- done

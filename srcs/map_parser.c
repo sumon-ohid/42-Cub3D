@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 14:12:17 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 14:38:45 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*remove_space(char *line)
 	return (new_line);
 }
 
-int	parse_color(char *line, t_data *data)
+int	parse_color(char *line, int i)
 {
 	char	**rgb;
 	int		r;
@@ -44,11 +44,18 @@ int	parse_color(char *line, t_data *data)
 	int		b;
 	int		ret;
 
-	(void) data;
 	ret = 0;
 	rgb = ft_split(line, ',');
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 	{
+		free_array(rgb);
+		return (0);
+	}
+	while (rgb[i])
+		i++;
+	if (i != 3)
+	{
+		error("Invalid Color.\n");
 		free_array(rgb);
 		return (0);
 	}
@@ -105,20 +112,6 @@ int ft_rtn(char *line)
 	return (1);
 }
 
-int line_checker(char *line)
-{
-	int i;
-
-	i = 0;
-	while (line [i])
-	{
-		if (!has_char(" 10NSWEOA./_", line[i]))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	load_textures_and_colors(t_data *data)
 {
 	char	*line;
@@ -166,7 +159,7 @@ int	load_textures_and_colors(t_data *data)
 		{
 			if (data->floor_color)
 				return (ft_rtn(line));
-			data->floor_color = parse_color(line + 1, data);
+			data->floor_color = parse_color(line + 1, 0);
 			if (!data->floor_color)
 				return (ft_rtn(line));
 		}
@@ -174,7 +167,7 @@ int	load_textures_and_colors(t_data *data)
 		{
 			if (data->ceiling_color)
 				return (ft_rtn(line));
-			data->ceiling_color = parse_color(line + 1, data);
+			data->ceiling_color = parse_color(line + 1, 0);
 			if (!data->ceiling_color)
 				return (ft_rtn(line));
 		}
