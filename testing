@@ -1,0 +1,23 @@
+leaks:
+	- map without images
+	- invlaid map with multiple starting positions
+
+map validation:
+	- segfault on passing incorrect map name
+	- if map start with 0, - valid ?
+	- if map start with 0 and then new lines - valid ?
+
+passing same texture multipal time
+
+- sys use memset
+- color and texture parsing
+- parsing color without value or with less that 3 value leads to segfault
+- 0 before map
+- some random text before map
+- double color on texture
+- color more than the argument
+- if img not found
+- texture load fail leaks -- done
+- conditional jump for invalid map -- done
+- color minus value leak -- done
+

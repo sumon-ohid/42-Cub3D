@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 13:53:27 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 14:12:17 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,36 +132,48 @@ int	load_textures_and_colors(t_data *data)
 			return (1);
 		if (line[0] == 'N' && line[1] == 'O')
 		{
+			if (data->no_texture)
+				return (ft_rtn(line));
 			data->no_texture = copy_until_newline(line + 2);  
 			if (!data->no_texture)
 				return (ft_rtn(line));
 		}
 		else if (line[0] == 'S' && line[1] == 'O')
 		{
+			if (data->so_texture)
+				return (ft_rtn(line));
 			data->so_texture = copy_until_newline(line + 2);
 			if (!data->so_texture)
 				return (ft_rtn(line));
 		}
 		else if (line[0] == 'W' && line[1] == 'E')
 		{
+			if (data->we_texture)
+				return (ft_rtn(line));
 			data->we_texture = copy_until_newline(line + 2);
 			if (!data->we_texture)
 				return (ft_rtn(line));
 		}
 		else if (line[0] == 'E' && line[1] == 'A')
 		{
+			if (data->ea_texture)
+				return (ft_rtn(line));
 			data->ea_texture = copy_until_newline(line + 2);
 			if (!data->ea_texture)
 				return (ft_rtn(line));
 		}
 		else if (line[0] == 'F')
 		{
+			if (data->floor_color)
+				return (ft_rtn(line));
 			data->floor_color = parse_color(line + 1, data);
 			if (!data->floor_color)
 				return (ft_rtn(line));
 		}
 		else if (line[0] == 'C')
 		{
+			if (data->ceiling_color)
+				return (ft_rtn(line));
 			data->ceiling_color = parse_color(line + 1, data);
 			if (!data->ceiling_color)
 				return (ft_rtn(line));
