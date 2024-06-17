@@ -6,12 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:36:42 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:51:39 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "libft/libft.h"
 
 int	allocate_textures(t_data *data)
 {
@@ -138,6 +137,10 @@ int	data_init(t_data *data, char *map_path)
 	data->so_texture = NULL;
 	data->we_texture = NULL;
 	data->ea_texture = NULL;
+	data->ea_img = NULL;
+	data->no_img = NULL;
+	data->so_img = NULL;
+	data->we_img = NULL;
 	data->floor_color = 0;
 	data->ceiling_color = 0;
 	data->map_path = map_path;

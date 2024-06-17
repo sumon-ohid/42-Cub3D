@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 14:38:45 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:52:54 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,8 @@ int	map_without_textures(char **map, t_data *data)
 	while (map[i])
 	{
 		line = remove_space(map[i]);
+		if (!line)
+			return (free(new_map), 1);
 		if (line[0] == '1')
 		{
 			free(line);  // vs: free line

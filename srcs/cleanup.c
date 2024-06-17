@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:36:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:54:41 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	clean_data(t_data *data)
 		mlx_destroy_image(data->mlx, data->no_img->img_ptr);
 	if (data->win)
 		mlx_destroy_window(data->mlx, data->win);
-	mlx_destroy_display(data->mlx);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
 	if (data->img)
 		free(data->img);
 	if (data->ea_img)
