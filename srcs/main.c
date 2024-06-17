@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/13 13:15:59 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 13:32:13 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	print_map(t_data *data)
 	i = 0;
 	while (data->map[i])
 	{
-		printf("%s\n", data->map[i]);
+		printf("%s", data->map[i]);
 		i++;
 	}
 }
@@ -87,14 +87,13 @@ int	main(int ac, char **av)
 	if (map_parser(&data))
 	{
 		clean_input_structure(&data);
-		return (error("Map parsing failed.\n"));
+		return (error("Map parsing failed\n"));
 	}
 	if (!valid_map(&data))
 	{
 		clean_input_structure(&data);
 		return (error("Invalid map.\n"));
 	}
-	dprintf(2, "size of data: %ld\n", sizeof(t_data));                   
 	if (start_game(&data))
 	{
 		clean_data(&data);

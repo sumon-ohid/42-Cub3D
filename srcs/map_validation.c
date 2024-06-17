@@ -6,12 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/13 11:49:43 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 13:36:48 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include "libft/libft.h"
 
 int	has_char(const char *set, char c)
 {
@@ -67,6 +66,8 @@ static int	valid_borders(t_data *data)
 	{
 		x = 0;
 		line = remove_space(data->map[y]);
+		if (!line)
+			return (1);
 		width = ft_strlen(line);
 		while (x < width - 1)
 		{
@@ -92,13 +93,18 @@ static int	valid_borders(t_data *data)
 	return (0);
 }
 
-static int	valid_chars(t_data *data)
+// int empty_line(t_data *data)
+// {
+// 	(void) data;
+// 	return (0);
+// }
+
+int	valid_chars(t_data *data)
 {
 	int		x;
 	int		y;
 	char	*line;
 
-	// printf("map_height: %d\n", data->map_height);
 	if (data->map == NULL || data->map_height <= 0)
 		return (1);
 	y = 0;
@@ -197,6 +203,8 @@ static int	valid_walls(t_data *data)
 
 int	valid_map(t_data *data)
 {
+	// if (!empty_line(data))
+	// 	return (1);
 	if (has_player(data))
 		return (0);
 	// printf("valid_player\n");

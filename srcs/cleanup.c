@@ -6,12 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/13 13:31:45 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 11:52:20 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <mlx.h>
 
 void	free_array(char **array)
 {

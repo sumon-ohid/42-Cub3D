@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/12 14:37:33 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 13:42:14 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int				valid_map(t_data *data);
 int				map_parser(t_data *data);
 int				map_without_textures(char **map, t_data *data);
 char			*remove_space(char *line);
+int				valid_chars(t_data *data);
+int				has_char(const char *set, char c);
 
 // data_init
 int				data_init(t_data *data, char *map_path);

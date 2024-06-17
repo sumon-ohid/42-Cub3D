@@ -6,21 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/13 12:29:46 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 13:53:27 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// void	set_default_values(t_data *data)
-// {
-// 	data->no_texture = ft_strdup("./textures/wantedwall.xpm");
-// 	data->so_texture = ft_strdup("./textures/wall.xpm");
-// 	data->we_texture = ft_strdup("./textures/wall.xpm");
-// 	data->ea_texture = ft_strdup("./textures/wall.xpm");
-// 	data->floor_color = 0x93917C;
-// 	data->ceiling_color = 0x413839;
-// }
 
 char	*remove_space(char *line)
 {
@@ -54,18 +44,22 @@ int	parse_color(char *line, t_data *data)
 	int		b;
 	int		ret;
 
+	(void) data;
 	ret = 0;
 	rgb = ft_split(line, ',');
-	if (!rgb)
+	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
+	{
+		free_array(rgb);
 		return (0);
+	}
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
 		error("Invalid color\n");
-		free_array(data->map);
-		exit(1);
+		free_array(rgb);
+		return (0);
 	}
 	ret = (r << 16) + (g << 8) + b;
 	free_array(rgb);
@@ -105,6 +99,26 @@ char	*copy_until_newline(char *line)
 	return (new_line);
 }
 
+int ft_rtn(char *line)
+{
+	free(line);
+	return (1);
+}
+
+int line_checker(char *line)
+{
+	int i;
+
+	i = 0;
+	while (line [i])
+	{
+		if (!has_char(" 10NSWEOA./_", line[i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 int	load_textures_and_colors(t_data *data)
 {
 	char	*line;
@@ -117,17 +131,45 @@ int	load_textures_and_colors(t_data *data)
 		if (!line)
 			return (1);
 		if (line[0] == 'N' && line[1] == 'O')
+		{
 			data->no_texture = copy_until_newline(line + 2);  
-		if (line[0] == 'S' && line[1] == 'O')
-			data->so_texture = copy_until_newline(line + 2); // vs: changed here
-		if (line[0] == 'W' && line[1] == 'E')
+			if (!data->no_texture)
+				return (ft_rtn(line));
+		}
+		else if (line[0] == 'S' && line[1] == 'O')
+		{
+			data->so_texture = copy_until_newline(line + 2);
+			if (!data->so_texture)
+				return (ft_rtn(line));
+		}
+		else if (line[0] == 'W' && line[1] == 'E')
+		{
 			data->we_texture = copy_until_newline(line + 2);
-		if (line[0] == 'E' && line[1] == 'A')
+			if (!data->we_texture)
+				return (ft_rtn(line));
+		}
+		else if (line[0] == 'E' && line[1] == 'A')
+		{
 			data->ea_texture = copy_until_newline(line + 2);
-		if (line[0] == 'F')
+			if (!data->ea_texture)
+				return (ft_rtn(line));
+		}
+		else if (line[0] == 'F')
+		{
 			data->floor_color = parse_color(line + 1, data);
-		if (line[0] == 'C')
+			if (!data->floor_color)
+				return (ft_rtn(line));
+		}
+		else if (line[0] == 'C')
+		{
 			data->ceiling_color = parse_color(line + 1, data);
+			if (!data->ceiling_color)
+				return (ft_rtn(line));
+		}
+		else if (line[0] == ' ' || line[0] == '\n')
+			printf("");
+		else
+			return(ft_rtn(line));
 		free(line);
 		i++;
 	}
