@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 11:52:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:36:20 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	free_array(char **array)
 	int	i;
 
 	i = 0;
+	if (!array)
+		return ;
 	while (array[i])
 	{
 		free(array[i]);
@@ -78,6 +80,8 @@ void	clean_data(t_data *data)
 		free(data->so_img);
 	if (data->we_img)
 		free(data->we_img);
+	if (data->player)
+		free(data->player);
 	clean_input_structure(data);
 }
 

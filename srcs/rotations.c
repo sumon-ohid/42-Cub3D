@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotations.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:19:03 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/11 14:32:44 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/17 15:31:12 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ void	rotate_vector_back(double *start_x, double *start_y, double *end_x,
 
 void	turn_left(t_data *data)
 {
-	rotate_vector_back(&data->dir.x, &data->dir.y, &data->player.x,
-		&data->player.y);
-	rotate_vector_back(&data->plane.x, &data->plane.y, &data->player.x,
-		&data->player.y);
-	rotate_vector_back(&data->plane2.x, &data->plane2.y, &data->player.x,
-		&data->player.y);
+	rotate_vector_back(&data->dir.x, &data->dir.y, &data->player->x,
+		&data->player->y);
+	rotate_vector_back(&data->plane.x, &data->plane.y, &data->player->x,
+		&data->player->y);
+	rotate_vector_back(&data->plane2.x, &data->plane2.y, &data->player->x,
+		&data->player->y);
 }
 
 void	turn_right(t_data *data)
 {
-	rotate_vector(&data->dir.x, &data->dir.y, &data->player.x, &data->player.y);
-	rotate_vector(&data->plane.x, &data->plane.y, &data->player.x,
-		&data->player.y);
-	rotate_vector(&data->plane2.x, &data->plane2.y, &data->player.x,
-		&data->player.y);
+	rotate_vector(&data->dir.x, &data->dir.y, &data->player->x, &data->player->y);
+	rotate_vector(&data->plane.x, &data->plane.y, &data->player->x,
+		&data->player->y);
+	rotate_vector(&data->plane2.x, &data->plane2.y, &data->player->x,
+		&data->player->y);
 }

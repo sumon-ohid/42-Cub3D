@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 13:42:14 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:29:55 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_data
 	int			ray_num;
 	int			ray_angle;
 	double		coordinate_y;
-	t_player	player;
+	t_player	*player;
 	t_point		dir;
 	t_point		plane;
 	t_point		plane2;

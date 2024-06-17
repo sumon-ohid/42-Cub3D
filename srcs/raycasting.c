@@ -6,11 +6,12 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/13 13:09:43 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/17 15:31:12 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include <math.h>
 
 void	add_image_pixel(t_data *data, t_point point, int x_coord,
 		double y_coord)
@@ -67,8 +68,8 @@ void	draw_if_empty(t_data *data, t_point point1, double dx)
 	if (data->map[(int)point1.y / IMAGE_SIZE][(int)point1.x
 		/ IMAGE_SIZE] == EMPTY)
 		point1.x -= dx;
-	draw_texture(data, sqrt(pow(data->player.y - point1.y, 2)
-			+ pow(data->player.x - point1.x, 2)) * cos(abs(data->ray_angle)),
+	draw_texture(data, sqrt(pow(data->player->y - point1.y, 2)
+			+ pow(data->player->x - point1.x, 2)) * cos(fabs((double)(data->ray_angle))),
 		point1);
 }
 
@@ -111,28 +112,28 @@ void	raycast(t_data *data, t_point direction)
 
 	data->ray_num = 0;
 	// Set the starting point of the ray
-	point.x = data->player.x;
-	point.y = data->player.y;
+	point.x = data->player->x;
+	point.y = data->player->y;
 	// change in coordinates for each step
-	delta_x = (direction.x - data->player.x);
-	delta_y = (direction.y - data->player.y);
+	delta_x = (direction.x - data->player->x);
+	delta_y = (direction.y - data->player->y);
 	// Rotation matrix
 	//_x = x * cos(angle) - y * sin(angle)
 	//_y = x * sin(angle) + y * cos(angle)
 	direction.x = (delta_x * cos(-FOV / 2) - delta_y * sin(-FOV / 2))
-		+ data->player.x;
+		+ data->player->x;
 	direction.y = (delta_x * sin(-FOV / 2) + delta_y * cos(-FOV / 2))
-		+ data->player.y;
+		+ data->player->y;
 	data->ray_angle = -FOV / 2;
 	while (data->ray_num < WIN_W)
 	{
 		draw_line(data, point, direction);
-		delta_x = (direction.x - data->player.x);
-		delta_y = (direction.y - data->player.y);
+		delta_x = (direction.x - data->player->x);
+		delta_y = (direction.y - data->player->y);
 		direction.x = (delta_x * cos(FOV / WIN_W) - delta_y * sin(FOV / WIN_W))
-			+ data->player.x;
+			+ data->player->x;
 		direction.y = (delta_x * sin(FOV / WIN_W) + delta_y * cos(FOV / WIN_W))
-			+ data->player.y;
+			+ data->player->y;
 		data->ray_angle += FOV / WIN_W;
 		data->ray_num++;
 	}
