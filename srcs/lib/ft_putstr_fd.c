@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 08:12:46 by msumon            #+#    #+#             */
-/*   Updated: 2023/09/15 09:53:51 by msumon           ###   ########.fr       */
+/*   Created: 2023/09/18 16:21:23 by msumon            #+#    #+#             */
+/*   Updated: 2024/06/18 20:17:26 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
-static int	ft_isupper(int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	return (c >= 'A' && c <= 'Z');
-}
-
-static int	ft_islower(int c)
-{
-	return (c >= 'a' && c <= 'z');
-}
-
-int	ft_isalpha(int c)
-{
-	return (ft_isupper(c) || ft_islower(c));
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
 }

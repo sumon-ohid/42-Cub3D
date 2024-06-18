@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 11:44:31 by msumon            #+#    #+#             */
-/*   Updated: 2023/09/15 12:01:58 by msumon           ###   ########.fr       */
+/*   Created: 2023/09/15 11:33:50 by msumon            #+#    #+#             */
+/*   Updated: 2024/06/18 20:17:26 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	const char		*nsrc;
-	unsigned char	*ndest;
+	unsigned char	*string;
 	size_t			i;
 
-	ndest = (unsigned char *)dest;
-	nsrc = (const char *)src;
+	string = s;
 	i = 0;
-	if (!nsrc && !ndest)
-		return (NULL);
 	while (i < n)
 	{
-		ndest[i] = nsrc[i];
+		string[i] = 0;
 		i++;
 	}
-	return (dest);
 }

@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/17 11:43:22 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/18 20:14:47 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,21 @@ SRCS 		=	srcs/main.c \
 				srcs/raycasting.c \
 				srcs/cleanup.c \
 				srcs/additional.c \
+				srcs/lib/ft_atoi.c \
+				srcs/lib/ft_bzero.c \
+				srcs/lib/ft_strlen.c \
+				srcs/lib/ft_strlcpy.c \
+				srcs/lib/ft_strnstr.c \
+				srcs/lib/ft_calloc.c \
+				srcs/lib/ft_strdup.c \
+				srcs/lib/ft_putchar_fd.c \
+				srcs/lib/ft_putstr_fd.c \
+				srcs/lib/ft_substr.c \
+				srcs/lib/ft_strjoin.c \
+				srcs/lib/ft_strlcat.c \
+				srcs/lib/ft_strncmp.c \
+				srcs/lib/ft_split.c \
+				srcs/lib/get_next_line.c \
 
 OBJS		= $(SRCS:.c=.o)
 CC			= cc
@@ -47,26 +62,21 @@ endef
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-all: libft_gnl $(NAME)
-
-libft_gnl:
-	@make -C srcs/libft
+all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(PRINT_LOADING)
-	@$(CC) $(CFLAGS) $(OBJS) $(LXFLAGS) -Lsrcs/libft -lft_gnl -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(LXFLAGS) -o $(NAME)
 	@echo "$(GREEN)> Compilation Complete! ✅✅✅$(RESET)"
 
 clean:	
-	@make -C srcs/libft clean
 	@rm -f $(OBJS)
 	@echo "$(YELLOW)> Cleaned! 🗑️$(RESET)"
         
 fclean: clean
-	@make -C srcs/libft fclean
 	@rm -f $(NAME)
 	@echo "$(YELLOW)> Super Cleaned! 🗑️$(RESET)"
     
-re: fclean libft_gnl all
+re: fclean  all
 
-.PHONY: libft_gnl all clean fclean re loading
+.PHONY: all clean fclean re loading

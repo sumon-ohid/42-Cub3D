@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msumon <msumon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 07:40:56 by sumon             #+#    #+#             */
+/*   Created: 2023/09/19 07:40:56 by msumon             #+#    #+#             */
 /*   Updated: 2023/09/19 15:33:59 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/libft.h"
 
 static void	*ft_free(char **s_split, size_t x)
 {
