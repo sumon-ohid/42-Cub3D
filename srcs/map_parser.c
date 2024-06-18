@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parser.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
+/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:52:54 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/18 19:32:23 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ int	load_textures_and_colors(t_data *data)
 				return (ft_rtn(line));
 		}
 		else if (line[0] == ' ' || line[0] == '\n')
-			printf("");
+			printf(" ");
 		else
 			return(ft_rtn(line));
 		free(line);

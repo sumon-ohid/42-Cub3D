@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: parallels <parallels@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 10:08:58 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/18 19:33:01 by parallels        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@
 # define EMPTY '0'
 # define WALL '1'
 # define IMAGE_SIZE 1024
-# define WIN_H 900
-# define WIN_W 1600
+# define WIN_H 600
+# define WIN_W 1000
 
 // data structures for img
 typedef struct s_img
