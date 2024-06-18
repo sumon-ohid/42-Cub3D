@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msumon < msumon@student.42vienna.com>      +#+  +:+       +#+         #
+#    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 08:14:24 by msumon            #+#    #+#              #
-#    Updated: 2024/05/08 18:02:31 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/18 12:41:42 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS 			= 	ft_atoi.c ft_bzero.c ft_isalpha.c ft_isalnum.c ft_isascii.c \
 OBJS			= $(SRCS:.c=.o)
 CC				= cc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror
+CFLAGS			= -Wall -Wextra -Werror -g
 NAME			= libft_gnl.a
 HEADER			= libft.h get_next_line.h
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 11:40:24 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/18 12:11:20 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,21 @@ int	map_line_count(char *map)
 		return (0);
 	line = get_next_line(fd);
 	if (!line)
+	{
+		close (fd);
 		return (0);
+	}
 	while (line > 0)
 	{
 		i++;
 		free(line);
 		line = get_next_line(fd);
+		if (!line)
+			break;
 	}
 	free(line);
-	//close(fd);
+	if (close(fd) == -1)
+		return (0);
 	return (i);
 }
 
@@ -98,14 +104,12 @@ int	map_init(t_data *data, char *map_path, int len)
 		free(line);
 		line = get_next_line(fd); // protect
 		if (!line)
-		{
-			return (1);
 			break ;
-		}
 	}
 	data->map[i] = NULL;
 	free(line);
-	//close(fd);
+	if (close(fd) == -1)
+		return (1);
 	data->map_height = i;
 	data->map_width = ft_strlen(data->map[0]);
 	return (0);
@@ -137,13 +141,6 @@ int	data_init(t_data *data, char *map_path)
 		exit (EXIT_FAILURE);
 	}
 	data->img = NULL;
-	data->player = ft_calloc(1, sizeof(t_player));
-	if (data->player == NULL)
-	{
-		free(data->player);
-		error("Player init fails.\n");
-		return(1);
-	}
 	data->map = NULL;
 	data->mlx = NULL;
 	data->win = NULL;
@@ -164,9 +161,12 @@ int	data_init(t_data *data, char *map_path)
 	data->ray_angle = 0;
 	data->coordinate_y = 0.0;
 	if (map_init(data, map_path, map_len))
-	{
-		//clean_data(data);
 		return (1);
+	data->player = ft_calloc(1, sizeof(t_player));
+	if (data->player == NULL)
+	{
+		error("Player init fails.\n");
+		return(1);
 	}
 	return (0);
 }
