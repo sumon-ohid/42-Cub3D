@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:31:12 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/18 21:44:04 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ static int	valid_borders(t_data *data)
 		x = 0;
 		line = remove_space(data->map[y]);
 		if (!line)
+		{
+			free(data->player);
 			return (1);
+		}
 		width = ft_strlen(line);
 		while (x < width - 1)
 		{
@@ -113,7 +116,10 @@ int	valid_chars(t_data *data)
 		x = 0;
 		line = ft_strdup(data->map[y]);
 		if (line == NULL)
+		{
+			free(data->player);
 			return (1);
+		}
 		while (line[x])
 		{
 			if (!has_char(" 01NSWE\n", line[x]))

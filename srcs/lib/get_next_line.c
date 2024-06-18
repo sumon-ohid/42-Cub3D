@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:57:24 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 20:17:26 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/18 21:50:06 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ char	*get_next_line(int fd)
 	while (buffer[0] || read(fd, buffer, BUFFER_SIZE) > 0)
 	{
 		line = ft_strjoin_gnl(line, buffer);
+		if (!line)
+			return (NULL);
 		if (clean_line(buffer) == 1)
 			break ;
 		if (read(fd, buffer, BUFFER_SIZE) < 0)

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 19:50:08 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/18 22:03:27 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,8 @@ char	*copy_until_newline(char *line)
 
 int ft_rtn(char *line)
 {
-	free(line);
+	if (line)
+		free(line);
 	return (1);
 }
 
@@ -239,7 +240,10 @@ int	get_max_width(char **map)
 int	map_parser(t_data *data)
 {
 	if (load_textures_and_colors(data))
+	{
+		free(data->player);
 		return (1);
+	}
 	if (map_without_textures(data->map, data))
 		return (1);
 	data->map_width = get_max_width(data->map);
