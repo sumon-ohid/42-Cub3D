@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:55:02 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/18 10:30:33 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	start_game(t_data *data)
 	if (!data->mlx)
 		return (1);
 	data->win = mlx_new_window(data->mlx, WIN_W, WIN_H, "Cub3D");
-	if (!data->mlx)
+	if (!data->win)
 		return (1);
 	if (allocate_textures(data))
 		return (1);
@@ -81,7 +81,7 @@ int	main(int ac, char **av)
 		return (error("Invalid number of arguments.\n"));
 	if (data_init(&data, av[1]))
 	{
-		free_array(data.map);
+		//free_array(data.map);
 		return (error("Data initialization failed.\n"));
 	}
 	if (map_parser(&data))

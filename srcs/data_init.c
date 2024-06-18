@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data_init.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:51:39 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/18 11:40:24 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ int	map_line_count(char *map)
 	{
 		i++;
 		free(line);
-		line = get_next_line(fd); // protect
+		line = get_next_line(fd);
 	}
 	free(line);
-	close(fd);
+	//close(fd);
 	return (i);
 }
 
@@ -74,6 +74,7 @@ int	map_init(t_data *data, char *map_path, int len)
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
 	{
+		close(fd);
 		return (1);	
 	}
 	line = get_next_line(fd); // protect
@@ -85,6 +86,8 @@ int	map_init(t_data *data, char *map_path, int len)
 	while (line)
 	{
 		data->map[i] = ft_strdup(line);
+		if (data->map[i] == NULL)
+			return (1);
 		if (!data->map[i])
 		{
 			free(line);
@@ -95,11 +98,14 @@ int	map_init(t_data *data, char *map_path, int len)
 		free(line);
 		line = get_next_line(fd); // protect
 		if (!line)
+		{
+			return (1);
 			break ;
+		}
 	}
 	data->map[i] = NULL;
 	free(line);
-	close(fd);
+	//close(fd);
 	data->map_height = i;
 	data->map_width = ft_strlen(data->map[0]);
 	return (0);
@@ -121,16 +127,24 @@ int	data_init(t_data *data, char *map_path)
 
 	if (map_extention(map_path))
 	{
-		error("Invalid map file.\n");   // VS: changed here
+		error("Invalid map file.\n");
 		exit (EXIT_FAILURE);
-		//return (1);
 	}
 	map_len = map_line_count(map_path);
+	if (map_len == 0)
+	{
+		error("Map file is empty.\n");
+		exit (EXIT_FAILURE);
+	}
 	data->img = NULL;
 	data->player = ft_calloc(1, sizeof(t_player));
+	if (data->player == NULL)
+	{
+		free(data->player);
+		error("Player init fails.\n");
+		return(1);
+	}
 	data->map = NULL;
-	if(!data->player)
-		return (1);
 	data->mlx = NULL;
 	data->win = NULL;
 	data->no_texture = NULL;

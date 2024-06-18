@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:29:55 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/18 10:08:58 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,30 +86,30 @@ typedef struct s_point
 // data structures for main data
 typedef struct s_data
 {
-	void		*mlx;
-	void		*win;
-	char		*no_texture;
-	char		*so_texture;
-	char		*we_texture;
-	char		*ea_texture;
+	void		*mlx;    //
+	void		*win;//
+	char		*no_texture;//
+	char		*so_texture;//
+	char		*we_texture;//
+	char		*ea_texture;//
 	int			floor_color;
 	int			ceiling_color;
-	char		**map;
+	char		**map;//
 	char		*map_path;
 	int			map_width;
 	int			map_height;
 	int			ray_num;
 	int			ray_angle;
 	double		coordinate_y;
-	t_player	*player;
+	t_player	*player;//
 	t_point		dir;
 	t_point		plane;
 	t_point		plane2;
-	t_img		*img;
-	t_img		*no_img;
-	t_img		*so_img;
-	t_img		*we_img;
-	t_img		*ea_img;
+	t_img		*img;//
+	t_img		*no_img;//
+	t_img		*so_img;//
+	t_img		*we_img;//
+	t_img		*ea_img;//
 }				t_data;
 
 // main
