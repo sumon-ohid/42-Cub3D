@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/19 14:23:59 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/19 15:51:46 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS 		=	srcs/main.c \
 				srcs/data_init.c srcs/data_init1.c \
 				srcs/create_textures.c \
 				srcs/moves.c \
+				srcs/update_moves.c \
 				srcs/rotations.c \
 				srcs/mixed.c \
 				srcs/raycasting.c \
