@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:12:02 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/17 15:31:12 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 14:01:59 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,6 @@ void	cub_minimap(t_data *data)
 					MMAP_EMPTY);
 		}
 	}
-	draw_cell(data, data->player->x / IMAGE_SIZE * MMAP_SIZE, (data->player->y
-			/ IMAGE_SIZE * MMAP_SIZE) + start_y, MMAP_PLAYER);
+	draw_cell(data, data->player->x / IMG_SIZE * MMAP_SIZE, (data->player->y
+			/ IMG_SIZE * MMAP_SIZE) + start_y, MMAP_PLAYER);
 }

@@ -6,20 +6,22 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/18 20:14:47 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/19 14:23:59 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS 		=	srcs/main.c \
-				srcs/map_validation.c \
-				srcs/map_parser.c \
-				srcs/data_init.c \
+				srcs/map_validation.c srcs/map_validation1.c \
+				srcs/map_validation2.c \
+				srcs/map_parser.c srcs/map_parser1.c srcs/map_parser2.c \
+				srcs/map_parser3.c \
+				srcs/data_init.c srcs/data_init1.c \
 				srcs/create_textures.c \
 				srcs/moves.c \
 				srcs/rotations.c \
 				srcs/mixed.c \
 				srcs/raycasting.c \
-				srcs/cleanup.c \
+				srcs/cleanup.c srcs/cleanup1.c\
 				srcs/additional.c \
 				srcs/lib/ft_atoi.c \
 				srcs/lib/ft_bzero.c \

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 09:58:36 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/19 14:03:11 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,47 @@ void	free_array(char **array)
 	free(array);
 }
 
+void	free_map(t_data *data)
+{
+	if (data->map)
+	{
+		free_array(data->map);
+		data->map = NULL;
+	}
+}
+
+void	free_textures(t_data *data)
+{
+	if (data->no_texture)
+	{
+		free(data->no_texture);
+		data->no_texture = NULL;
+	}
+	if (data->so_texture)
+	{
+		free(data->so_texture);
+		data->so_texture = NULL;
+	}
+	if (data->we_texture)
+	{
+		free(data->we_texture);
+		data->we_texture = NULL;
+	}
+	if (data->ea_texture)
+	{
+		free(data->ea_texture);
+		data->ea_texture = NULL;
+	}
+}
+
 void	clean_input_structure(t_data *data)
+{
+	free_map(data);
+	free_textures(data);
+	free(data->mlx);
+}
+
+/*void	clean_input_structure(t_data *data)
 {
 	if (data->map)
 	{
@@ -55,8 +95,7 @@ void	clean_input_structure(t_data *data)
 		data->ea_texture = NULL;
 	}
 	free(data->mlx);
-}
-
+}*/
 void	clean_data(t_data *data)
 {
 	if (data->ea_img && data->ea_img->img_ptr)
@@ -84,20 +123,4 @@ void	clean_data(t_data *data)
 	if (data->player)
 		free(data->player);
 	clean_input_structure(data);
-}
-
-int	error(char *str)
-{
-	int	fd;
-
-	fd = 2;
-	ft_putstr_fd("Error:\n", fd);
-	ft_putstr_fd(str, fd);
-	return (0);
-}
-
-int	close_game(t_data *data)
-{
-	clean_data(data);
-	exit(0);
 }

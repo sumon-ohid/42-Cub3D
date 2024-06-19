@@ -1,18 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_IMG_SIZEdigit.c                                       :+:      :+:    :+:   */
+/*   cleanup1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/15 09:09:29 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 20:17:26 by msumon           ###   ########.fr       */
+/*   Created: 2024/06/19 10:19:24 by vsharma           #+#    #+#             */
+/*   Updated: 2024/06/19 11:44:50 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../includes/cub3d.h"
 
-int	ft_IMG_SIZEdigit(int c)
+int	error(char *str)
 {
-	return (c >= '0' && c <= '9');
+	int	fd;
+
+	fd = 2;
+	ft_putstr_fd("Error:\n", fd);
+	ft_putstr_fd(str, fd);
+	return (0);
+}
+int	clean_and_error(t_data *data, char *message)
+{
+	int	fd;
+
+	fd = 2;
+	clean_input_structure(data);
+	ft_putstr_fd("Error:\n", fd);
+	ft_putstr_fd(message, fd);
+	return (0);
+}
+
+int	close_game(t_data *data)
+{
+	clean_data(data);
+	exit(0);
 }

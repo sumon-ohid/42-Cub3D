@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 20:18:35 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 14:24:29 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define SPEED 200
 # define EMPTY '0'
 # define WALL '1'
-# define IMAGE_SIZE 1024
+# define IMG_SIZE 1024
 # define WIN_H 600
 # define WIN_W 1000
 
@@ -86,30 +86,30 @@ typedef struct s_point
 // data structures for main data
 typedef struct s_data
 {
-	void		*mlx;    //
-	void		*win;//
-	char		*no_texture;//
-	char		*so_texture;//
-	char		*we_texture;//
-	char		*ea_texture;//
+	void		*mlx;
+	void		*win;
+	char		*no_texture;
+	char		*so_texture;
+	char		*we_texture;
+	char		*ea_texture;
 	int			floor_color;
 	int			ceiling_color;
-	char		**map;//
+	char		**map;
 	char		*map_path;
 	int			map_width;
 	int			map_height;
 	int			ray_num;
 	int			ray_angle;
 	double		coordinate_y;
-	t_player	*player;//
+	t_player	*player;
 	t_point		dir;
 	t_point		plane;
 	t_point		plane2;
-	t_img		*img;//
-	t_img		*no_img;//
-	t_img		*so_img;//
-	t_img		*we_img;//
-	t_img		*ea_img;//
+	t_img		*img;
+	t_img		*no_img;
+	t_img		*so_img;
+	t_img		*we_img;
+	t_img		*ea_img;
 }				t_data;
 
 // main
@@ -123,6 +123,12 @@ int				map_without_textures(char **map, t_data *data);
 char			*remove_space(char *line);
 int				valid_chars(t_data *data);
 int				has_char(const char *set, char c);
+int				load_textures_and_colors(t_data *data);
+int				map_without_textures(char **map, t_data *data);
+char			*copy_until_newline(char *line);
+int				parse_color(char *line, int i);
+int				has_player(t_data *data);
+int				valid_borders(t_data *data);
 
 // data_init
 int				data_init(t_data *data, char *map_path);
@@ -153,6 +159,7 @@ int				close_game(t_data *data);
 void			free_array(char **array);
 void			clean_input_structure(t_data *data);
 void			clean_data(t_data *data);
+int				clean_and_error(t_data *data, char *message);
 
 // extra
 void			print_map(t_data *data);

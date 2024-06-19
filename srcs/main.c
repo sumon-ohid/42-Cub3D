@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 10:32:02 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 12:48:25 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	handle_images(t_data *data)
 	create_new_image(data, WIN_W, WIN_H);
 	create_background(data);
 	raycast(data, data->dir);
-	//cub_minimap(data); // minimap
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->img->img_ptr);
 	return (0);
@@ -61,7 +60,7 @@ int	start_game(t_data *data)
 	return (0);
 }
 
-void	print_map(t_data *data)
+/*void	print_map(t_data *data)
 {
 	int	i;
 
@@ -71,9 +70,34 @@ void	print_map(t_data *data)
 		printf("%s", data->map[i]);
 		i++;
 	}
-}
+}*/
 
 int	main(int ac, char **av)
+{
+	t_data	data;
+
+	if (ac != 2)
+		return (error("Invalid number of arguments.\n"));
+	if (data_init(&data, av[1]))
+	{
+		if (data.map)
+			free_array(data.map);
+		return (error("Data initialization failed.\n"));
+	}
+	if (map_parser(&data))
+		return (clean_and_error(&data, "Map parsing failed.\n"));
+	if (!valid_map(&data))
+		return (clean_and_error(&data, "Invalid map.\n"));
+	if (start_game(&data))
+	{
+		clean_data(&data);
+		return (error("Game start failed.\n"));
+	}
+	clean_data(&data);
+	return (0);
+}
+
+/*int	main(int ac, char **av)
 {
 	t_data	data;
 
@@ -101,4 +125,4 @@ int	main(int ac, char **av)
 	}
 	clean_data(&data);
 	return (0);
-}
+}*/
