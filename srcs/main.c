@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 15:36:15 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:53:24 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ int	main(int ac, char **av)
 		return (error("Invalid number of arguments.\n"));
 	if (data_init(&data, av[1]))
 	{
-		if (data.map)
-			free_array(data.map);
+		free(data.player);
 		return (error("Data initialization failed.\n"));
 	}
 	if (map_parser(&data))
