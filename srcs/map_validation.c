@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:27:16 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 16:11:01 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,21 @@ int	wall_checker(t_data *data, int x, int y)
 
 int	empty_checker(t_data *data, int x, int y)
 {
-	if (y == 0 && data->map[y + 1][x] == '\0')
+	if (y == 0 && (data->map[y + 1][x] == '\0' || data->map[y + 1][x] == '\n'))
 	{
 		return (1);
 	}
-	else if (y == data->map_height - 1 && data->map[y - 1][x] == '\0')
+	else if (y == data->map_height - 1 && (data->map[y - 1][x] == '\0'
+		|| data->map[y - 1][x] == '\n'))
 	{
 		return (1);
 	}
 	else if (y != 0 && y != data->map_height - 1)
 	{
-		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0')
-			&& (data->map[y + 1][x] == '\0' || data->map[y - 1][x] == ' '))
+		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0'
+			|| data->map[y - 1][x] == '\n')
+			&& (data->map[y + 1][x] == '\0' || data->map[y - 1][x] == ' '
+			|| data->map[y - 1][x] == '\n'))
 			return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:25:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 15:33:14 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 16:10:14 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int	load_here(t_data *data, char *line)
 	else if (line[0] == 'C')
 		return (load_color(line, &data->ceiling_color));
 	else if (line[0] == ' ' || line[0] == '\n')
-		printf(" ");
+	{
+	}
 	else
 		return (ft_rtn(line));
 	return (0);
