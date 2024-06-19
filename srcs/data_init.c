@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 10:35:10 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 10:37:35 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,21 +132,8 @@ int	map_extention(char *map_path)
 	return (0);
 }
 
-int	data_init(t_data *data, char *map_path)
+void data_struct(t_data *data, char *map_path)
 {
-	int	map_len;
-
-	if (map_extention(map_path))
-	{
-		error("Invalid map file.\n");
-		exit (EXIT_FAILURE);
-	}
-	map_len = map_line_count(map_path);
-	if (map_len == 0)
-	{
-		error("Map file is empty.\n");
-		return (1);
-	}
 	data->img = NULL;
 	data->map = NULL;
 	data->mlx = NULL;
@@ -167,6 +154,24 @@ int	data_init(t_data *data, char *map_path)
 	data->ray_num = 0;
 	data->ray_angle = 0;
 	data->coordinate_y = 0.0;
+}
+
+int	data_init(t_data *data, char *map_path)
+{
+	int	map_len;
+
+	if (map_extention(map_path))
+	{
+		error("Invalid map file.\n");
+		exit (EXIT_FAILURE);
+	}
+	map_len = map_line_count(map_path);
+	if (map_len == 0)
+	{
+		error("Map file is empty.\n");
+		return (1);
+	}
+	data_struct(data, map_path);
 	if (map_init(data, map_path, map_len))
 		return (1);
 	data->player = ft_calloc(1, sizeof(t_player));
