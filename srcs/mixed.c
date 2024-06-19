@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:21:52 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:28:18 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:31:05 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	create_new_image(t_data *data, int width, int height)
 			&data->img->endian);
 	data->img->bits_per_pixel /= 8;
 }
+
 void	create_background(t_data *data)
 {
 	int	x;

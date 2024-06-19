@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 08:13:06 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:02:29 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:22:54 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c, size_t i, size_t j);
 
 // get_next_line
 char	*get_next_line(int fd);

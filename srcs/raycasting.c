@@ -6,42 +6,39 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:30:57 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:46:32 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-#include <math.h>
 
-void	add_image_pixel(t_data *data, t_point point, int x_coord,
-		double y_coord)
+void	add_image_pixel(t_data *data, t_point point, double x_c,
+		double y_c)
 {
-	double	texture_x;
-	double	texture_y;
+	double	t_x;
+	double	t_y;
 	int		index;
 
-	texture_x = (int)(point.x) % IMG_SIZE;
-	texture_y = (int)(point.y) % IMG_SIZE;
-	index = WIN_H / 2 - x_coord - 1;
-	while (++index < WIN_H / 2 + x_coord && index < WIN_H)
+	t_x = (int)(point.x) % IMG_SIZE;
+	t_y = (int)(point.y) % IMG_SIZE;
+	index = WIN_H / 2 - x_c - 1;
+	while (++index < WIN_H / 2 + x_c && index < WIN_H)
 	{
-		if ((int)texture_x == 0)
+		if ((int)t_x == 0)
+			data->img->pixels[WIN_W * index + data->ray_num]
+				= data->ea_img->pixels[(int)y_c * IMG_SIZE + (int)t_y];
+		else if ((int)t_y == 0)
 			data->img->pixels[WIN_W * index
-				+ data->ray_num] = data->ea_img->pixels[(int)y_coord * IMG_SIZE
-				+ (int)texture_y];
-		else if ((int)texture_y == 0)
-			data->img->pixels[WIN_W * index
-				+ data->ray_num] = data->so_img->pixels[(int)y_coord * IMG_SIZE
-				+ IMG_SIZE - 1 - (int)texture_x];
-		else if ((int)texture_x == IMG_SIZE - 1)
-			data->img->pixels[WIN_W * index
-				+ data->ray_num] = data->we_img->pixels[(int)y_coord * IMG_SIZE
-				+ IMG_SIZE - 1 - (int)texture_y];
-		else if ((int)texture_y == IMG_SIZE - 1)
-			data->img->pixels[WIN_W * index
-				+ data->ray_num] = data->no_img->pixels[(int)y_coord * IMG_SIZE
-				+ (int)texture_x];
-		y_coord += data->coordinate_y;
+				+ data->ray_num] = data->so_img->pixels[(int)y_c * IMG_SIZE
+				+ IMG_SIZE - 1 - (int)t_x];
+		else if ((int)t_x == IMG_SIZE - 1)
+			data->img->pixels[WIN_W * index + data->ray_num]
+				= data->we_img->pixels[(int)y_c * IMG_SIZE + IMG_SIZE
+				- 1 - (int)t_y];
+		else if ((int)t_y == IMG_SIZE - 1)
+			data->img->pixels[WIN_W * index + data->ray_num]
+				= data->no_img->pixels[(int)y_c * IMG_SIZE + (int)t_x];
+		y_c += data->coordinate_y;
 	}
 }
 
@@ -93,7 +90,7 @@ void	draw_line(t_data *data, t_point point1, t_point point2)
 		line_width = ft_strlen(data->map[(int)point1.y / IMG_SIZE]);
 		if (IMG_SIZE * line_width > point1.x && IMG_SIZE
 			* data->map_height > point1.y && data->map[(int)point1.y
-			/ IMG_SIZE][(int)point1.x / IMG_SIZE] != EMPTY)
+				/ IMG_SIZE][(int)point1.x / IMG_SIZE] != EMPTY)
 		{
 			draw_if_empty(data, point1, delta_x);
 			break ;
@@ -108,11 +105,9 @@ void	draw_line(t_data *data, t_point point1, t_point point2)
 // Rotation matrix
 //_x = x * cos(angle) - y * sin(angle)
 //_y = x * sin(angle) + y * cos(angle)
-void	raycast(t_data *data, t_point direction)
+void	raycast(t_data *data, t_point direction, double delta_x, double delta_y)
 {
 	t_point	point;
-	double	delta_x;
-	double	delta_y;
 
 	data->ray_num = 0;
 	point.x = data->player->x;

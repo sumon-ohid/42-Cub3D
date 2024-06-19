@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cleanup1.c                                         :+:      :+:    :+:   */
+/*   update_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/19 10:19:24 by vsharma           #+#    #+#             */
-/*   Updated: 2024/06/19 15:33:53 by msumon           ###   ########.fr       */
+/*   Created: 2024/06/19 15:32:37 by msumon            #+#    #+#             */
+/*   Updated: 2024/06/19 15:32:45 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	error(char *str)
+void	update_x_positions(t_data *data, double delta_x)
 {
-	int	fd;
-
-	fd = 2;
-	ft_putstr_fd("Error:\n", fd);
-	ft_putstr_fd(str, fd);
-	return (0);
+	data->player->x += SPEED * delta_x;
+	data->dir.x += SPEED * delta_x;
+	data->plane.x += SPEED * delta_x;
+	data->plane2.x += SPEED * delta_x;
 }
 
-int	clean_and_error(t_data *data, char *message)
+void	update_y_positions(t_data *data, double delta_y)
 {
-	int	fd;
-
-	fd = 2;
-	clean_input_structure(data);
-	ft_putstr_fd("Error:\n", fd);
-	ft_putstr_fd(message, fd);
-	return (0);
-}
-
-int	close_game(t_data *data)
-{
-	clean_data(data);
-	exit(0);
+	data->player->y += SPEED * delta_y;
+	data->dir.y += SPEED * delta_y;
+	data->plane.y += SPEED * delta_y;
+	data->plane2.y += SPEED * delta_y;
 }

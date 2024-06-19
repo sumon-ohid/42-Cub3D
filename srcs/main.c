@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 12:48:25 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:36:15 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	handle_images(t_data *data)
 {
 	create_new_image(data, WIN_W, WIN_H);
 	create_background(data);
-	raycast(data, data->dir);
+	raycast(data, data->dir, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
 	mlx_destroy_image(data->mlx, data->img->img_ptr);
 	return (0);

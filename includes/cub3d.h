@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:24:29 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 15:37:16 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 
 // constants
 # define ROTATE_ANGLE 0.2
-# define FOV M_PI / 3
+# define FOV 1.0471975512
 # define DIR_L 100
 # define SPEED 200
 # define EMPTY '0'
@@ -145,6 +145,8 @@ void			move_left(t_data *data);
 void			move_right(t_data *data);
 void			turn_right(t_data *data);
 void			turn_left(t_data *data);
+void			update_x_positions(t_data *data, double delta_x);
+void			update_y_positions(t_data *data, double delta_y);
 
 // ft_mlx
 void			create_new_image(t_data *data, int width, int height);
@@ -152,8 +154,8 @@ void			create_background(t_data *data);
 void			set_camera(t_data *data, int x, int y);
 
 // raycast
-void			raycast(t_data *data, t_point direction);
-
+void			raycast(t_data *data, t_point direction, double delta_x,
+					double delta_y);
 // cleanup
 int				close_game(t_data *data);
 void			free_array(char **array);
