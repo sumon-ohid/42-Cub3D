@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:57:24 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 21:50:06 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 10:27:20 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	str = (char *)malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2)
 				+ 1));
 	if (!(str))
+	{
+		free(s1);
 		return (NULL);
+	}
 	i = 0;
 	j = 0;
 	while (s1 && s1[i])
@@ -85,7 +88,10 @@ char	*get_next_line(int fd)
 	{
 		line = ft_strjoin_gnl(line, buffer);
 		if (!line)
+		{
+			free(line);
 			return (NULL);
+		}
 		if (clean_line(buffer) == 1)
 			break ;
 		if (read(fd, buffer, BUFFER_SIZE) < 0)

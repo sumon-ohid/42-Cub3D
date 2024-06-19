@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 22:03:27 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 09:34:33 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,16 @@ int	load_textures_and_colors(t_data *data)
 	return (0);
 }
 
+void	free_i(char **map, int i)
+{
+	while (i >= 0)
+	{
+		free(map[i]);
+		i--;
+	}
+	free(map);
+}
+
 int	map_without_textures(char **map, t_data *data)
 {
 	int		i;
@@ -193,12 +203,15 @@ int	map_without_textures(char **map, t_data *data)
 	j = 0;
 	new_map = (char **)malloc(sizeof(char *) * (data->map_height + 1));
 	if (!new_map)
+	{
+		free(data->player);
 		return (1);
+	}
 	while (map[i])
 	{
 		line = remove_space(map[i]);
 		if (!line)
-			return (free(new_map), 1);
+			return (free(new_map), free(data->player), 1);
 		if (line[0] == '1')
 		{
 			free(line);  // vs: free line
@@ -210,6 +223,8 @@ int	map_without_textures(char **map, t_data *data)
 	while (map[i])
 	{
 		new_map[j] = ft_strdup(map[i]);
+		if (!new_map[j])
+			return (free(data->player), free_i(new_map, i), 1);
 		i++;
 		j++;
 	}

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 19:50:18 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/19 10:35:10 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,17 @@ int	map_init(t_data *data, char *map_path, int len)
 	while (line)
 	{
 		data->map[i] = ft_strdup(line);
-		if (data->map[i] == NULL)
-			return (1);
 		if (!data->map[i])
 		{
+			while (i >= 0)
+			{
+				free(data->map[i]);
+				i--;
+			}
+			free(data->map);
 			free(line);
 			close(fd);
-			return (1);
+			exit(1);
 		}
 		i++;
 		free(line);
@@ -109,7 +113,10 @@ int	map_init(t_data *data, char *map_path, int len)
 	data->map[i] = NULL;
 	free(line);
 	if (close(fd) == -1)
+	{
+		free_array(data->map);
 		return (1);
+	}
 	data->map_height = i;
 	data->map_width = ft_strlen(data->map[0]);
 	return (0);
@@ -138,7 +145,7 @@ int	data_init(t_data *data, char *map_path)
 	if (map_len == 0)
 	{
 		error("Map file is empty.\n");
-		exit (EXIT_FAILURE);
+		return (1);
 	}
 	data->img = NULL;
 	data->map = NULL;
@@ -165,6 +172,7 @@ int	data_init(t_data *data, char *map_path)
 	data->player = ft_calloc(1, sizeof(t_player));
 	if (data->player == NULL)
 	{
+		free_array(data->map);
 		error("Player init fails.\n");
 		return(1);
 	}
