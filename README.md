@@ -1,11 +1,10 @@
 
 ## Cub3D
 
-My first RayCaster with miniLibX
+My first RayCaster with miniLibX in C.
 
-```
-To Run the Game you need Minilibx library, C compiler and Makefile installed.
-```
+To Run the Game you need Minilibx library, C compiler and Makefile installed. (Linux Only).
+For MacOS you need to change all keycodes to navigate.
 
 ```
 git clone https://github.com/sumon-ohid/42_Cub3D.git
