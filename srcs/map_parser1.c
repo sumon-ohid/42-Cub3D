@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 15:23:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 11:17:19 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	validate_values(char **rgb)
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
 		error("Invalid color\n");
-		free_array(rgb);
+		//free_array(rgb);
 		return (0);
 	}
 	return ((r << 16) + (g << 8) + b);
@@ -97,7 +97,7 @@ int	parse_color(char *line, int i)
 	int		ret;
 
 	ret = 0;
-	rgb = ft_split(line, ',');
+	rgb = ft_split(line, ',', 0, 0);
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 	{
 		free_array(rgb);
