@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 12:29:01 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 15:41:02 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ void	clean_input_structure(t_data *data)
 {
 	free_map(data);
 	free_textures(data);
-	free(data->mlx);
+	if (data->mlx)
+		free(data->mlx);
 }
 
 void	clean_data(t_data *data)

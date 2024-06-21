@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:12:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 13:03:07 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 15:25:01 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ int	valid_chars(t_data *data)
 		line = ft_strdup(data->map[y]);
 		if (line == NULL)
 		{
-			free(data->player);
 			return (1);
 		}
 		if (valid_line(line))

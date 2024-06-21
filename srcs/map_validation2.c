@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:20:36 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 13:03:24 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 15:52:00 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ int	valid_borders(t_data *data)
 		line = remove_space(data->map[y]);
 		if (!line)
 		{
-			free(data->player);
 			return (1);
 		}
 		if (valid_line_borders(data, line, y))

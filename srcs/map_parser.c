@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 11:34:42 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 15:51:44 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ int	map_parser(t_data *data)
 {
 	if (load_textures_and_colors(data))
 	{
-		free(data->player);
 		return (1);
 	}
 	if (map_without_textures(data->map, data))

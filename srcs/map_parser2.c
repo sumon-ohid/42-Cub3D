@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:24:16 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 13:02:27 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 15:49:24 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void	free_i(char **map, int i)
 {
-	while (i >= 0)
+	int j;
+
+	j = 0;
+	while (j <= i)
 	{
-		free(map[i]);
-		i--;
+		free(map[j]);
+		j++;
 	}
 	free(map);
 }
@@ -29,7 +32,6 @@ char	**initialize_new_map(t_data *data)
 	new_map = (char **)malloc(sizeof(char *) * (data->map_height + 1));
 	if (!new_map)
 	{
-		free(data->player);
 		return (NULL);
 	}
 	return (new_map);
@@ -64,7 +66,7 @@ int	copy_map_lines(char **map, char **new_map, int *i, int *j)
 		new_map[*j] = ft_strdup(map[*i]);
 		if (!new_map[*j])
 		{
-			free_i(new_map, *j);
+			free_i(new_map, *i);
 			return (1);
 		}
 		(*i)++;
@@ -87,12 +89,10 @@ int	map_without_textures(char **map, t_data *data)
 	if (process_map_lines(map, &i))
 	{
 		free(new_map);
-		free(data->player);
 		return (1);
 	}
 	if (copy_map_lines(map, new_map, &i, &j))
 	{
-		free(data->player);
 		return (1);
 	}
 	new_map[j] = NULL;
