@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 16:23:04 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 12:13:16 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,14 @@ int	main(int ac, char **av)
 	if (ac != 2)
 		return (error("Invalid number of arguments.\n"));
 	if (data_init(&data, av[1]))
-	{
 		return (error("Data initialization failed.\n"));
-	}
 	if (map_parser(&data))
 		return (clean_and_error(&data, "Map parsing failed.\n"));
 	if (!valid_map(&data))
-		return (clean_and_error(&data, "Invalid map.\n"));
+	{
+		clean_data(&data);
+		return (error("Invalid map.\n"));
+	}
 	if (start_game(&data))
 	{
 		clean_data(&data);
