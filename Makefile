@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/19 15:51:46 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/21 13:15:39 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRCS 		=	srcs/main.c \
 				srcs/mixed.c \
 				srcs/raycasting.c \
 				srcs/cleanup.c srcs/cleanup1.c\
-				srcs/additional.c \
 				srcs/lib/ft_atoi.c \
 				srcs/lib/ft_bzero.c \
 				srcs/lib/ft_strlen.c \
@@ -42,9 +41,8 @@ SRCS 		=	srcs/main.c \
 
 OBJS		= $(SRCS:.c=.o)
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
-#MCFLAGS 	= -lmlx -framework OpenGL -framework AppKit
-LXFLAGS     = -I -L -lmlx -lXext -lX11 -lm #don't forget to add these flags if you are using linux
+CFLAGS		= -Wall -Werror -Wextra
+LXFLAGS     = -I -L -lmlx -lXext -lX11 -lm
 NAME		= cub3D
 HEADER		= cub3d.h
 
@@ -82,4 +80,4 @@ fclean: clean
     
 re: fclean  all
 
-.PHONY: all clean fclean re loading
+.PHONY: all clean fclean re

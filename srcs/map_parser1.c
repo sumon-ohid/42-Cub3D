@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 12:49:03 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 13:01:50 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,40 +88,3 @@ int	parse_color(char *line, int i)
 	free_array(rgb);
 	return (ret);
 }
-
-/*int	parse_color(char *line, int i)
-{
-	char	**rgb;
-	int		r;
-	int		g;
-	int		b;
-	int		ret;
-
-	ret = 0;
-	rgb = ft_split(line, ',', 0, 0);
-	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
-	{
-		free_array(rgb);
-		return (0);
-	}
-	while (rgb[i])
-		i++;
-	if (i != 3)
-	{
-		error("Invalid Color.\n");
-		free_array(rgb);
-		return (0);
-	}
-	r = ft_atoi(rgb[0]);
-	g = ft_atoi(rgb[1]);
-	b = ft_atoi(rgb[2]);
-	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-	{
-		error("Invalid color\n");
-		free_array(rgb);
-		return (0);
-	}
-	ret = (r << 16) + (g << 8) + b;
-	free_array(rgb);
-	return (ret);
-}*/

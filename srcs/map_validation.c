@@ -6,17 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 16:11:01 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 13:05:08 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
-// int empty_line(t_data *data)
-// {
-// 	(void) data;
-// 	return (0);
-// }
 
 int	wall_checker(t_data *data, int x, int y)
 {
@@ -56,9 +50,8 @@ int	empty_checker(t_data *data, int x, int y)
 	else if (y != 0 && y != data->map_height - 1)
 	{
 		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0'
-			|| data->map[y - 1][x] == '\n')
-			&& (data->map[y + 1][x] == '\0' || data->map[y - 1][x] == ' '
-			|| data->map[y - 1][x] == '\n'))
+				|| data->map[y - 1][x] == '\n') && (data->map[y + 1][x] == '\0'
+				|| data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\n'))
 			return (1);
 	}
 	return (0);
@@ -102,35 +95,6 @@ int	valid_walls(t_data *data)
 	return (0);
 }
 
-/*int	valid_walls(t_data *data)
-{
-	int	x;
-	int	y;
-
-	if (!data || !data->map)
-		return (1);
-	y = 0;
-	while (y < data->map_height - 1)
-	{
-		x = 0;
-		while (data->map[y][x] != '\0' && data->map[y][x] != '\n')
-		{
-			if (data->map[y][x] == ' ')
-			{
-				if (wall_checker(data, x, y))
-					return (1);
-			}
-			if (data->map[y][x] == '0')
-			{
-				if (empty_checker(data, x, y))
-					return (1);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}*/
 int	valid_map(t_data *data)
 {
 	if (has_player(data))

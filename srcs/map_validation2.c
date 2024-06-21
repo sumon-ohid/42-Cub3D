@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:20:36 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:25:10 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 13:03:24 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,45 +60,3 @@ int	valid_borders(t_data *data)
 	}
 	return (0);
 }
-
-/*static int	valid_borders(t_data *data)
-{
-	int		x;
-	int		y;
-	int		width;
-	char	*line;
-
-	y = 0;
-	while (y < data->map_height)
-	{
-		x = 0;
-		line = remove_space(data->map[y]);
-		if (!line)
-		{
-			free(data->player);
-			return (1);
-		}
-		width = ft_strlen(line);
-		while (x < width - 1)
-		{
-			if (y == 0 || y == data->map_height - 1 || x == 0 || x == width - 2)
-			{
-				if (line[x] != '1')
-				{
-					free(line);
-					return (1);
-				}
-			}
-			else if (line[x] == ' ' && (line[x - 1] != '1' || line[x
-					+ 1] != '1'))
-			{
-				free(line);
-				return (1);
-			}
-			x++;
-		}
-		free(line);
-		y++;
-	}
-	return (0);
-} */

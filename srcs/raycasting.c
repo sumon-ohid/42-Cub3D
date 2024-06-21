@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 15:46:32 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 13:08:35 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ void	draw_if_empty(t_data *data, t_point point1, double dx)
 		* cos(fabs((double)(data->ray_angle))), point1);
 }
 
-// fmax returns the greater of two values
-// fabs returns the absolute value of a floating point number
 void	draw_line(t_data *data, t_point point1, t_point point2)
 {
 	double	delta_x;
@@ -100,11 +98,6 @@ void	draw_line(t_data *data, t_point point1, t_point point2)
 	}
 }
 
-// Set the starting point of the ray
-// change in coordinates for each step
-// Rotation matrix
-//_x = x * cos(angle) - y * sin(angle)
-//_y = x * sin(angle) + y * cos(angle)
 void	raycast(t_data *data, t_point direction, double delta_x, double delta_y)
 {
 	t_point	point;

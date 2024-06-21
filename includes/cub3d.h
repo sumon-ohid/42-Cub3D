@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 18:27:13 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 13:16:54 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-
-// keycodes mac
-// # define A_KEY 0
-// # define S_KEY 1
-// # define D_KEY 2
-// # define W_KEY 13
-// # define LEFT_ARROW 123
-// # define RIGHT_ARROW 124
-// # define ESC 53
-// # define CROSS_KEY 17
 
 // keycodes linux
 # define A_KEY 97
@@ -52,7 +42,7 @@
 # define WALL '1'
 # define IMG_SIZE 1024
 # define WIN_H 900
-# define WIN_W 1200
+# define WIN_W 1800
 
 // data structures for img
 typedef struct s_img

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 12:30:47 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 12:59:19 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,6 @@ int	start_game(t_data *data)
 	return (0);
 }
 
-/*void	print_map(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (data->map[i])
-	{
-		printf("%s", data->map[i]);
-		i++;
-	}
-}*/
-
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -95,33 +83,3 @@ int	main(int ac, char **av)
 	clean_data(&data);
 	return (0);
 }
-
-/*int	main(int ac, char **av)
-{
-	t_data	data;
-
-	if (ac != 2)
-		return (error("Invalid number of arguments.\n"));
-	if (data_init(&data, av[1]))
-	{
-		free(data.player);
-		return (error("Data initialization failed.\n"));
-	}
-	if (map_parser(&data))
-	{
-		clean_input_structure(&data);
-		return (error("Map parsing failed\n"));
-	}
-	if (!valid_map(&data))
-	{
-		clean_input_structure(&data);
-		return (error("Invalid map.\n"));
-	}
-	if (start_game(&data))
-	{
-		clean_data(&data);
-		return (error("Game start failed.\n"));
-	}
-	clean_data(&data);
-	return (0);
-}*/

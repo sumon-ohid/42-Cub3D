@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 12:26:05 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 13:01:25 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int	allocate_textures(t_data *data)
 	return (0);
 }
 
-/*removed //if (!line)
-		//	break ;  after get_nex_line call inside loop*/
 int	map_line_count(char *map)
 {
 	int		fd;

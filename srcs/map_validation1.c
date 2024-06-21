@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:12:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:17:50 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 13:03:07 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,37 +94,3 @@ int	valid_chars(t_data *data)
 	}
 	return (0);
 }
-
-/*
-int	valid_chars(t_data *data)
-{
-	int		x;
-	int		y;
-	char	*line;
-
-	if (data->map == NULL || data->map_height <= 0)
-		return (1);
-	y = 0;
-	while (y < data->map_height)
-	{
-		x = 0;
-		line = ft_strdup(data->map[y]);
-		if (line == NULL)
-		{
-			free(data->player);
-			return (1);
-		}
-		while (line[x])
-		{
-			if (!has_char(" 01NSWE\n", line[x]))
-			{
-				free(line);
-				return (1);
-			}
-			x++;
-		}
-		free(line);
-		y++;
-	}
-	return (0);
-}*/
