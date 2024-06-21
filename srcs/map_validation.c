@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 13:05:08 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 15:15:06 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,18 @@
 int	wall_checker(t_data *data, int x, int y)
 {
 	if (y == 0 && data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
-	{
 		return (1);
-	}
 	else if (y == data->map_height - 1 && data->map[y - 1][x] != '1'
 		&& data->map[y - 1][x] != ' ')
-	{
 		return (1);
-	}
 	else if (y > 0 && y < data->map_height - 1)
 	{
-		if (ft_strlen(data->map[y]) < ft_strlen(data->map[y + 1])
-			&& (ft_strlen(data->map[y]) < ft_strlen(data->map[y - 1])))
+		if (x > 0 && x < data->map_width - 1)
 		{
-			if ((data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
-				&& (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' '))
+			data->map[y][x] = '1';
+			if (data->map[y][x - 1] != '1' && data->map[y][x - 1] != ' ')
+				return (1);
+			if (data->map[y][x + 1] != '1' && data->map[y][x + 1] != ' ')
 				return (1);
 		}
 	}
