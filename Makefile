@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/21 13:15:39 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/21 13:19:06 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,22 +51,12 @@ YELLOW = \033[0;93m
 BLUE = \033[0;94m
 RESET = \033[0m
 
-define PRINT_LOADING
-	@printf "$(BLUE)> Compiling... ["
-	@for i in $(shell seq 0 10 100); do \
-        printf "▓"; \
-        sleep 0.1; \
-    done
-	@printf "] 100%%$(RESET)\n"
-endef
-
 %.o : %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(PRINT_LOADING)
 	@$(CC) $(CFLAGS) $(OBJS) $(LXFLAGS) -o $(NAME)
 	@echo "$(GREEN)> Compilation Complete! ✅✅✅$(RESET)"
 

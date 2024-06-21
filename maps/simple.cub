@@ -1,7 +1,7 @@
-NO ./textures/wall_21.xpm
-SO ./textures/wall_22.xpm
-WE ./textures/wall_23.xpm
-EA ./textures/wall_24.xpm
+NO ./textures/wall_02.xpm
+SO ./textures/wall_03.xpm
+WE ./textures/wall_04.xpm
+EA ./textures/wall_06.xpm
 
 F 100,100,100
 C 0, 0, 48
