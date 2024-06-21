@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:25:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 11:41:07 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 11:46:10 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,31 @@ int	load_here(t_data *data, char *line)
 		return (ft_rtn(line));
 	return (0);
 }
+
 int	load_textures_and_colors(t_data *data)
 {
-    char	*line;
-    int		i;
-    int		j;
+	char	*line;
+	int		i;
+	int		j;
 
-    i = 0;
-    while (data->map[i])
-    {
-        j = 0;
-        while (data->map[i][j] == ' ')
-            j++;
-        if (data->map[i][j] != '1')
-        {
-            line = remove_space(data->map[i]);
-            if (!line)
-                return (1);
-            if (load_here(data, line))
-                return (1);
-            free(line);
-        }
-        i++;
-    }
-    return (0);
+	i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j] == ' ')
+			j++;
+		if (data->map[i][j] != '1')
+		{
+			line = remove_space(data->map[i]);
+			if (!line)
+				return (1);
+			if (load_here(data, line))
+				return (1);
+			free(line);
+		}
+		i++;
+	}
+	return (0);
 }
 
 /*int	load_textures_and_colors(t_data *data)
