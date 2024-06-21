@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 14:10:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 12:26:05 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int	data_init(t_data *data, char *map_path)
 	map_len = map_line_count(map_path);
 	if (map_len == 0)
 	{
-		error("Map file IMG_SIZE empty.\n");
+		error("Map file is empty.\n");
 		return (1);
 	}
 	data_struct(data, map_path);

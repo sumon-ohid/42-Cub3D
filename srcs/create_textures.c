@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:37:43 by vsharma           #+#    #+#             */
-/*   Updated: 2024/06/21 11:51:21 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 12:52:35 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	create_no_img(t_data *data, int *x, int *y)
 	if (!data->no_img->img_ptr || *x != IMG_SIZE || *y != IMG_SIZE)
 	{
 		error("no_img failed\n");
-		close_game(data);
 		return (1);
 	}
 	data->no_img->pixels = (int *)mlx_get_data_addr(data->no_img->img_ptr,
@@ -35,7 +34,6 @@ int	create_ea_img(t_data *data, int *x, int *y)
 	if (!data->ea_img->img_ptr || *x != IMG_SIZE || *y != IMG_SIZE)
 	{
 		error("ea_img failed\n");
-		close_game(data);
 		return (1);
 	}
 	data->ea_img->pixels = (int *)mlx_get_data_addr(data->ea_img->img_ptr,
@@ -51,7 +49,6 @@ int	create_so_img(t_data *data, int *x, int *y)
 	if (!data->so_img->img_ptr || *x != IMG_SIZE || *y != IMG_SIZE)
 	{
 		error("so_img failed\n");
-		close_game(data);
 		return (1);
 	}
 	data->so_img->pixels = (int *)mlx_get_data_addr(data->so_img->img_ptr,
@@ -67,7 +64,6 @@ int	create_we_img(t_data *data, int *x, int *y)
 	if (!data->we_img->img_ptr || *x != IMG_SIZE || *y != IMG_SIZE)
 	{
 		error("we_img failed\n");
-		close_game(data);
 		return (1);
 	}
 	data->we_img->pixels = (int *)mlx_get_data_addr(data->we_img->img_ptr,
@@ -83,6 +79,12 @@ int	create_textures(t_data *data)
 
 	x = IMG_SIZE;
 	y = IMG_SIZE;
+	if (!data->no_texture || !data->so_texture || !data->we_texture
+		|| !data->ea_texture)
+	{
+		error("Texture path not found.\n");
+		return (1);
+	}
 	if (create_no_img(data, &x, &y))
 		return (1);
 	if (create_ea_img(data, &x, &y))

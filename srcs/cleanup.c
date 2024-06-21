@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:22:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 12:06:38 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 12:29:01 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,35 +67,6 @@ void	clean_input_structure(t_data *data)
 	free(data->mlx);
 }
 
-/*void	clean_input_structure(t_data *data)
-{
-	if (data->map)
-	{
-		free_array(data->map);
-		data->map = NULL;
-	}
-	if (data->no_texture)
-	{
-		free(data->no_texture);
-		data->no_texture = NULL;
-	}
-	if (data->so_texture)
-	{
-		free(data->so_texture);
-		data->so_texture = NULL;
-	}
-	if (data->we_texture)
-	{
-		free(data->we_texture);
-		data->we_texture = NULL;
-	}
-	if (data->ea_texture)
-	{
-		free(data->ea_texture);
-		data->ea_texture = NULL;
-	}
-	free(data->mlx);
-}*/
 void	clean_data(t_data *data)
 {
 	if (data->ea_img && data->ea_img->img_ptr)

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 11:46:19 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 12:49:03 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ char	*copy_until_newline(char *line)
 
 	i = 0;
 	j = 0;
+	if (!line)
+		return (NULL);
 	new_line = (char *)malloc(sizeof(char) * (ft_strlen(line) + 1));
 	if (!new_line)
 		return (NULL);
