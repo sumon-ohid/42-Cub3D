@@ -6,11 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 13:41:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/18 20:17:26 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:53:04 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../../includes/cub3d.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {

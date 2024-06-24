@@ -6,11 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 15:34:28 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 15:34:30 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:53:04 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../../includes/cub3d.h"
 
 int	ft_isdigit(int c)
 {

@@ -6,11 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:57:24 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 10:27:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:04:30 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
+#include "../../includes/cub3d.h"
 
 size_t	ft_strlen_gnl(char *s)
 {
@@ -76,11 +76,12 @@ size_t	clean_line(char *buffer)
 	return (result);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, t_data *data)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
 
+	(void)data;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;

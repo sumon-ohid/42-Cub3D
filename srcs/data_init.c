@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 13:01:25 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:54:23 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	allocate_textures(t_data *data)
 	return (0);
 }
 
-int	map_line_count(char *map)
+int	map_line_count(char *map, t_data *data)
 {
 	int		fd;
 	int		i;
@@ -47,17 +47,16 @@ int	map_line_count(char *map)
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	line = get_next_line(fd);
+	line = get_next_line(fd, data);
 	if (!line)
-	{
-		close(fd);
-		return (0);
-	}
+		return (close(fd), 0);
 	while (line)
 	{
 		i++;
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(fd, data);
+		if (!line)
+			break ;
 	}
 	free(line);
 	if (close(fd) == -1)
@@ -108,7 +107,7 @@ int	data_init(t_data *data, char *map_path)
 		error("Invalid map file.\n");
 		exit(EXIT_FAILURE);
 	}
-	map_len = map_line_count(map_path);
+	map_len = map_line_count(map_path, data);
 	if (map_len == 0)
 	{
 		error("Map file is empty.\n");

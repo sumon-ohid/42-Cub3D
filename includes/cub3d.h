@@ -6,15 +6,18 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 13:16:54 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:04:52 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 // include libraries
-# include "libft.h"
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
@@ -156,5 +159,25 @@ int				clean_and_error(t_data *data, char *message);
 // extra
 void			print_map(t_data *data);
 void			cub_minimap(t_data *data);
+
+// lib
+int				ft_atoi(const char *nptr);
+void			ft_bzero(void *s, size_t n);
+int				ft_isdigit(int c);
+size_t			ft_strlen(const char *s);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+void			*ft_calloc(size_t nmemb, size_t size);
+char			*ft_strdup(const char *s);
+void			ft_putchar_fd(char c, int fd);
+void			ft_putstr_fd(char *s, int fd);
+int				ft_strncmp(const char *s1, const char *s2, size_t n);
+size_t			ft_strlcpy(char *dst, const char *src, size_t size);
+size_t			ft_strlcat(char *dst, const char *src, size_t size);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+char			*ft_strjoin(char const *s1, char const *s2);
+char			**ft_split(char const *s, char c, size_t i, size_t j);
+
+// get_next_line
+char			*get_next_line(int fd, t_data *data);
 
 #endif

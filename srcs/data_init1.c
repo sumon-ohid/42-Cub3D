@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 11:55:11 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 12:05:38 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 10:54:02 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	populate_map(t_data *data, int fd)
 	char	*line;
 
 	i = 0;
-	line = get_next_line(fd);
+	line = get_next_line(fd, data);
 	if (!line)
 	{
 		close(fd);
@@ -60,7 +60,7 @@ int	populate_map(t_data *data, int fd)
 			free_data(data, fd, line, i);
 		i++;
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(fd, data);
 		if (!line)
 			break ;
 	}

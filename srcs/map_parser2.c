@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:24:16 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 15:49:24 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/21 15:57:42 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_i(char **map, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (j <= i)
