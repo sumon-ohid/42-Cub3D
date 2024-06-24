@@ -6,23 +6,28 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/24 11:57:48 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/24 12:07:56 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS 		=	srcs/main.c \
-				srcs/map_validation.c srcs/map_validation1.c \
-				srcs/map_validation2.c \
-				srcs/map_parser.c srcs/map_parser1.c srcs/map_parser2.c \
-				srcs/map_parser3.c \
-				srcs/data_init.c srcs/data_init1.c \
+				srcs/map_validation.c \
+				srcs/map_validation_extra.c \
+				srcs/map_border_check.c \
+				srcs/map_parser.c \
+				srcs/color_parser.c \
+				srcs/only_map.c \
+				srcs/texture_parser.c \
+				srcs/data_init.c \
+				srcs/map_init.c \
 				srcs/create_textures.c \
 				srcs/moves.c \
 				srcs/update_moves.c \
 				srcs/rotations.c \
-				srcs/mixed.c \
+				srcs/set_env.c \
 				srcs/raycasting.c \
-				srcs/cleanup.c srcs/cleanup1.c\
+				srcs/cleanup.c \
+				srcs/close_game.c \
 				srcs/lib/ft_atoi.c \
 				srcs/lib/ft_bzero.c \
 				srcs/lib/ft_strlen.c \
