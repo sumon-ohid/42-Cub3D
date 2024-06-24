@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/24 11:04:52 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:44:00 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 // keycodes linux
 # define A_KEY 97
@@ -94,6 +95,7 @@ typedef struct s_data
 	int			ray_num;
 	int			ray_angle;
 	double		coordinate_y;
+	bool		gnl_failed;
 	t_player	*player;
 	t_point		dir;
 	t_point		plane;

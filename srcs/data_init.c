@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:19:42 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/24 10:54:23 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:54:28 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,13 @@ int	map_line_count(char *map, t_data *data)
 		i++;
 		free(line);
 		line = get_next_line(fd, data);
-		if (!line)
+		if (!line && data->gnl_failed)
 			break ;
 	}
 	free(line);
 	if (close(fd) == -1)
+		return (0);
+	if (data->gnl_failed)
 		return (0);
 	return (i);
 }
@@ -102,13 +104,14 @@ int	data_init(t_data *data, char *map_path)
 {
 	int	map_len;
 
+	data->gnl_failed = false;
 	if (map_extention(map_path))
 	{
 		error("Invalid map file.\n");
 		exit(EXIT_FAILURE);
 	}
 	map_len = map_line_count(map_path, data);
-	if (map_len == 0)
+	if (map_len == 0 || data->gnl_failed == true)
 	{
 		error("Map file is empty.\n");
 		return (1);

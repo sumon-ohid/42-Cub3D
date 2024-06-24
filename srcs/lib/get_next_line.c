@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 17:57:24 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/24 11:04:30 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/24 11:54:40 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,20 @@ size_t	clean_line(char *buffer)
 	return (result);
 }
 
+int	ft_read(int fd, char *buffer, t_data *data)
+{
+	int		read_bytes;
+
+	read_bytes = read(fd, buffer, BUFFER_SIZE);
+	if (read_bytes < 0)
+	{
+		data->gnl_failed = true;
+		return (-1);
+	}
+	buffer[read_bytes] = '\0';
+	return (read_bytes);
+}
+
 char	*get_next_line(int fd, t_data *data)
 {
 	static char	buffer[BUFFER_SIZE + 1];
@@ -85,17 +99,18 @@ char	*get_next_line(int fd, t_data *data)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
-	while (buffer[0] || read(fd, buffer, BUFFER_SIZE) > 0)
+	while (buffer[0] || ft_read(fd, buffer, data) > 0)
 	{
 		line = ft_strjoin_gnl(line, buffer);
 		if (!line)
 		{
 			free(line);
+			data->gnl_failed = true;
 			return (NULL);
 		}
 		if (clean_line(buffer) == 1)
 			break ;
-		if (read(fd, buffer, BUFFER_SIZE) < 0)
+		if (ft_read(fd, buffer, data) < 0)
 		{
 			free(line);
 			return (NULL);
