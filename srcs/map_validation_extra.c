@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation1.c                                  :+:      :+:    :+:   */
+/*   map_validation_extra.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:12:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 15:25:01 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/25 14:37:24 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int	valid_line(char *line)
 	int	x;
 
 	x = 0;
-	while (line[x])
+	while (line[x] && line[x] == '\n')
 	{
-		if (!has_char(" 01NSWE\n", line[x]))
+		if (!has_char(" 01NSWE", line[x]))
 		{
 			free(line);
 			return (1);
