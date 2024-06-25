@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parser3.c                                      :+:      :+:    :+:   */
+/*   texture_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:25:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 13:02:22 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/25 10:58:47 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int	load_textures_and_colors(t_data *data)
 		j = 0;
 		while (data->map[i][j] == ' ')
 			j++;
+		if ((data->map[i][j] == '\0' || data->map[i][j] == '\n') && j != 0)
+			return (1);
 		if (data->map[i][j] != '1')
 		{
 			line = remove_space(data->map[i]);
