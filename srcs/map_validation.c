@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 19:06:37 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:28:04 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	wall_checker(t_data *data, int x, int y)
 {
+	int	width;
+
+	width = exact_width(data->map[y]);
 	if (y == 0 && data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
 		return (1);
 	else if (y == data->map_height - 1 && data->map[y - 1][x] != '1'
@@ -21,7 +24,7 @@ int	wall_checker(t_data *data, int x, int y)
 		return (1);
 	else if (y > 0 && y < data->map_height - 1)
 	{
-		if (x > 0 && x < data->map_width - 1)
+		if (x > 0 && x < width)
 		{
 			data->map[y][x] = '1';
 			if (data->map[y][x - 1] != '1' && data->map[y][x - 1] != ' ')
@@ -96,12 +99,16 @@ int	valid_map(t_data *data)
 {
 	if (has_player(data))
 		return (0);
+	printf("has player\n");
 	if (valid_chars(data))
 		return (0);
+	printf("valid chars\n");
 	if (valid_borders(data))
 		return (0);
+	printf("valid borders\n");
 	if (valid_walls(data))
 		return (0);
+	printf("valid walls\n");
 	if (map_without_textures(data->map, data))
 		return (0);
 	data->map_width = ft_strlen(data->map[0]) - 1;

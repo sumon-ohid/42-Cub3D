@@ -6,11 +6,21 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:20:36 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 19:10:22 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:28:13 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	exact_width(char *line)
+{
+	int	i;
+
+	i = ft_strlen(line) - 1;
+	while (i >= 0 && (line[i] == ' ' || line[i] == '\n'))
+		i--;
+	return (i);
+}
 
 int	exact_map_height(char **map)
 {

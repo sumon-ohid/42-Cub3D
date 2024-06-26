@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 19:11:06 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:28:26 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int				parse_color(char *line, int i);
 int				has_player(t_data *data);
 int				valid_borders(t_data *data);
 int				exact_map_height(char **map);
+int				exact_width(char *line);
 int				only_spaces_in_map(char *line);
 
 // data_init
