@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/24 11:44:00 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 10:38:32 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,8 @@ void			set_camera(t_data *data, int x, int y);
 // raycast
 void			raycast(t_data *data, t_point direction, double delta_x,
 					double delta_y);
+void			draw_line(t_data *data, t_point point1, t_point point2,
+					int index);
 // cleanup
 int				close_game(t_data *data);
 void			free_array(char **array);

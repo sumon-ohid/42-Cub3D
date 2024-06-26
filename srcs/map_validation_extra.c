@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:12:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/25 14:37:24 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 10:34:45 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,33 @@ int	has_player(t_data *data)
 	return (!data->player->player);
 }
 
+int	only_spaces(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] != '\0' && line[i] != '\n')
+	{
+		if (line[i] != ' ')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	valid_line(char *line)
 {
 	int	x;
 
 	x = 0;
-	while (line[x] && line[x] == '\n')
+	while (line[x])
 	{
-		if (!has_char(" 01NSWE", line[x]))
+		if (!has_char(" 01NSWE\n", line[x]))
+		{
+			free(line);
+			return (1);
+		}
+		if (only_spaces(line))
 		{
 			free(line);
 			return (1);
