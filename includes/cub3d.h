@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 10:38:32 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:11:06 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,16 +114,19 @@ int				main(int ac, char **av);
 // map
 int				valid_map(t_data *data);
 int				map_parser(t_data *data);
+int				height_until_map(char **map);
 int				map_without_textures(char **map, t_data *data);
 char			*remove_space(char *line);
 int				valid_chars(t_data *data);
 int				has_char(const char *set, char c);
-int				load_textures_and_colors(t_data *data);
+int				load_textures_and_colors(t_data *data, int i);
 int				map_without_textures(char **map, t_data *data);
 char			*copy_until_newline(char *line);
 int				parse_color(char *line, int i);
 int				has_player(t_data *data);
 int				valid_borders(t_data *data);
+int				exact_map_height(char **map);
+int				only_spaces_in_map(char *line);
 
 // data_init
 int				data_init(t_data *data, char *map_path);
@@ -159,10 +162,6 @@ void			free_array(char **array);
 void			clean_input_structure(t_data *data);
 void			clean_data(t_data *data);
 int				clean_and_error(t_data *data, char *message);
-
-// extra
-void			print_map(t_data *data);
-void			cub_minimap(t_data *data);
 
 // lib
 int				ft_atoi(const char *nptr);

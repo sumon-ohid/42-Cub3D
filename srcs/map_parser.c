@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 15:51:44 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:07:36 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,28 @@ int	get_max_width(char **map)
 	return (max);
 }
 
+int	height_until_map(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j] == ' ')
+			j++;
+		if (map[i][j] == '1')
+			break ;
+		i++;
+	}
+	return (i);
+}
+
 int	map_parser(t_data *data)
 {
-	if (load_textures_and_colors(data))
-	{
+	if (load_textures_and_colors(data, 0))
 		return (1);
-	}
 	if (map_without_textures(data->map, data))
 		return (1);
 	data->map_width = get_max_width(data->map);

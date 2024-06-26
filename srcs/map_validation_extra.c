@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:12:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 10:34:45 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/26 19:10:15 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	has_player(t_data *data)
 	return (!data->player->player);
 }
 
-int	only_spaces(char *line)
+int	only_spaces_in_map(char *line)
 {
 	int	i;
 
@@ -80,7 +80,7 @@ int	valid_line(char *line)
 			free(line);
 			return (1);
 		}
-		if (only_spaces(line))
+		if (only_spaces_in_map(line))
 		{
 			free(line);
 			return (1);
@@ -95,11 +95,13 @@ int	valid_chars(t_data *data)
 {
 	int		y;
 	char	*line;
+	int		height;
 
+	height = exact_map_height(data->map);
 	if (data->map == NULL || data->map_height <= 0)
 		return (1);
 	y = 0;
-	while (y < data->map_height)
+	while (y < height)
 	{
 		line = ft_strdup(data->map[y]);
 		if (line == NULL)

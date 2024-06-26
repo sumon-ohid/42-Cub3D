@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:25:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/25 10:58:47 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/26 19:07:24 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int	load_here(t_data *data, char *line)
 	return (0);
 }
 
-int	load_textures_and_colors(t_data *data)
+int	load_textures_and_colors(t_data *data, int i)
 {
 	char	*line;
-	int		i;
 	int		j;
+	int		height;
 
-	i = 0;
-	while (data->map[i])
+	height = height_until_map(data->map);
+	while (i < height)
 	{
 		j = 0;
 		while (data->map[i][j] == ' ')
