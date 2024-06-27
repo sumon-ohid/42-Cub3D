@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 15:42:43 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 10:02:41 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	start_game(t_data *data)
 	data->mlx = mlx_init();
 	if (!data->mlx)
 		return (1);
-	data->win = mlx_new_window(data->mlx, WIN_W, WIN_H, "Cub3D");
-	if (!data->win)
-		return (1);
 	if (allocate_textures(data))
 		return (1);
 	if (create_textures(data))
+		return (1);
+	data->win = mlx_new_window(data->mlx, WIN_W, WIN_H, "Cub3D");
+	if (!data->win)
 		return (1);
 	mlx_hook(data->win, 2, 1L, &key_hook, data);
 	mlx_hook(data->win, CROSS_KEY, 0L, &close_game, data);
