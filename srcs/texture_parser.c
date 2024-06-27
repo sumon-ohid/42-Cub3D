@@ -6,11 +6,12 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:25:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 09:22:23 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 15:52:08 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+#include "ctype.h"
 
 int	ft_rtn(char *line)
 {
@@ -36,6 +37,7 @@ int	load_color(char *line, int *color)
 	*color = parse_color(line + 1, 0);
 	if (!*color)
 		return (ft_rtn(line));
+	printf("load color\n");
 	return (0);
 }
 
@@ -61,6 +63,37 @@ int	load_here(t_data *data, char *line)
 	return (0);
 }
 
+char	*remove_extra_space(char *input)
+{
+	int		i;
+	int 	j;
+	char	*new_input;
+
+	i = 0; 
+	j = 0;
+	new_input = malloc(ft_strlen(input) + 1);
+	if (!new_input)
+		return (NULL);
+	while (input[i])
+	{
+		if (input[i] != ' ')
+		{
+			new_input[j] = input[i];
+			j++;
+		}
+		else if (i > 0 && input[i - 1] != ' ')
+		{
+			new_input[j] = input[i];
+			j++;
+		}
+		i++;
+	}
+	if (j > 0 && new_input[j - 1] == ' ')
+		j--;
+	new_input[j] = '\0';
+	return (new_input);
+}
+
 int	load_textures_and_colors(t_data *data, int i)
 {
 	char	*line;
@@ -77,7 +110,8 @@ int	load_textures_and_colors(t_data *data, int i)
 			return (1);
 		if (data->map[i][j] != '1')
 		{
-			line = remove_space(data->map[i]);
+			line = remove_extra_space(data->map[i]);
+			printf("%s", line);
 			if (!line)
 				return (1);
 			if (load_here(data, line))
