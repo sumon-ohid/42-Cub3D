@@ -6,12 +6,11 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 14:27:02 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:03:53 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
-
 
 char	*remove_space(char *line)
 {

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 19:28:26 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:05:42 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int				valid_borders(t_data *data);
 int				exact_map_height(char **map);
 int				exact_width(char *line);
 int				only_spaces_in_map(char *line);
+char			*remove_extra_space(char *input, int i, int j);
 
 // data_init
 int				data_init(t_data *data, char *map_path);

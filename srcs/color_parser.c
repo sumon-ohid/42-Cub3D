@@ -1,16 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_parser1.c                                      :+:      :+:    :+:   */
+/*   color_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/21 15:55:28 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:05:20 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+char	*remove_extra_space(char *input, int i, int j)
+{
+	char	*new_input;
+
+	new_input = malloc(ft_strlen(input) + 1);
+	if (!new_input)
+		return (NULL);
+	while (input[i])
+	{
+		if (input[i] != ' ')
+		{
+			new_input[j] = input[i];
+			j++;
+		}
+		else if (i > 0 && input[i - 1] != ' ')
+		{
+			new_input[j] = input[i];
+			j++;
+		}
+		i++;
+	}
+	if (j > 0 && new_input[j - 1] == ' ')
+		j--;
+	new_input[j] = '\0';
+	return (new_input);
+}
 
 int	texture_end_xpm(char *line)
 {
