@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:12:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:54:32 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 17:12:37 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,14 @@ int	valid_line(char *line)
 		{
 			free(line);
 			return (1);
+		}
+		if (line[x] == ' ')
+		{
+			if (only_spaces_in_map(line))
+			{
+				free(line);
+				return (1);
+			}
 		}
 		x++;
 	}

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:20:36 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:13:25 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 17:10:14 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,11 @@ int	exact_width(char *line)
 int	exact_map_height(char **map)
 {
 	int	i;
-	int	last_non_empty_line;
 
-	last_non_empty_line = -1;
 	i = 0;
 	while (map[i])
-	{
-		if (!only_spaces_in_map(map[i]))
-			last_non_empty_line = i;
 		i++;
-	}
-	if (last_non_empty_line != -1)
-		return (last_non_empty_line + 1);
-	else
-		return (0);
+	return (i);
 }
 
 static int	valid_line_borders(t_data *data, char *line, int y)
