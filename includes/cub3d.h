@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:05:42 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 17:50:34 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define CROSS_KEY 33
 
 // constants
-# define ROTATE_ANGLE 0.2
+# define ROTATE_ANGLE 0.1
 # define FOV 1.0471975512
 # define DIR_L 100
 # define SPEED 200
@@ -127,7 +127,7 @@ int				has_player(t_data *data);
 int				valid_borders(t_data *data);
 int				exact_map_height(char **map);
 int				exact_width(char *line);
-int				only_spaces_in_map(char *line);
+int				empty_line_check(char *line, int flag);
 char			*remove_extra_space(char *input, int i, int j);
 
 // data_init

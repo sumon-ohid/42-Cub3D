@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:20:36 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 17:10:14 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 18:35:23 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,23 @@ int	exact_map_height(char **map)
 	i = 0;
 	while (map[i])
 		i++;
+	while (i > 0 && empty_line_check(map[i], 1))
+		i--;
 	return (i);
+}
+
+int	has_char(const char *set, char c)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 static int	valid_line_borders(t_data *data, char *line, int y)

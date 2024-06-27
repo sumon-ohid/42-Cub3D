@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:25:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:34:31 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 17:20:20 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	load_color(char *line, int *color)
 		return (ft_rtn(line));
 	if (!line)
 		return (ft_rtn(line));
-	*color = parse_color(line + 1, 0);
+	*color = parse_color(line + 2, 0);
 	if (!*color)
 		return (ft_rtn(line));
 	return (0);
@@ -56,8 +56,7 @@ int	load_here(t_data *data, char *line)
 	else if (line[0] == 'C')
 		return (load_color(line, &data->ceiling_color));
 	else if (line[0] == ' ' || line[0] == '\n')
-	{
-	}
+		return (0);
 	else
 		return (ft_rtn(line));
 	return (0);
