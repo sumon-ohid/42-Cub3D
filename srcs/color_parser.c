@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:52:35 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 17:15:16 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ char	*remove_extra_space(char *input, int i, int j)
 	return (new_input);
 }
 
-int	texture_end_xpm(char *line)
-{
-	int	i;
-	int	len;
+// int	texture_end_xpm(char *line)
+// {
+// 	int	i;
+// 	int	len;
 
-	len = ft_strlen(line);
-	i = len - 5;
-	if (ft_strncmp(line + i, ".xpm", 4))
-		return (1);
-	return (0);
-}
+// 	len = ft_strlen(line);
+// 	i = len - 5;
+// 	if (ft_strncmp(line + i, ".xpm", 4))
+// 		return (1);
+// 	return (0);
+// }
 
 char	*copy_until_newline(char *line)
 {
