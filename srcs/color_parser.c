@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:05:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:52:35 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,12 +91,30 @@ int	validate_values(char **rgb)
 	return ((r << 16) + (g << 8) + b);
 }
 
+int	count_commas(char *line)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == ',')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 int	parse_color(char *line, int i)
 {
 	char	**rgb;
 	int		ret;
 
 	ret = 0;
+	if (count_commas(line) != 2)
+		return (0);
 	rgb = ft_split(line, ',', 0, 0);
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 	{
