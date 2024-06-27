@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/27 15:02:23 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/27 16:22:53 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRCS 		=	srcs/main.c \
 
 OBJS		= $(SRCS:.c=.o)
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -g
+CFLAGS		= -Wall -Werror -Wextra
 LXFLAGS     = -I -L -lmlx -lXext -lX11 -lm
 NAME		= cub3D
 HEADER		= cub3d.h

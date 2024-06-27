@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 14:12:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 19:10:15 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:35:43 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,13 +95,9 @@ int	valid_chars(t_data *data)
 {
 	int		y;
 	char	*line;
-	int		height;
 
-	height = exact_map_height(data->map);
-	if (data->map == NULL || data->map_height <= 0)
-		return (1);
 	y = 0;
-	while (y < height)
+	while (y < data->map_height - 1)
 	{
 		line = ft_strdup(data->map[y]);
 		if (line == NULL)
