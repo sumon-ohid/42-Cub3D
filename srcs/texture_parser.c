@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 13:25:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 17:20:20 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 19:13:41 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ int	load_color(char *line, int *color)
 		return (ft_rtn(line));
 	if (!line)
 		return (ft_rtn(line));
-	*color = parse_color(line + 2, 0);
+	if (line[1] != ' ')
+		return (ft_rtn(line));
+	*color = parse_color(line + 1, 0);
 	if (!*color)
 		return (ft_rtn(line));
 	return (0);

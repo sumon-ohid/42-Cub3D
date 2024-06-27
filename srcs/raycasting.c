@@ -6,26 +6,32 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/26 10:37:38 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 19:15:58 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+void	initialize_vars(t_data *data, t_point *direction, double *delta_x,
+		double *delta_y)
+{
+	data->ray_num = 0;
+	*delta_x = (direction->x - data->player->x);
+	*delta_y = (direction->y - data->player->y);
+	direction->x = (*delta_x * cos(-FOV / 2) - *delta_y * sin(-FOV / 2))
+		+ data->player->x;
+	direction->y = (*delta_x * sin(-FOV / 2) + *delta_y * cos(-FOV / 2))
+		+ data->player->y;
+	data->ray_angle = -FOV / 2;
+}
+
 void	raycast(t_data *data, t_point direction, double delta_x, double delta_y)
 {
 	t_point	point;
 
-	data->ray_num = 0;
 	point.x = data->player->x;
 	point.y = data->player->y;
-	delta_x = (direction.x - data->player->x);
-	delta_y = (direction.y - data->player->y);
-	direction.x = (delta_x * cos(-FOV / 2) - delta_y * sin(-FOV / 2))
-		+ data->player->x;
-	direction.y = (delta_x * sin(-FOV / 2) + delta_y * cos(-FOV / 2))
-		+ data->player->y;
-	data->ray_angle = -FOV / 2;
+	initialize_vars(data, &direction, &delta_x, &delta_y);
 	while (data->ray_num < WIN_W)
 	{
 		draw_line(data, point, direction, 0);
