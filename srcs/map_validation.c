@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 08:38:36 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/27 16:20:02 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ int	empty_checker(t_data *data, int x, int y)
 		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0'
 				|| data->map[y - 1][x] == '\n') && (data->map[y + 1][x] == '\0'
 				|| data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\n'))
+			return (1);
+		if ((data->map[y + 1][x] == ' ' || data->map[y + 1][x] == '\0'
+				|| data->map[y + 1][x] == '\n') && (data->map[y + 1][x] == '\0'
+				|| data->map[y + 1][x] == ' ' || data->map[y + 1][x] == '\n'))
 			return (1);
 	}
 	return (0);
