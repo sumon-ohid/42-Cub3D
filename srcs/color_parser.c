@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 11:07:00 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 12:49:38 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	parse_color(char *line, int i)
 
 	ret = 0;
 	if (count_commas(line) != 2)
-		return (0);
+		return (-1);
 	rgb = ft_split(line, ',', 0, 0);
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 	{
