@@ -6,11 +6,41 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 19:15:58 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:31:58 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+void	add_image_pixel(t_data *data, t_point point, double x_c,
+		double y_c)
+{
+	double	t_x;
+	double	t_y;
+	int		index;
+
+	t_x = (int)(point.x) % IMG_SIZE;
+	t_y = (int)(point.y) % IMG_SIZE;
+	index = WIN_H / 2 - x_c - 1;
+	while (++index < WIN_H / 2 + x_c && index < WIN_H)
+	{
+		if ((int)t_x == 0)
+			data->img->pixels[WIN_W * index + data->ray_num]
+				= data->ea_img->pixels[(int)y_c * IMG_SIZE + (int)t_y];
+		else if ((int)t_y == 0)
+			data->img->pixels[WIN_W * index
+				+ data->ray_num] = data->so_img->pixels[(int)y_c * IMG_SIZE
+				+ IMG_SIZE - 1 - (int)t_x];
+		else if ((int)t_x == IMG_SIZE - 1)
+			data->img->pixels[WIN_W * index + data->ray_num]
+				= data->we_img->pixels[(int)y_c * IMG_SIZE + IMG_SIZE
+				- 1 - (int)t_y];
+		else if ((int)t_y == IMG_SIZE - 1)
+			data->img->pixels[WIN_W * index + data->ray_num]
+				= data->no_img->pixels[(int)y_c * IMG_SIZE + (int)t_x];
+		y_c += data->coordinate_y;
+	}
+}
 
 void	initialize_vars(t_data *data, t_point *direction, double *delta_x,
 		double *delta_y)

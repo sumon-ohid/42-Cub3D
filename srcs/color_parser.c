@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 10:26:21 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:47:34 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*remove_extra_space(char *input, int i, int j)
 		return (NULL);
 	while (input[i])
 	{
+		if (input[i] == '\t')
+			return (NULL);
 		if (input[i] != ' ')
 		{
 			new_input[j] = input[i];
