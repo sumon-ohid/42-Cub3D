@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/27 16:22:53 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/28 10:24:45 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS 		=	srcs/main.c \
 				srcs/cleanup.c \
 				srcs/close_game.c \
 				srcs/lib/ft_atoi.c \
+				srcs/lib/ft_isdigit.c \
 				srcs/lib/ft_bzero.c \
 				srcs/lib/ft_strlen.c \
 				srcs/lib/ft_strlcpy.c \

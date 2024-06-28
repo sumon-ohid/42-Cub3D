@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:45:20 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 09:56:48 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 10:24:11 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ int	ft_atoi(const char *nptr)
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
-			sign = -1;
-		++i;
+			return (-1);
+		else if (nptr[i] == '+' && ft_isdigit(nptr[i + 1]))
+			++i;
 	}
 	while (nptr[i] != '\n' && nptr[i] != '\0')
 	{
