@@ -3,9 +3,9 @@ SO ./textures/wall_03.xpm
 WE ./textures/wall_04.xpm
 EA  ./textures/wall_06.xpm
 
-F 100, 12, 24
+F 0, 0, 0
 
-C 0, 10, 48
+C 255, 255, 255
 
 111111111111111111111111111
 111111111111000000000000001

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 10:52:13 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 11:07:00 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,17 @@ int	validate_values(char **rgb)
 	if (is_empty(rgb[0]) || is_empty(rgb[1]) || is_empty(rgb[2]))
 	{
 		error("Invalid color\n");
-		return (0);
+		return (-1);
 	}
 	if (r == -1 || g == -1 || b == -1)
 	{
 		error("Invalid color\n");
-		return (0);
+		return (-1);
 	}
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
 		error("Invalid color\n");
-		return (0);
+		return (-1);
 	}
 	return ((r << 16) + (g << 8) + b);
 }
@@ -119,7 +119,7 @@ int	parse_color(char *line, int i)
 	if (!rgb || !rgb[0] || !rgb[1] || !rgb[2])
 	{
 		free_array(rgb);
-		return (0);
+		return (-1);
 	}
 	while (rgb[i])
 		i++;
@@ -127,9 +127,11 @@ int	parse_color(char *line, int i)
 	{
 		error("Invalid Color.\n");
 		free_array(rgb);
-		return (0);
+		return (-1);
 	}
 	ret = validate_values(rgb);
+	if (ret == -1)
+		return (free_array(rgb), -1);
 	free_array(rgb);
 	return (ret);
 }
