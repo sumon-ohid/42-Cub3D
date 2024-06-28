@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
+/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 17:15:16 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 09:12:00 by vsharma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,6 @@ char	*remove_extra_space(char *input, int i, int j)
 	new_input[j] = '\0';
 	return (new_input);
 }
-
-// int	texture_end_xpm(char *line)
-// {
-// 	int	i;
-// 	int	len;
-
-// 	len = ft_strlen(line);
-// 	i = len - 5;
-// 	if (ft_strncmp(line + i, ".xpm", 4))
-// 		return (1);
-// 	return (0);
-// }
 
 char	*copy_until_newline(char *line)
 {
@@ -83,6 +71,11 @@ int	validate_values(char **rgb)
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
+	if (r == -1 || g == 1 || b == 1)
+	{
+		error("Invalid color\n");
+		return (0);
+	}
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
 		error("Invalid color\n");
