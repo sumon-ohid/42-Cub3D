@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 12:01:53 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 12:50:48 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ int	empty_checker(t_data *data, int x, int y)
 	}
 	else if (y != 0 && y != data->map_height - 1)
 	{
-		printf("hello\n");
-		printf("x %d y %d\n", x, y);
-		printf("data->height %d\n", data->map_height);
 		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0'
 				|| data->map[y - 1][x] == '\n'))
 			return (1);
