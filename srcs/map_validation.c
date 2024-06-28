@@ -12,9 +12,9 @@
 
 #include "../includes/cub3d.h"
 
-int	wall_checker(t_data *data, int x, int y)
+int	space_checker(t_data *data, size_t x, int y)
 {
-	int	width;
+	size_t	width;
 
 	width = exact_width(data->map[y]);
 	if (y == 0 && data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
@@ -22,18 +22,28 @@ int	wall_checker(t_data *data, int x, int y)
 	else if (y == data->map_height - 1 && data->map[y - 1][x] != '1'
 		&& data->map[y - 1][x] != ' ')
 		return (1);
-	else if (y > 0 && y < data->map_height - 1)
+	else if (y > 0 && y < data->map_height - 1 && x < width - 1 && x > 0)
 	{
-		if (x > 0 && x < width)
+		data->map[y][x] = '1';
+		if (data->map[y][x - 1] != '1' && data->map[y][x - 1] != ' ')
+				return (1);
+		if (data->map[y][x + 1] != '1' && data->map[y][x + 1] != ' ')
+				return (1);
+		if (ft_strlen(data->map[y]) <= ft_strlen(data->map[y - 1]) && ft_strlen(data->map[y]) <= ft_strlen(data->map[y + 1]))
 		{
-			data->map[y][x] = '1';
-			if (data->map[y][x - 1] != '1' && data->map[y][x - 1] != ' ')
-				return (1);
-			if (data->map[y][x + 1] != '1' && data->map[y][x + 1] != ' ')
-				return (1);
 			if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
 				return (1);
 			if (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
+				return (1);
+		}
+		if (x > ft_strlen(data->map[y - 1]) && x <= ft_strlen(data->map[y + 1]))
+		{
+			if (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
+				return (1);
+		}
+		if (x < ft_strlen(data->map[y - 1]) && x > ft_strlen(data->map[y + 1]))
+		{
+			if (data->map[y - 1][x] != '1' && data->map[y + 1][x] != ' ')
 				return (1);
 		}
 	}
@@ -65,14 +75,14 @@ int	empty_checker(t_data *data, int x, int y)
 
 int	valid_line_walls(t_data *data, int y)
 {
-	int	x;
+	size_t	x;
 
 	x = 0;
-	while (data->map[y][x] != '\0' && data->map[y][x] != '\n')
+	while (data->map[y][x] != '\0')
 	{
 		if (data->map[y][x] == ' ')
 		{
-			if (wall_checker(data, x, y))
+			if (space_checker(data, x, y))
 				return (1);
 		}
 		else if (data->map[y][x] == '0')

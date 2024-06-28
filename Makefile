@@ -48,8 +48,9 @@ SRCS 		=	srcs/main.c \
 
 OBJS		= $(SRCS:.c=.o)
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -Wall -Werror -Wextra #-I/usr/local/include -I/usr/X11/include
 LXFLAGS     = -I -L -lmlx -lXext -lX11 -lm
+#MLXFLAGS 	= -L/usr/local/lib -lmlx -L/usr/X11/lib -lXext -lX11
 NAME		= cub3D
 HEADER		= cub3d.h
 
