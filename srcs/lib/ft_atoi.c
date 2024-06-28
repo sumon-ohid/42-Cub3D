@@ -6,13 +6,13 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 16:45:20 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 09:04:15 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 09:56:48 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	ft_ispace(char c)
+int	ft_isspace(char c)
 {
 	return (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t'
 		|| c == '\v');
@@ -27,10 +27,8 @@ int	ft_atoi(const char *nptr)
 	i = 0;
 	res = 0;
 	sign = 1;
-	while (ft_ispace(nptr[i]))
+	while (ft_isspace(nptr[i]))
 		++i;
-	if (nptr[i] == '\0')
-		return (-1);
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
@@ -39,8 +37,8 @@ int	ft_atoi(const char *nptr)
 	}
 	while (nptr[i] != '\n' && nptr[i] != '\0')
 	{
-		if (nptr[i] < 48 || nptr[i] > 57)
-			return (0);
+		if (nptr[i] < 48 || nptr[i] > 57 || ft_isspace(nptr[i]))
+			return (-1);
 		res = res * 10 + (nptr[i] - '0');
 		++i;
 	}

@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 17:50:34 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 09:57:12 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <stdbool.h>
 
 // keycodes linux
 # define A_KEY 97
@@ -112,6 +112,7 @@ int				error(char *str);
 int				main(int ac, char **av);
 
 // map
+int				is_empty(const char *str);
 int				valid_map(t_data *data);
 int				map_parser(t_data *data);
 int				height_until_map(char **map);
@@ -166,6 +167,7 @@ void			clean_data(t_data *data);
 int				clean_and_error(t_data *data, char *message);
 
 // lib
+int				ft_isspace(char c);
 int				ft_atoi(const char *nptr);
 void			ft_bzero(void *s, size_t n);
 int				ft_isdigit(int c);

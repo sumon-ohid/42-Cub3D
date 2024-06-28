@@ -6,11 +6,22 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 21:37:04 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:03:53 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 09:57:27 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
+
+int	is_empty(const char *str)
+{
+	while (*str != '\0')
+	{
+		if (!ft_isspace(*str))
+			return (0);
+		str++;
+	}
+	return (1);
+}
 
 char	*remove_space(char *line)
 {

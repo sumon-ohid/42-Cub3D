@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_parser.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsharma <vsharma@student.42vienna.com>     +#+  +:+       +#+        */
+/*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 09:12:00 by vsharma          ###   ########.fr       */
+/*   Updated: 2024/06/28 10:12:07 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,12 @@ int	validate_values(char **rgb)
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
-	if (r == -1 || g == 1 || b == 1)
+	if (is_empty(rgb[0]) || is_empty(rgb[1]) || is_empty(rgb[2]))
+	{
+		error("Invalid color\n");
+		return (0);
+	}
+	if (r == -1 || g == -1 || b == -1)
 	{
 		error("Invalid color\n");
 		return (0);
