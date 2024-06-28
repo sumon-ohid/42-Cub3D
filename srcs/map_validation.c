@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 16:20:02 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 12:01:53 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	wall_checker(t_data *data, int x, int y)
 				return (1);
 			if (data->map[y][x + 1] != '1' && data->map[y][x + 1] != ' ')
 				return (1);
+			if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
+				return (1);
+			if (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
+				return (1);
 		}
 	}
 	return (0);
@@ -49,13 +53,14 @@ int	empty_checker(t_data *data, int x, int y)
 	}
 	else if (y != 0 && y != data->map_height - 1)
 	{
+		printf("hello\n");
+		printf("x %d y %d\n", x, y);
+		printf("data->height %d\n", data->map_height);
 		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0'
-				|| data->map[y - 1][x] == '\n') && (data->map[y + 1][x] == '\0'
-				|| data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\n'))
+				|| data->map[y - 1][x] == '\n'))
 			return (1);
-		if ((data->map[y + 1][x] == ' ' || data->map[y + 1][x] == '\0'
-				|| data->map[y + 1][x] == '\n') && (data->map[y + 1][x] == '\0'
-				|| data->map[y + 1][x] == ' ' || data->map[y + 1][x] == '\n'))
+		else if ((data->map[y + 1][x] == ' ' || data->map[y + 1][x] == '\0'
+				|| data->map[y + 1][x] == '\n'))
 			return (1);
 	}
 	return (0);
@@ -73,7 +78,7 @@ int	valid_line_walls(t_data *data, int y)
 			if (wall_checker(data, x, y))
 				return (1);
 		}
-		if (data->map[y][x] == '0')
+		else if (data->map[y][x] == '0')
 		{
 			if (empty_checker(data, x, y))
 				return (1);
