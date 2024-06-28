@@ -6,18 +6,23 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:36:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 10:31:49 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/28 12:58:15 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-void	draw_texture(t_data *data, double distance, t_point point)
+void	draw_texture_if_empty(t_data *data, t_point point, double dx)
 {
+	double	distance;
 	int		x_coord;
 	double	texture_y_offset;
 	double	y_coord;
 
+	if (data->map[(int)point.y / IMG_SIZE][(int)point.x / IMG_SIZE] == EMPTY)
+		point.x -= dx;
+	distance = sqrt(pow(data->player->y - point.y, 2) + pow(data->player->x
+				- point.x, 2)) * cos(fabs((double)(data->ray_angle)));
 	x_coord = (int)(IMG_SIZE * WIN_H / 2 / distance);
 	texture_y_offset = 0;
 	data->coordinate_y = 1024.0 / (double)(2 * x_coord);
@@ -28,15 +33,6 @@ void	draw_texture(t_data *data, double distance, t_point point)
 	}
 	y_coord = texture_y_offset * data->coordinate_y;
 	add_image_pixel(data, point, x_coord, y_coord);
-}
-
-void	draw_if_empty(t_data *data, t_point point1, double dx)
-{
-	if (data->map[(int)point1.y / IMG_SIZE][(int)point1.x / IMG_SIZE] == EMPTY)
-		point1.x -= dx;
-	draw_texture(data, sqrt(pow(data->player->y - point1.y, 2)
-			+ pow(data->player->x - point1.x, 2))
-		* cos(fabs((double)(data->ray_angle))), point1);
 }
 
 void	deltas_and_points(t_point *point1, t_point *point2, double *delta_x,
@@ -70,7 +66,7 @@ void	draw_line(t_data *data, t_point point1, t_point point2, int index)
 				* data->map_height > point1.y && data->map[(int)point1.y
 					/ IMG_SIZE][(int)point1.x / IMG_SIZE] != EMPTY)
 			{
-				draw_if_empty(data, point1, delta_x);
+				draw_texture_if_empty(data, point1, delta_x);
 				break ;
 			}
 		}
