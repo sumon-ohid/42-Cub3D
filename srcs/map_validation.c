@@ -6,15 +6,19 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 12:50:48 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/29 15:45:01 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	space_checker(t_data *data, size_t x, int y)
+/*int	space_checker(t_data *data, size_t x, int y)
 {
 	size_t	width;
+	int		len_current;
+	int		len_above;
+	int		len_below;
+	int		shorter_length;
 
 	width = exact_width(data->map[y]);
 	if (y == 0 && data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
@@ -26,10 +30,11 @@ int	space_checker(t_data *data, size_t x, int y)
 	{
 		data->map[y][x] = '1';
 		if (data->map[y][x - 1] != '1' && data->map[y][x - 1] != ' ')
-				return (1);
+			return (1);
 		if (data->map[y][x + 1] != '1' && data->map[y][x + 1] != ' ')
-				return (1);
-		if (ft_strlen(data->map[y]) <= ft_strlen(data->map[y - 1]) && ft_strlen(data->map[y]) <= ft_strlen(data->map[y + 1]))
+			return (1);
+		if (ft_strlen(data->map[y]) <= ft_strlen(data->map[y - 1])
+			&& ft_strlen(data->map[y]) <= ft_strlen(data->map[y + 1]))
 		{
 			if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
 				return (1);
@@ -48,30 +53,45 @@ int	space_checker(t_data *data, size_t x, int y)
 		}
 	}
 	return (0);
-}
-
-int	empty_checker(t_data *data, int x, int y)
+}*/
+/*int	empty_checker(t_data *data, int x, int y)
 {
-	if (y == 0 && (data->map[y + 1][x] == '\0' || data->map[y + 1][x] == '\n'))
+	if (y == 0 && x < (int)ft_strlen(data->map[y + 1]) && (data->map[y
+			+ 1][x] == '\0' || data->map[y + 1][x] == '\n'))
 	{
 		return (1);
 	}
-	else if (y == data->map_height - 1 && (data->map[y - 1][x] == '\0'
-		|| data->map[y - 1][x] == '\n'))
+	else if (y == data->map_height - 1 && x < (int)ft_strlen(data->map[y - 1])
+		&& (data->map[y - 1][x] == '\0' || data->map[y - 1][x] == '\n'))
 	{
 		return (1);
 	}
 	else if (y != 0 && y != data->map_height - 1)
 	{
-		if ((data->map[y - 1][x] == ' ' || data->map[y - 1][x] == '\0'
-				|| data->map[y - 1][x] == '\n'))
+		len_current = ft_strlen(data->map[y]);
+		len_above = ft_strlen(data->map[y - 1]);
+		len_below = ft_strlen(data->map[y + 1]);
+		if (len_above < len_below)
+		{
+			shorter_length = len_above;
+		}
+		else
+		{
+			shorter_length = len_below;
+		}
+		if (x < shorter_length && (data->map[y - 1][x] == ' ' || data->map[y
+				- 1][x] == '\0' || data->map[y - 1][x] == '\n' || data->map[y
+				+ 1][x] == ' ' || data->map[y + 1][x] == '\0' || data->map[y
+				+ 1][x] == '\n'))
 			return (1);
-		else if ((data->map[y + 1][x] == ' ' || data->map[y + 1][x] == '\0'
-				|| data->map[y + 1][x] == '\n'))
+		if (len_current > shorter_length && x >= shorter_length
+			&& data->map[y][x] == '0')
+		{
 			return (1);
+		}
 	}
 	return (0);
-}
+}*/
 
 int	valid_line_walls(t_data *data, int y)
 {

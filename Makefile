@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/28 10:24:45 by msumon           ###   ########.fr        #
+#    Updated: 2024/06/29 15:40:51 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS 		=	srcs/main.c \
 				srcs/map_validation_extra.c \
 				srcs/map_border_check.c \
 				srcs/map_parser.c \
+				srcs/map_validation_empty.c \
 				srcs/color_parser.c \
 				srcs/only_map.c \
 				srcs/texture_parser.c \

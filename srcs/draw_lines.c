@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:36:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 12:58:15 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/29 15:33:51 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	draw_line(t_data *data, t_point point1, t_point point2, int index)
 	double	delta_y;
 	int		line_width;
 
- line_width = data->map_width;
+	line_width = data->map_width;
 	deltas_and_points(&point1, &point2, &delta_x, &delta_y);
 	while (1)
 	{

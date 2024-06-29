@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 10:32:18 by msumon           ###   ########.fr       */
+/*   Updated: 2024/06/29 15:39:40 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,8 @@ int				exact_map_height(char **map);
 int				exact_width(char *line);
 int				empty_line_check(char *line, int flag);
 char			*remove_extra_space(char *input, int i, int j);
-int	   get_max_width(char **map);
+int				get_max_width(char **map);
+int				space_checker(t_data *data, size_t x, int y);
 
 // data_init
 int				data_init(t_data *data, char *map_path);
