@@ -55,13 +55,13 @@ void	draw_line(t_data *data, t_point point1, t_point point2, int index)
 	double	delta_y;
 	int		line_width;
 
+ line_width = data->map_width;
 	deltas_and_points(&point1, &point2, &delta_x, &delta_y);
 	while (1)
 	{
 		index = (int)point1.y / IMG_SIZE;
 		if (index >= 0 && index < data->map_height)
 		{
-			line_width = ft_strlen(data->map[index]);
 			if (IMG_SIZE * line_width > point1.x && IMG_SIZE
 				* data->map_height > point1.y && data->map[(int)point1.y
 					/ IMG_SIZE][(int)point1.x / IMG_SIZE] != EMPTY)
