@@ -130,6 +130,7 @@ int				exact_map_height(char **map);
 int				exact_width(char *line);
 int				empty_line_check(char *line, int flag);
 char			*remove_extra_space(char *input, int i, int j);
+int	   get_max_width(char **map);
 
 // data_init
 int				data_init(t_data *data, char *map_path);
