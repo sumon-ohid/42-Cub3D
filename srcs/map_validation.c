@@ -123,7 +123,7 @@ int	valid_map(t_data *data)
 		return (0);
 	if (map_without_textures(data->map, data))
 		return (0);
-	data->map_width = ft_strlen(data->map[0]) - 1;
+	data->map_width = get_max_width(data->map);
 	data->map_height = 0;
 	while (data->map[data->map_height])
 		data->map_height++;
