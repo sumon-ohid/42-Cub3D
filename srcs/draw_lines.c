@@ -6,12 +6,17 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 10:36:40 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/29 15:33:51 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 13:16:56 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+// point is the intersection point of the ray with the wall
+// dx is the distance between the player and the intersection point
+// distance is the distance between the player and the intersection point
+// pythagoras theorem is used to calculate the distance
+// sqrt((player.y - point.y)^2 + (player.x - point.x)^2) * cos(ray_angle)
 void	draw_texture_if_empty(t_data *data, t_point point, double dx)
 {
 	double	distance;
@@ -35,6 +40,11 @@ void	draw_texture_if_empty(t_data *data, t_point point, double dx)
 	add_image_pixel(data, point, x_coord, y_coord);
 }
 
+// point1 and point2 are the start and end points of the line
+// delta_x and delta_y are the differences between the x and y coordinates
+// max_value is the maximum value between the differences
+// delta_x and delta_y are normalized
+// point2.x and point2.y are updated by adding delta_x and delta_y
 void	deltas_and_points(t_point *point1, t_point *point2, double *delta_x,
 		double *delta_y)
 {

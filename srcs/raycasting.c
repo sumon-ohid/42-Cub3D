@@ -6,12 +6,15 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:29:21 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 10:31:58 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 13:18:47 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
+// t_x and t_y are the x and y coordinates of the image
+// index is the y coordinate of the image
+// x_c is the distance between the player and the intersection point
 void	add_image_pixel(t_data *data, t_point point, double x_c,
 		double y_c)
 {
@@ -55,6 +58,11 @@ void	initialize_vars(t_data *data, t_point *direction, double *delta_x,
 	data->ray_angle = -FOV / 2;
 }
 
+// point.x and point.y are the player's position
+// direction.x and direction.y are the player's direction
+// delta_x and delta_y are the difference between
+// the player's position and the direction
+// FOV / WIN_W is the angle between each ray
 void	raycast(t_data *data, t_point direction, double delta_x, double delta_y)
 {
 	t_point	point;

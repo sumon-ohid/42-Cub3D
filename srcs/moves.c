@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:08:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 15:32:18 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:59:55 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ void	move_left(t_data *data)
 		update_y_positions(data, delta_y);
 }
 
+// delta_x and delta_y are the difference between
+// the player's position and the direction
+// dir.x - player.x / DIR_L and dir.y - player.y / DIR_L
+// are the normalized direction vectors
 void	move_right(t_data *data)
 {
 	const double	delta_x = -(data->dir.y - data->player->y) / DIR_L;
