@@ -6,18 +6,16 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:37:05 by msumon            #+#    #+#             */
-/*   Updated: 2024/07/01 17:07:46 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 17:28:06 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	check_middle(t_data *data, size_t x, int y)
+int	check_middle(t_data *data, size_t x, int y, size_t above_len)
 {
-	size_t	above_len;
 	size_t	below_len;
 
-	above_len = ft_strlen(data->map[y - 1]) - 1;
 	below_len = ft_strlen(data->map[y + 1]) - 1;
 	if (data->map[y][x - 1] != '1' && data->map[y][x - 1] != ' ')
 		return (1);
@@ -26,18 +24,19 @@ int	check_middle(t_data *data, size_t x, int y)
 	if ((ft_strlen(data->map[y]) <= above_len)
 		&& (ft_strlen(data->map[y]) <= below_len))
 	{
-		if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
+		if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' '
+			&& data->map[y - 1][x] != '\0' && data->map[y - 1][x] != '\n')
 			return (1);
-		if (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
+		if (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' '
+			&& data->map[y + 1][x] != '\0' && data->map[y + 1][x] != '\n')
 			return (1);
 	}
 	if ((x > above_len) && x <= below_len)
 	{
-		if (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
+		if (data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' '
+			&& data->map[y + 1][x] != '\0' && data->map[y + 1][x] != '\n')
 			return (1);
 	}
-	if ((x >= above_len) && x >= below_len)
-		return (0);
 	return (0);
 }
 
@@ -47,7 +46,8 @@ int	space_checker(t_data *data, size_t x, int y)
 	size_t	above_len;
 	size_t	below_len;
 
-	above_len = ft_strlen(data->map[y - 1]) - 1;
+	if (y > 0)
+		above_len = ft_strlen(data->map[y - 1]) - 1;
 	below_len = ft_strlen(data->map[y + 1]) - 1;
 	width = ft_strlen(data->map[y]);
 	if (y == 0 && data->map[y + 1][x] != '1' && data->map[y + 1][x] != ' ')
@@ -59,10 +59,11 @@ int	space_checker(t_data *data, size_t x, int y)
 	{
 		if ((x < above_len) && x > below_len)
 		{
-			if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
+			if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' '
+				&& data->map[y - 1][x] != '\0' && data->map[y - 1][x] != '\n')
 				return (1);
 		}
-		if (check_middle(data, x, y))
+		if (check_middle(data, x, y, above_len))
 			return (1);
 	}
 	return (0);
