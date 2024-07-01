@@ -6,7 +6,7 @@
 #    By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/06 10:48:39 by msumon            #+#    #+#              #
-#    Updated: 2024/06/29 15:40:51 by msumon           ###   ########.fr        #
+#    Updated: 2024/07/01 08:49:00 by msumon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS 		=	srcs/main.c \
 				srcs/map_border_check.c \
 				srcs/map_parser.c \
 				srcs/map_validation_empty.c \
+				srcs/map_validation_space.c \
 				srcs/color_parser.c \
 				srcs/only_map.c \
 				srcs/texture_parser.c \
@@ -49,9 +50,8 @@ SRCS 		=	srcs/main.c \
 
 OBJS		= $(SRCS:.c=.o)
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra #-I/usr/local/include -I/usr/X11/include
+CFLAGS		= -Wall -Werror -Wextra
 LXFLAGS     = -I -L -lmlx -lXext -lX11 -lm
-#MLXFLAGS 	= -L/usr/local/lib -lmlx -L/usr/X11/lib -lXext -lX11
 NAME		= cub3D
 HEADER		= cub3d.h
 
