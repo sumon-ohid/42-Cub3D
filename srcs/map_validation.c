@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 10:36:10 by msumon            #+#    #+#             */
-/*   Updated: 2024/07/01 12:32:41 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 14:14:34 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,17 +103,17 @@ int	valid_line_walls(t_data *data, int y)
 	x = 0;
 	while (data->map[y][x] != '\0')
 	{
-		if (data->map[y][x] == ' ')
+		if (data->map[y][x] == '0')
+		{
+			if (empty_checker(data, x, y))
+				return (1);
+		}
+		else if (data->map[y][x] == ' ')
 		{
 			if (space_checker(data, x, y))
 			{
 				return (1);
 			}
-		}
-		else if (data->map[y][x] == '0')
-		{
-			if (empty_checker(data, x, y))
-				return (1);
 		}
 		x++;
 	}
