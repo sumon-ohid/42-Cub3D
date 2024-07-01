@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/07/01 08:39:19 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:49:04 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,8 +152,7 @@ void			turn_left(t_data *data);
 void			update_x_positions(t_data *data, double delta_x);
 void			update_y_positions(t_data *data, double delta_y);
 
-// ft_mlx
-void			create_new_image(t_data *data, int width, int height);
+// set_environment
 void			create_background(t_data *data);
 void			set_camera(t_data *data, int x, int y);
 

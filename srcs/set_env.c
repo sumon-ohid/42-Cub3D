@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mixed.c                                            :+:      :+:    :+:   */
+/*   set_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 13:21:52 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/19 15:31:05 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:49:17 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@ void	set_camera(t_data *data, int x, int y)
 		* (data->map[y][x] == 'S');
 	data->plane.x = data->dir.y * FOV;
 	data->plane.y = -data->dir.x * FOV;
-}
-
-void	create_new_image(t_data *data, int width, int height)
-{
-	data->img->img_ptr = mlx_new_image(data->mlx, width, height);
-	data->img->pixels = (int *)mlx_get_data_addr(data->img->img_ptr,
-			&data->img->bits_per_pixel, &data->img->line_length,
-			&data->img->endian);
-	data->img->bits_per_pixel /= 8;
 }
 
 void	create_background(t_data *data)

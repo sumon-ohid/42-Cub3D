@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:53:23 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/27 10:02:41 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 12:48:43 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,11 @@ int	key_hook(int key, t_data *data)
 
 int	handle_images(t_data *data)
 {
-	create_new_image(data, WIN_W, WIN_H);
+	data->img->img_ptr = mlx_new_image(data->mlx, WIN_W, WIN_H);
+	data->img->pixels = (int *)mlx_get_data_addr(data->img->img_ptr,
+			&data->img->bits_per_pixel, &data->img->line_length,
+			&data->img->endian);
+	data->img->bits_per_pixel /= 8;
 	create_background(data);
 	raycast(data, data->dir, 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win, data->img->img_ptr, 0, 0);
