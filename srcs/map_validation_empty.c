@@ -6,22 +6,22 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:46:12 by msumon            #+#    #+#             */
-/*   Updated: 2024/07/01 10:59:13 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 15:52:00 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub3d.h"
 
-int	check_edge_rows(t_data *data, int x, int y)
-{
-	if (y == 0 && x < (int)ft_strlen(data->map[y + 1])
-		&& (data->map[y + 1][x] == '\0' || data->map[y + 1][x] == '\n'))
-		return (1);
-	if (y == data->map_height - 1 && x < (int)ft_strlen(data->map[y - 1])
-		&& (data->map[y - 1][x] == '\0' || data->map[y - 1][x] == '\n'))
-		return (1);
-	return (0);
-}
+// int	check_edge_rows(t_data *data, int x, int y)
+// {
+// 	if (y == 0 && x < (int)ft_strlen(data->map[y + 1])
+// 		&& (data->map[y + 1][x] == '\0' || data->map[y + 1][x] == '\n'))
+// 		return (1);
+// 	if (y == data->map_height - 1 && x < (int)ft_strlen(data->map[y - 1])
+// 		&& (data->map[y - 1][x] == '\0' || data->map[y - 1][x] == '\n'))
+// 		return (1);
+// 	return (0);
+// }
 
 int	check_middle_rows(t_data *data, int x, int y)
 {
@@ -50,8 +50,6 @@ int	check_middle_rows(t_data *data, int x, int y)
 
 int	empty_checker(t_data *data, int x, int y)
 {
-	if (check_edge_rows(data, x, y))
-		return (1);
 	if (y != 0 && y != data->map_height - 1)
 	{
 		if (check_middle_rows(data, x, y))
