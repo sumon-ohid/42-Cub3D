@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:37:05 by msumon            #+#    #+#             */
-/*   Updated: 2024/07/01 14:19:21 by msumon           ###   ########.fr       */
+/*   Updated: 2024/07/01 16:14:22 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_middle(t_data *data, size_t x, int y)
 	}
 	if (x < ft_strlen(data->map[y - 1]) && x > ft_strlen(data->map[y + 1]))
 	{
-		if (data->map[y - 1][x] != '1' && data->map[y + 1][x] != ' ')
+		if (data->map[y - 1][x] != '1' && data->map[y - 1][x] != ' ')
 			return (1);
 	}
 	return (0);
