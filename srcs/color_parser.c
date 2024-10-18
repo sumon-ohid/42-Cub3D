@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/19 12:20:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/06/28 12:49:38 by msumon           ###   ########.fr       */
+/*   Updated: 2024/09/10 14:09:12 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ char	*remove_extra_space(char *input, int i, int j)
 	char	*new_input;
 
 	new_input = malloc(ft_strlen(input) + 1);
-	if (!new_input)
-		return (NULL);
+	// if (!new_input)
+	// 	return (NULL);
 	while (input[i])
 	{
 		if (input[i] == '\t')

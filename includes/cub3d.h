@@ -6,7 +6,7 @@
 /*   By: msumon <msumon@student.42vienna.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 10:50:45 by msumon            #+#    #+#             */
-/*   Updated: 2024/07/01 13:06:43 by msumon           ###   ########.fr       */
+/*   Updated: 2024/10/18 11:22:39 by msumon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define ROTATE_ANGLE 0.1
 # define FOV 1.0471975512
 # define DIR_L 100
-# define SPEED 100
+# define SPEED 200
 # define EMPTY '0'
 # define WALL '1'
 # define IMG_SIZE 1024
